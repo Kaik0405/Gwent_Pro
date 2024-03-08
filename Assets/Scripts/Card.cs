@@ -18,13 +18,14 @@ public class Card : ScriptableObject
     public typefaction faction; // establece si la carta es de la faccion de las sombras o de los celestiales
     public typeclimate type_climate;
 
-    public enum typecard { unit_silver, unit_gold, lure, leader, climate, increase }
-    public enum typefield { bodyB, distance, siege, fincrease, fclimate, fleader }
+    public enum typecard { unit_silver, unit_gold, lure, leader, climate, increase, clear }
+    public enum typefield { melee, distance, siege, MD, MS, DS, MDS, fincrease, fclimate, fleader }
     public enum typefaction { shadows, heavenly, none }
     public enum typeclimate { afectBB, afectD, afectS }
 
-    public Card(string name, string description, int power, typecard type, typefield pos_field, typefaction faction, Sprite Picture) //constructor para cartas monstruo
+    public Card(int ID ,string name, string description, int power, typecard type, typefield pos_field, typefaction faction, Sprite Picture) //constructor para cartas monstruo
     {
+        this.ID = ID;
         this.name = name;
         this.description = description;
         this.power = power;
@@ -32,8 +33,9 @@ public class Card : ScriptableObject
         this.pos_field = pos_field;
         this.faction = faction;
     }
-    public Card(string name, string description, typecard type, typefield pos_field, typefaction faction, Sprite Picture) //constructor para cartas sin atk
+    public Card(int ID, string name, string description, typecard type, typefield pos_field, typefaction faction, Sprite Picture) //constructor para cartas sin atk
     {
+        this.ID= ID;
         this.name = name;
         this.description = description;
         this.type = type;
