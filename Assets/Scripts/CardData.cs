@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class CardData : MonoBehaviour
 {
-    List<Card> cardList = new List<Card>();
+    public static List<Card> cardList = new List<Card>();
 
     private void Awake()
     {
