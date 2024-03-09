@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 
 public class Card : ScriptableObject
 {
@@ -13,10 +14,10 @@ public class Card : ScriptableObject
 
     Sprite Picture;
 
-    public typecard type; // establece si la carta es de tipo oro, plata, señuelo, aumento, lider o clima 
+    public typecard type; // establece si la carta es de tipo oro, plata, señuelo, aumento, lider, clima o despeje 
     public typefield pos_field; // estable si la carta se coloca en la zona de cuerpo a cuerpo, distancia, asedio, aumento, clima o lider
     public typefaction faction; // establece si la carta es de la faccion de las sombras o de los celestiales
-    public typeclimate type_climate;
+    public typeclimate type_climate; //establece si la carta  clima 
 
     public enum typecard { unit_silver, unit_gold, lure, leader, climate, increase, clear }
     public enum typefield { melee, distance, siege, MD, MS, DS, MDS, fincrease, fclimate, fleader }
