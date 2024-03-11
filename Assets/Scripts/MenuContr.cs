@@ -7,7 +7,7 @@ public class MenuContr : MonoBehaviour
 {
     public void TraslateToScene()
     {
-        SceneManager.LoadScene("GwentMain");
+        SceneManager.LoadScene("GwentMain"); //Cambio de escena para la escena pricipal
     }
     public void ExitGame()
     {
