@@ -43,11 +43,11 @@ public class CardData : MonoBehaviour
         deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
         deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
         deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
-        deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.none, Resources.Load<Sprite>("DSDespeje(S)1")));
-        deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.none, Resources.Load<Sprite>("DS1Despeje(S)")));
+        deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.none, Resources.Load<Sprite>("Despeje(S)")));
+        deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.none, Resources.Load<Sprite>("Despeje(S)")));
 
         //deck de Celestiales
-        //carta Lider
+        //carta Despeje(S)
         deckHeavenly.Add(new Card(01, "Aureliana", "descrip", 10, Card.typecard.unit_gold, Card.typefield.MS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lider")));
         //Cartas de Unidad
         //Cartas Oro

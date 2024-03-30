@@ -10,28 +10,27 @@ public class playerDeck1 : MonoBehaviour
     public static int deckSize;
     public static List<Card> staticDeck = new List<Card>();
 
-    public GameObject CardToHand;
-    public GameObject[] Clone;
+    public GameObject CardToHand; // Asegúrate de que este es el prefab correcto
     public GameObject Hand;
 
     void Start()
     {
-        deckSize = 29;
+        deckSize = CardData.deckShadows.Count;
 
-        for (int i = 1; i <= CardData.deckShadows.Count-1; i++) 
+        for (int i = 1; i <= CardData.deckShadows.Count - 1; i++)
         {
             deck1.Add(CardData.deckShadows[i]);
         }
-        int posmess = Random.Range(0, deck1.Count);
 
-        Card aux = null;
-
-        for (int i = 0; i < deck1.Count; i++) 
+        // Desordenar el mazo
+        for (int i = 0; i < deck1.Count; i++)
         {
-            aux = deck1[i];
-            deck1[i] = deck1[posmess];
-            deck1[posmess] = aux; 
+            int r = Random.Range(i, deck1.Count);
+            Card temp = deck1[i];
+            deck1[i] = deck1[r];
+            deck1[r] = temp;
         }
+
         StartCoroutine(StartGame());
     }
 
@@ -44,8 +43,23 @@ public class playerDeck1 : MonoBehaviour
     {
         for (int i = 0; i <= 9; i++)
         {
-            yield return new WaitForSeconds(0.3f);
-            Instantiate(CardToHand, transform.position, transform.rotation);
+            if (deck1.Count > 0)
+            {
+                yield return new WaitForSeconds(0.3f);
+                GameObject cardToHand = Instantiate(CardToHand, transform.position, transform.rotation);
+                DisplayCard displayCardScript = cardToHand.GetComponent<DisplayCard>();
+                if (displayCardScript != null)
+                {
+                    displayCardScript.currentCard = deck1[0]; // Pasa la referencia de la carta actual
+                    // Aquí puedes ajustar la posición de la carta instanciada basándote en el contador o índice
+                }
+                deck1.RemoveAt(0); // Elimina la carta de la lista para evitar repeticiones
+                deckSize--;
+            }
+            else
+            {
+                break;
+            }
         }
     }
 }

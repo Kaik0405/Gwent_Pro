@@ -9,8 +9,6 @@ public class CardBack : MonoBehaviour
     {
         
     }
-
-
     void Update()
     {
         if (DisplayCard.staticCardBack == true)

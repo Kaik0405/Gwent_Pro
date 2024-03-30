@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061838d1920b5c1478a362285b18e1a7, type: 3}
   m_Name: new Card
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 2
   name: 
   description: 
-  power: 0
+  power: 10
   spriteImage: {fileID: 0}
-  type: 0
+  type: 1
   pos_field: 0
   faction: 0
   type_climate: 0

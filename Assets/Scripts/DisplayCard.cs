@@ -8,11 +8,10 @@ using static Card;
 
 public class DisplayCard : MonoBehaviour
 {
-    public List<Card> displayCard = new List<Card>();
-    public int displayID;
+    public Card currentCard; // Referencia a la carta actual
 
-    public int power;
-    public Sprite spriteImage;
+    public string Power;
+    public Sprite SpriteImage;
 
     public TMP_Text powerText;
     public Image artImage;
@@ -22,37 +21,37 @@ public class DisplayCard : MonoBehaviour
 
     public int numCardInDeck;
     public GameObject Hand;
+
     void Start()
     {
         numCardInDeck = playerDeck1.deckSize;
 
-        displayCard[0] = CardData.deckShadows[displayID];
+        Power = currentCard.power.ToString();
+        powerText.text = " " + Power;
+        SpriteImage = currentCard.spriteImage;
 
-        power = displayCard[0].power;
-        powerText.text = " " + power;
-        spriteImage = displayCard[0].spriteImage;
-
-        artImage.sprite = spriteImage;
+        artImage.sprite = SpriteImage;
     }
-
 
     void Update()
     {
-   
         Hand = GameObject.Find("HandP1");
 
-        if(this.transform.parent == Hand.transform.parent)
+        if (this.transform.parent == Hand.transform.parent)
         { cardBack = false; }
 
         staticCardBack = cardBack;
 
-        if(this.tag == "Clone")
+        if (this.tag == "Clone")
         {
-            displayCard[0] = playerDeck1.staticDeck[numCardInDeck-1];
-            numCardInDeck -= 1;
-            playerDeck1.deckSize -=1;
-            cardBack = false;
-            this.tag = "Untagged";
+            if (numCardInDeck > 0 && numCardInDeck <= playerDeck1.staticDeck.Count)
+            {
+                currentCard = playerDeck1.staticDeck[numCardInDeck - 1];
+                numCardInDeck -= 1;
+                playerDeck1.deckSize -= 1;
+                cardBack = false;
+                this.tag = "Untagged";
+            }
         }
     }
 }

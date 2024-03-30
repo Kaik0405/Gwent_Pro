@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42.4, y: 73}
+  m_AnchoredPosition: {x: -50.4, y: 47.5}
   m_SizeDelta: {x: 37.2832, y: 38.3015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6290328876837219235
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -173,7 +173,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 39.9}
   m_SizeDelta: {x: 75, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9163107281645232733
@@ -226,11 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9d437be8081244d84dc87a83f1bc8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayCard:
-  - {fileID: 0}
-  displayID: 4
-  power: 0
-  spriteImage: {fileID: 0}
+  currentCard: {fileID: 0}
+  Power: N
+  SpriteImage: {fileID: 0}
   powerText: {fileID: 6434558962294306394}
   artImage: {fileID: 5987366228076646936}
   cardBack: 0

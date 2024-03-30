@@ -681,9 +681,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: []
   deck1: []
-  CardToHand: {fileID: 6722954347174086115, guid: a6699eebd9bd54b4fa128f3d7f23c8b6, type: 3}
-  Clone: []
-  Hand: {fileID: 1317070838}
+  CardToHand: {fileID: 3759858682695972739, guid: fcdd21a6291db43468851f9b33603c39, type: 3}
+  Hand: {fileID: 0}
 --- !u!4 &735843454
 Transform:
   m_ObjectHideFlags: 0
