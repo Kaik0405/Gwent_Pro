@@ -10,7 +10,7 @@ public class playerDeck1 : MonoBehaviour
     public static int deckSize;
     public static List<Card> staticDeck = new List<Card>();
 
-    public GameObject CardToHand; // Asegúrate de que este es el prefab correcto
+    public GameObject CardToHand; 
     public GameObject Hand;
 
     void Start()
@@ -51,7 +51,6 @@ public class playerDeck1 : MonoBehaviour
                 if (displayCardScript != null)
                 {
                     displayCardScript.currentCard = deck1[0]; // Pasa la referencia de la carta actual
-                    // Aquí puedes ajustar la posición de la carta instanciada basándote en el contador o índice
                 }
                 deck1.RemoveAt(0); // Elimina la carta de la lista para evitar repeticiones
                 deckSize--;
