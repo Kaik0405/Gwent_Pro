@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9d437be8081244d84dc87a83f1bc8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCard: {fileID: 0}
+  currentCard: {fileID: 11400000, guid: f42ff18b940a5064f96126cf0ce055ec, type: 2}
   Power: 
   SpriteImage: {fileID: 0}
   powerText: {fileID: 6434558962294306394}
@@ -300,7 +300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1346168738211557760, guid: 2fdf1f4b8d504c945b4b58af2ef619a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 268
       objectReference: {fileID: 0}
     - target: {fileID: 1346168738211557760, guid: 2fdf1f4b8d504c945b4b58af2ef619a1, type: 3}
       propertyPath: m_LocalRotation.w

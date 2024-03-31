@@ -48,7 +48,7 @@ public class CardData : MonoBehaviour
 
         //deck de Celestiales
         //carta Despeje(S)
-        deckHeavenly.Add(new Card(01, "Aureliana", "descrip", 10, Card.typecard.unit_gold, Card.typefield.MS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lider")));
+        deckHeavenly.Add(new Card(00, "Aureliana", "descrip", 10, Card.typecard.unit_gold, Card.typefield.MS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lider")));
         //Cartas de Unidad
         //Cartas Oro
         deckHeavenly.Add(new Card(01, "Raphaelius", "descrip", 10, Card.typecard.unit_gold, Card.typefield.MS, Card.typefaction.heavenly, Resources.Load<Sprite>("DS(P2)")));

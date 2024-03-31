@@ -28,8 +28,8 @@ public class DisplayCard : MonoBehaviour
 
         Power = currentCard.power.ToString();
         powerText.text = " " + Power;
-        SpriteImage = currentCard.spriteImage;
 
+        SpriteImage = currentCard.spriteImage;
         artImage.sprite = SpriteImage;
     }
 
