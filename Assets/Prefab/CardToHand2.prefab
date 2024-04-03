@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: -2359340500726395602}
   - component: {fileID: 205787970293520455}
   - component: {fileID: -524220849153928916}
+  - component: {fileID: 1210326944370712709}
   m_Layer: 5
   m_Name: CardToHand2
   m_TagString: Clone
@@ -228,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a879b235918768409a9911380fcdb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentReturn: {fileID: 0}
 --- !u!114 &6209717310347449843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +297,18 @@ MonoBehaviour:
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
+--- !u!225 &1210326944370712709
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540713934067976945}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &5346343159744063361
 PrefabInstance:
   m_ObjectHideFlags: 0

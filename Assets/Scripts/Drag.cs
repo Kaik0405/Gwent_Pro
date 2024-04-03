@@ -5,11 +5,12 @@ using UnityEngine.EventSystems;
 
 public class Drag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
 {
-    Transform parentReturn = null;
+    public Transform parentReturn = null;
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentReturn = this.transform.parent;
         this.transform.SetParent(this.transform.parent.parent);
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
     public void OnDrag (PointerEventData eventData)
     {
@@ -18,6 +19,7 @@ public class Drag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
         this.transform.SetParent(parentReturn);
+        GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
     
