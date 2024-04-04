@@ -7,11 +7,6 @@ public class CountDeckCard2 : MonoBehaviour
 {
     public TMP_Text TextcantOfCardD2;
     public int CardCount2;
-    
-    void Start()
-    {
-        
-    }
 
     void Update()
     {

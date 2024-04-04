@@ -8,10 +8,6 @@ public class CountDeckCard : MonoBehaviour
     public TMP_Text TextcantOfCardD;
     public int CardCount;
 
-    void Start()
-    {
-           
-    }
     void Update()
     {
         CardCount = playerDeck1.deckSize-1;

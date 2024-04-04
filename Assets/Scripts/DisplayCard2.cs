@@ -25,6 +25,13 @@ public class DisplayCard2 : MonoBehaviour
     void Start()
     {
         numCardInDeck2 = playerDeck2.deckSize2;
+
+        Drag dragComponent = this.GetComponent<Drag>();
+        if (dragComponent != null && currentCard2 != null)
+        {
+            dragComponent.cardType = currentCard2.pos_field;
+            dragComponent.cardFact = currentCard2.faction;
+        }
         if ((currentCard2.type == typecard.unit_gold) || (currentCard2.type == typecard.unit_silver)||(currentCard2.type == typecard.lure))
         {
             Power2 = currentCard2.power.ToString();
@@ -61,13 +68,9 @@ public class DisplayCard2 : MonoBehaviour
                     SpriteImage2 = currentCard2.spriteImage;
                     artImage2.sprite = SpriteImage2;
                     break;
-
             }
-
-            
         }
     }
-
     void Update()
     {
         Hand2 = GameObject.Find("HandP2");

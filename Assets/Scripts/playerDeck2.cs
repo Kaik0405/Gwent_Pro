@@ -21,7 +21,6 @@ public class playerDeck2 : MonoBehaviour
         {
             deck2.Add(CardData.deckHeavenly[i]);
         }
-
         // Desordenar el mazo
         for (int i = 0; i < deck2.Count; i++)
         {
@@ -30,18 +29,15 @@ public class playerDeck2 : MonoBehaviour
             deck2[i] = deck2[r];
             deck2[r] = temp;
         }
-
         StartCoroutine(StartGame());
     }
-
     void Update()
     {
         staticDeck2 = deck2;
     }
-
     IEnumerator StartGame()
     {
-        //yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.2f);
         for (int i = 0; i <= 9; i++)
         {
             if (deck2.Count > 0)

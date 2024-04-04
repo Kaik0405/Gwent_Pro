@@ -22,7 +22,6 @@ public class DisplayCard : MonoBehaviour
     public int numCardInDeck;
     public GameObject Hand;
 
-
     void Start()
     {
         numCardInDeck = playerDeck1.deckSize;
@@ -31,8 +30,8 @@ public class DisplayCard : MonoBehaviour
         if (dragComponent != null && currentCard != null)
         {
             dragComponent.cardType = currentCard.pos_field;
+            dragComponent.cardFact = currentCard.faction;
         }
-
         if ((currentCard.type == typecard.unit_gold) || (currentCard.type == typecard.unit_silver) || (currentCard.type == typecard.lure))
         {
             Power = currentCard.power.ToString();

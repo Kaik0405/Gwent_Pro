@@ -13,7 +13,6 @@ public class CardData : MonoBehaviour
         deckShadows.Add(new Card(00, "Sung Jing Woo", "deswcrip", Card.typecard.leader, Card.typefield.fleader, Card.typefaction.shadows, Resources.Load<Sprite>("Lidertype0")));
         //Cartas de Unidad
         //Cartas Oro
-
         deckShadows.Add(new Card(01, "Bellion", "descrip",10, Card.typecard.unit_gold, Card.typefield.MS, Card.typefaction.shadows, Resources.Load<Sprite>("MD")));
         deckShadows.Add(new Card(02, "Ingris", "descrip",10, Card.typecard.unit_gold, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("MDS")));
         deckShadows.Add(new Card(03, "The Codice", "descrip",10, Card.typecard.unit_gold, Card.typefield.MD, Card.typefaction.shadows, Resources.Load<Sprite>("MD1")));
@@ -38,14 +37,13 @@ public class CardData : MonoBehaviour
         deckShadows.Add(new Card(12, "Hell", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("InfiernoMelee(S)")));
         deckShadows.Add(new Card(13, "Fog of de dark", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("NieblaDist(S)")));
         deckShadows.Add(new Card(14, "Judgment Meteors", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("LluviaMetSiege(S)")));
-        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
-        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
-        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
-        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
-        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
-        deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.none, Resources.Load<Sprite>("Despeje(S)")));
-        deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.none, Resources.Load<Sprite>("Despeje(S)")));
-
+        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
+        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
+        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
+        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
+        deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
+        deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Despeje(S)")));
+        deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Despeje(S)")));
         //deck de Celestiales
         //carta Despeje(S)
         deckHeavenly.Add(new Card(00, "Aureliana", "descrip", 10, Card.typecard.unit_gold, Card.typefield.MS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lider")));
@@ -75,13 +73,12 @@ public class CardData : MonoBehaviour
         deckHeavenly.Add(new Card(12, "Hell", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("infiernoMelee(S)")));
         deckHeavenly.Add(new Card(13, "Fog of de dark", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("NieblaDist(S)")));
         deckHeavenly.Add(new Card(14, "Judgment Meteors", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("LluviaMetSiege(S)")));
-        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
-        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
-        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
-        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
-        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
-        deckHeavenly.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.none, Resources.Load<Sprite>("Despeje(S)")));
-        deckHeavenly.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.none, Resources.Load<Sprite>("Despeje(S)")));
-
+        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
+        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
+        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
+        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
+        deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
+        deckHeavenly.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Despeje(S)")));
+        deckHeavenly.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Despeje(S)")));
     }
 }

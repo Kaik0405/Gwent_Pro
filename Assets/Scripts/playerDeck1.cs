@@ -21,7 +21,6 @@ public class playerDeck1 : MonoBehaviour
         {
             deck1.Add(CardData.deckShadows[i]);
         }
-
         // Desordenar el mazo
         for (int i = 0; i < deck1.Count; i++)
         {
@@ -30,15 +29,12 @@ public class playerDeck1 : MonoBehaviour
             deck1[i] = deck1[r];
             deck1[r] = temp;
         }
-
         StartCoroutine(StartGame());
     }
-
     void Update()
     {
         staticDeck = deck1;
     }
-
     IEnumerator StartGame()
     {
         for (int i = 0; i <= 9; i++)
