@@ -23,7 +23,7 @@ public class Card : ScriptableObject
     public typeclimate type_climate;          //establece si la carta  clima 
 
     public enum typecard { unit_silver, unit_gold, lure, leader, climate, increase, clear }
-    public enum typefield { melee, distance, siege, MD, MS, DS, MDS, fincrease, fclimate, fleader }
+    public enum typefield { M, D, S, MD, MS, DS, MDS, fincrease, fclimate, fleader }
     public enum typefaction { shadows, heavenly, none }
     public enum typeclimate { afectBB, afectD, afectS }
 

@@ -1,17 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.EventSystems;
+    using UnityEngine.UI;
 
-public class Drop : MonoBehaviour,IDropHandler
-{
-    public void OnDrop(PointerEventData eventData)
+    public class Drop : MonoBehaviour,IDropHandler
     {
-        Drag drg = eventData.pointerDrag.GetComponent<Drag>();
-        if (drg != null)
+        public ControlPanels controlPanels;
+        public void OnDrop(PointerEventData eventData)
         {
-            drg.parentReturn = this.transform;
+            Drag drg = eventData.pointerDrag.GetComponent<Drag>();
+            if (drg != null)
+            {
+                if (controlPanels.CanPlaceCard(drg.cardType))
+                {
+                    drg.parentReturn = this.transform;
+                }
+            }
         }
-    }
 
-}
+    }

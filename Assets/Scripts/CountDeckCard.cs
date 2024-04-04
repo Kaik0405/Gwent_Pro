@@ -16,7 +16,5 @@ public class CountDeckCard : MonoBehaviour
     {
         CardCount = playerDeck1.deckSize-1;
         TextcantOfCardD.text = CardCount.ToString();
-
-
     }
 }

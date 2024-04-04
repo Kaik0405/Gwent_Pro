@@ -10,7 +10,7 @@ public class CardData : MonoBehaviour
     {
         //deck de Sombras
         //carta Lider
-        deckShadows.Add(new Card(00, "Song Jing Woo", "deswcrip", Card.typecard.leader, Card.typefield.fleader, Card.typefaction.shadows, Resources.Load<Sprite>("Lidertype0")));
+        deckShadows.Add(new Card(00, "Sung Jing Woo", "deswcrip", Card.typecard.leader, Card.typefield.fleader, Card.typefaction.shadows, Resources.Load<Sprite>("Lidertype0")));
         //Cartas de Unidad
         //Cartas Oro
 
@@ -20,18 +20,18 @@ public class CardData : MonoBehaviour
         deckShadows.Add(new Card(04, "Kaisel", "descrip",10, Card.typecard.unit_gold, Card.typefield.DS, Card.typefaction.shadows, Resources.Load<Sprite>("MDS1")));
         deckShadows.Add(new Card(05, "Arcane", "descrip",10, Card.typecard.unit_gold, Card.typefield.DS, Card.typefaction.shadows, Resources.Load<Sprite>("DS1")));
         //Cartas Plata
-        deckShadows.Add(new Card(06, "Kamish", "descrip",5, Card.typecard.unit_silver, Card.typefield.distance, Card.typefaction.shadows, Resources.Load<Sprite>("D1(x2)")));
-        deckShadows.Add(new Card(06, "Kamish", "descrip",5, Card.typecard.unit_silver, Card.typefield.distance, Card.typefaction.shadows, Resources.Load<Sprite>("D1(x2)")));
-        deckShadows.Add(new Card(07, "Bellion Low", "descrip",7, Card.typecard.unit_silver, Card.typefield.distance, Card.typefaction.shadows, Resources.Load<Sprite>("D2(x2)")));
-        deckShadows.Add(new Card(07, "Bellion Low", "descrip",7, Card.typecard.unit_silver, Card.typefield.distance, Card.typefaction.shadows, Resources.Load<Sprite>("D2(x2)")));
-        deckShadows.Add(new Card(08, "Beru", "descrip",8, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.shadows, Resources.Load<Sprite>("M1(x3)")));
-        deckShadows.Add(new Card(08, "Beru", "descrip",8, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.shadows, Resources.Load<Sprite>("M1(x3)")));
-        deckShadows.Add(new Card(08, "Beru", "descrip",8, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.shadows, Resources.Load<Sprite>("M1(x3)")));
-        deckShadows.Add(new Card(09, "Greed", "descrip",3, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.shadows, Resources.Load<Sprite>("M2(x2)")));
-        deckShadows.Add(new Card(09, "Greed", "descrip",3, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.shadows, Resources.Load<Sprite>("M2(x2)")));
-        deckShadows.Add(new Card(10, "Uleni", "descrip",4, Card.typecard.unit_silver, Card.typefield.siege, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)")));
-        deckShadows.Add(new Card(10, "Uleni", "descrip",4, Card.typecard.unit_silver, Card.typefield.siege, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)")));
-        deckShadows.Add(new Card(10, "Uleni", "descrip",4, Card.typecard.unit_silver, Card.typefield.siege, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)")));
+        deckShadows.Add(new Card(06, "Kamish", "descrip",5, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D1(x2)")));
+        deckShadows.Add(new Card(06, "Kamish", "descrip",5, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D1(x2)")));
+        deckShadows.Add(new Card(07, "Bellion Low", "descrip",7, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D2(x2)")));
+        deckShadows.Add(new Card(07, "Bellion Low", "descrip",7, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D2(x2)")));
+        deckShadows.Add(new Card(08, "Beru", "descrip",8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M1(x3)")));
+        deckShadows.Add(new Card(08, "Beru", "descrip",8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M1(x3)")));
+        deckShadows.Add(new Card(08, "Beru", "descrip",8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M1(x3)")));
+        deckShadows.Add(new Card(09, "Greed", "descrip",3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M2(x2)")));
+        deckShadows.Add(new Card(09, "Greed", "descrip",3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M2(x2)")));
+        deckShadows.Add(new Card(10, "Uleni", "descrip",4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)")));
+        deckShadows.Add(new Card(10, "Uleni", "descrip",4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)")));
+        deckShadows.Add(new Card(10, "Uleni", "descrip",4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)")));
         deckShadows.Add(new Card(11, "Tusk", "descrip",0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)")));
         deckShadows.Add(new Card(11, "Tusk", "descrip",0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)")));
         //Cartas
@@ -57,18 +57,18 @@ public class CardData : MonoBehaviour
         deckHeavenly.Add(new Card(04, "Pyraethus", "descrip", 10, Card.typecard.unit_gold, Card.typefield.DS, Card.typefaction.heavenly, Resources.Load<Sprite>("MDS(P2)")));
         deckHeavenly.Add(new Card(05, "Aerovane", "descrip", 10, Card.typecard.unit_gold, Card.typefield.DS, Card.typefaction.heavenly, Resources.Load<Sprite>("MDS1(P2)")));
         //Cartas Plata
-        deckHeavenly.Add(new Card(06, "Aetherion", "descrip", 5, Card.typecard.unit_silver, Card.typefield.distance, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist(x2)P2")));
-        deckHeavenly.Add(new Card(06, "Aetherion", "descrip", 5, Card.typecard.unit_silver, Card.typefield.distance, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist(x2)P2")));
-        deckHeavenly.Add(new Card(07, "Celestrox", "descrip", 7, Card.typecard.unit_silver, Card.typefield.distance, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist2(x2)P2")));
-        deckHeavenly.Add(new Card(07, "Celestrox", "descrip", 7, Card.typecard.unit_silver, Card.typefield.distance, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist2(x2)P2")));
-        deckHeavenly.Add(new Card(08, "Nebulon", "descrip", 8, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee(x3)P2")));
-        deckHeavenly.Add(new Card(08, "Nebulon", "descrip", 8, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee(x3)P2")));
-        deckHeavenly.Add(new Card(08, "Nebulon", "descrip", 8, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee(x3)P2")));
-        deckHeavenly.Add(new Card(09, "Divinara", "descrip", 3, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee2(x2)P2")));
-        deckHeavenly.Add(new Card(09, "Divinara", "descrip", 3, Card.typecard.unit_silver, Card.typefield.melee, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee2(x2)P2")));
-        deckHeavenly.Add(new Card(10, "Luminastra", "descrip", 4, Card.typecard.unit_silver, Card.typefield.siege, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2")));
-        deckHeavenly.Add(new Card(10, "Luminastra", "descrip", 4, Card.typecard.unit_silver, Card.typefield.siege, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2")));
-        deckHeavenly.Add(new Card(10, "Luminastra", "descrip", 4, Card.typecard.unit_silver, Card.typefield.siege, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2")));
+        deckHeavenly.Add(new Card(06, "Aetherion", "descrip", 5, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist(x2)P2")));
+        deckHeavenly.Add(new Card(06, "Aetherion", "descrip", 5, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist(x2)P2")));
+        deckHeavenly.Add(new Card(07, "Celestrox", "descrip", 7, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist2(x2)P2")));
+        deckHeavenly.Add(new Card(07, "Celestrox", "descrip", 7, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist2(x2)P2")));
+        deckHeavenly.Add(new Card(08, "Nebulon", "descrip", 8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee(x3)P2")));
+        deckHeavenly.Add(new Card(08, "Nebulon", "descrip", 8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee(x3)P2")));
+        deckHeavenly.Add(new Card(08, "Nebulon", "descrip", 8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee(x3)P2")));
+        deckHeavenly.Add(new Card(09, "Divinara", "descrip", 3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee2(x2)P2")));
+        deckHeavenly.Add(new Card(09, "Divinara", "descrip", 3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee2(x2)P2")));
+        deckHeavenly.Add(new Card(10, "Luminastra", "descrip", 4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2")));
+        deckHeavenly.Add(new Card(10, "Luminastra", "descrip", 4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2")));
+        deckHeavenly.Add(new Card(10, "Luminastra", "descrip", 4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2")));
         deckHeavenly.Add(new Card(11, "Eternae", "descrip", 0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2")));
         deckHeavenly.Add(new Card(11, "Eternae", "descrip", 0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2")));
         //Cartas

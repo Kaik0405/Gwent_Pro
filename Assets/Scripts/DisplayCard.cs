@@ -22,17 +22,56 @@ public class DisplayCard : MonoBehaviour
     public int numCardInDeck;
     public GameObject Hand;
 
+
     void Start()
     {
         numCardInDeck = playerDeck1.deckSize;
 
-        Power = currentCard.power.ToString();
-        powerText.text = " " + Power;
+        Drag dragComponent = this.GetComponent<Drag>();
+        if (dragComponent != null && currentCard != null)
+        {
+            dragComponent.cardType = currentCard.pos_field;
+        }
 
-        SpriteImage = currentCard.spriteImage;
-        artImage.sprite = SpriteImage;
+        if ((currentCard.type == typecard.unit_gold) || (currentCard.type == typecard.unit_silver) || (currentCard.type == typecard.lure))
+        {
+            Power = currentCard.power.ToString();
+            powerText.text = " " + Power;
+
+            SpriteImage = currentCard.spriteImage;
+            artImage.sprite = SpriteImage;
+        }
+        else
+        {
+            switch (currentCard.type)
+            {
+                case typecard.leader:
+                    powerText.text = " " + "L";
+
+                    SpriteImage = currentCard.spriteImage;
+                    artImage.sprite = SpriteImage;
+                    break;
+                case typecard.climate:
+                    powerText.text = " " + "C";
+
+                    SpriteImage = currentCard.spriteImage;
+                    artImage.sprite = SpriteImage;
+                    break;
+                case typecard.clear:
+                    powerText.text = " " + "D";
+
+                    SpriteImage = currentCard.spriteImage;
+                    artImage.sprite = SpriteImage;
+                    break;
+                case typecard.increase:
+                    powerText.text = " " + "I";
+
+                    SpriteImage = currentCard.spriteImage;
+                    artImage.sprite = SpriteImage;
+                    break;
+            }
+        }
     }
-
     void Update()
     {
         Hand = GameObject.Find("HandP1");

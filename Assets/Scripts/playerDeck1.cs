@@ -45,7 +45,7 @@ public class playerDeck1 : MonoBehaviour
         {
             if (deck1.Count > 0)
             {
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.12f);
                 GameObject cardToHand = Instantiate(CardToHand, transform.position, transform.rotation);
                 DisplayCard displayCardScript = cardToHand.GetComponent<DisplayCard>();
                 if (displayCardScript != null)

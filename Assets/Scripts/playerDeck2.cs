@@ -41,11 +41,12 @@ public class playerDeck2 : MonoBehaviour
 
     IEnumerator StartGame()
     {
+        //yield return new WaitForSeconds(1.2f);
         for (int i = 0; i <= 9; i++)
         {
             if (deck2.Count > 0)
             {
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.12f);
                 GameObject cardToHand2 = Instantiate(CardToHand2, transform.position, transform.rotation);
                 DisplayCard2 displayCardScript2 = cardToHand2.GetComponent<DisplayCard2>();
                 if (displayCardScript2 != null)

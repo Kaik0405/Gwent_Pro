@@ -25,12 +25,47 @@ public class DisplayCard2 : MonoBehaviour
     void Start()
     {
         numCardInDeck2 = playerDeck2.deckSize2;
+        if ((currentCard2.type == typecard.unit_gold) || (currentCard2.type == typecard.unit_silver)||(currentCard2.type == typecard.lure))
+        {
+            Power2 = currentCard2.power.ToString();
+            powerText2.text = " " + Power2;
 
-        Power2 = currentCard2.power.ToString();
-        powerText2.text = " " + Power2;
+            SpriteImage2 = currentCard2.spriteImage;
+            artImage2.sprite = SpriteImage2;
+        }
+        else
+        {
+            switch (currentCard2.type)
+            {
+                case typecard.leader:
+                    powerText2.text = " " + "L";
 
-        SpriteImage2 = currentCard2.spriteImage;
-        artImage2.sprite = SpriteImage2;
+                    SpriteImage2 = currentCard2.spriteImage;
+                    artImage2.sprite = SpriteImage2;
+                    break;
+                case typecard.climate:
+                    powerText2.text = " " + "C";
+
+                    SpriteImage2 = currentCard2.spriteImage;
+                    artImage2.sprite = SpriteImage2;
+                    break;
+                case typecard.clear:
+                    powerText2.text = " " + "D";
+
+                    SpriteImage2 = currentCard2.spriteImage;
+                    artImage2.sprite = SpriteImage2;
+                    break;
+                case typecard.increase:
+                    powerText2.text = " " + "I";
+
+                    SpriteImage2 = currentCard2.spriteImage;
+                    artImage2.sprite = SpriteImage2;
+                    break;
+
+            }
+
+            
+        }
     }
 
     void Update()

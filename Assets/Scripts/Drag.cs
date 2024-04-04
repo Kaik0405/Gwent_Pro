@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Drag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
 {
     public Transform parentReturn = null;
+    public Card.typefield cardType;
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentReturn = this.transform.parent;
