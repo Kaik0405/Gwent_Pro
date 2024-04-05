@@ -24,6 +24,10 @@ public class ControlPanels : MonoBehaviour
                 case Card.typefield.S:
                     if (panelField.name == "SiegeP1") return true;
                     else return false;
+                
+                case Card.typefield.MD:
+                    if ((panelField.name == "MeleeP1") || (panelField.name == "DistanceP1")) return true;
+                    else return false;
 
                 case Card.typefield.MS:
                     if ((panelField.name == "MeleeP1") || (panelField.name == "SiegeP1")) return true;
@@ -58,6 +62,10 @@ public class ControlPanels : MonoBehaviour
 
                 case Card.typefield.S:
                     if (panelField.name == "SiegeP2") return true;
+                    else return false;
+
+                case Card.typefield.MD:
+                    if ((panelField.name == "MeleeP2") || (panelField.name == "DistanceP2")) return true;
                     else return false;
 
                 case Card.typefield.MS:

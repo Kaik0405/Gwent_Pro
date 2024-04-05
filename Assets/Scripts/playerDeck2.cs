@@ -37,17 +37,22 @@ public class playerDeck2 : MonoBehaviour
     }
     IEnumerator StartGame()
     {
-        yield return new WaitForSeconds(1.2f);
+        //yield return new WaitForSeconds(1.5f);
         for (int i = 0; i <= 9; i++)
         {
             if (deck2.Count > 0)
             {
-                yield return new WaitForSeconds(0.12f);
+                yield return new WaitForSeconds(0.25f);
                 GameObject cardToHand2 = Instantiate(CardToHand2, transform.position, transform.rotation);
                 DisplayCard2 displayCardScript2 = cardToHand2.GetComponent<DisplayCard2>();
                 if (displayCardScript2 != null)
                 {
                     displayCardScript2.currentCard2 = deck2[0]; // Pasa la referencia de la carta actual
+                }
+                AudioSource audioSource = cardToHand2.GetComponent<AudioSource>();
+                if (audioSource != null)
+                {
+                    audioSource.Play();
                 }
                 deck2.RemoveAt(0); // Elimina la carta de la lista para evitar repeticiones
                 deckSize2--;

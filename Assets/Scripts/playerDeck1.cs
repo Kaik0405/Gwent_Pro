@@ -13,6 +13,7 @@ public class playerDeck1 : MonoBehaviour
     public GameObject CardToHand; 
     public GameObject Hand;
 
+
     void Start()
     {
         deckSize = CardData.deckShadows.Count;
@@ -41,12 +42,18 @@ public class playerDeck1 : MonoBehaviour
         {
             if (deck1.Count > 0)
             {
-                yield return new WaitForSeconds(0.12f);
+                yield return new WaitForSeconds(0.25f);
+                
                 GameObject cardToHand = Instantiate(CardToHand, transform.position, transform.rotation);
                 DisplayCard displayCardScript = cardToHand.GetComponent<DisplayCard>();
                 if (displayCardScript != null)
                 {
                     displayCardScript.currentCard = deck1[0]; // Pasa la referencia de la carta actual
+                }
+                AudioSource audioSource = cardToHand.GetComponent<AudioSource>();
+                if (audioSource != null)
+                {
+                    audioSource.Play();
                 }
                 deck1.RemoveAt(0); // Elimina la carta de la lista para evitar repeticiones
                 deckSize--;
