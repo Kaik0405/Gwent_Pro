@@ -80,16 +80,16 @@ public class DisplayCard2 : MonoBehaviour
 
         staticCardBack = cardBack;
 
-        if (this.tag == "Clone")
-        {
-            if (numCardInDeck2 > 0 && numCardInDeck2 <= playerDeck2.staticDeck2.Count)
-            {
-                currentCard2 = playerDeck2.staticDeck2[numCardInDeck2 - 1];
-                numCardInDeck2 -= 1;
-                playerDeck2.deckSize2 -= 1;
-                cardBack = false;
-                this.tag = "Untagged";
-            }
-        }
+        //if (this.tag == "Clone")
+        //{
+        //    if (numCardInDeck2 > 0 && numCardInDeck2 <= playerDeck2.staticDeck2.Count)
+        //    {
+        //        currentCard2 = playerDeck2.staticDeck2[numCardInDeck2 - 1];
+        //        numCardInDeck2 -= 1;
+        //        playerDeck2.deckSize2 -= 1;
+        //        cardBack = false;
+        //        this.tag = "Untagged";
+        //    }
+        //}
     }
 }
