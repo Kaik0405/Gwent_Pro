@@ -24,7 +24,6 @@ public class DisplayCard2 : MonoBehaviour
 
     void Start()
     {
-        numCardInDeck2 = playerDeck2.deckSize2;
 
         Drag dragComponent = this.GetComponent<Drag>();
         if (dragComponent != null && currentCard2 != null)

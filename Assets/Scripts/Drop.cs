@@ -9,6 +9,7 @@ public class Drop : MonoBehaviour,IDropHandler
     public ControlPanels controlPanels;
     private AudioSource audioActivCard;
 
+
     void Start()
     {
         audioActivCard = GetComponent<AudioSource>();
@@ -24,6 +25,7 @@ public class Drop : MonoBehaviour,IDropHandler
             if (controlPanels.CanPlaceCard(drg.cardType,drg.cardFact))
             {
                 drg.parentReturn = this.transform;
+
                 if(audioActivCard != null)
                 {
                     audioActivCard.Play();

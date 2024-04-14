@@ -38,7 +38,6 @@ public class DisplayCard : MonoBehaviour
 
     void Start()
     {
-        numCardInDeck = playerDeck1.deckSize;
 
         Drag dragComponent = this.GetComponent<Drag>();
         if (dragComponent != null && currentCard != null)
