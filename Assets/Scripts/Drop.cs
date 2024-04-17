@@ -8,7 +8,6 @@ public class Drop : MonoBehaviour, IDropHandler
 {
     private AudioSource audioActivCard;
     static public bool invoke = false;
-
     void Start()
     {
         audioActivCard = GetComponent<AudioSource>();
@@ -17,6 +16,8 @@ public class Drop : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         Drag drg = eventData.pointerDrag.GetComponent<Drag>();
+        DisplayCard cardis = eventData.pointerDrag.GetComponent<DisplayCard>();
+        DisplayCard2 cardis2 = eventData.pointerDrag.GetComponent<DisplayCard2>();
         if (drg != null)
         {
 
@@ -24,7 +25,15 @@ public class Drop : MonoBehaviour, IDropHandler
             if (controlPanels != null && controlPanels.CanPlaceCard(drg.cardType, drg.cardFact))
             {
                 drg.parentReturn = this.transform;
-
+                if(cardis != null)       //si la carta esta en el campo se desactiva el cardBack DC1
+                {
+                    cardis.onField = true;
+                }
+                if(cardis2 != null)  //si la carta esta en el campo se desactiva el cardBack DC2
+                {
+                    cardis2.onField2 = true;
+                }
+                
                 controlPanels.AddCardToPanelHand(eventData.pointerDrag);
                 if (drg.previusPanel != null)
                 {

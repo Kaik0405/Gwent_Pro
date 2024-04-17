@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using static Card;
+using UnityEngine.XR;
 
 public class DisplayCard2 : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class DisplayCard2 : MonoBehaviour
 
     public int numCardInDeck2;
     public GameObject Hand2;
+
+    public bool onField2;
 
     void Start()
     {
@@ -74,10 +77,20 @@ public class DisplayCard2 : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager.player2.turn)
-        { cardBack2 = false; }
-        else { cardBack2 = true; }
 
-        staticCardBack2 = cardBack2;
+        if (onField2)
+        {
+            cardBack2 = false;
+            staticCardBack2 = cardBack2;
+        }
+        else
+        {
+            if (GameManager.player2.turn)
+            { cardBack2 = false; }
+
+            else { cardBack2 = true; }
+
+            staticCardBack2 = cardBack2;
+        }
     }
 }

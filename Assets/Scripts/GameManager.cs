@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
         SuffleDeck(player1.deck);
         SuffleDeck(player2.deck);
-
+        
         StartCoroutine(DrawPhase(player1, player2));
         currentPlayer = player1;
     }
@@ -56,6 +56,11 @@ public class GameManager : MonoBehaviour
                 if (displayCardS != null)
                 {
                     displayCardS.currentCard = deck[0];
+                    Drag dragComponent = cardToHand.GetComponent<Drag>();
+                    if (dragComponent != null)
+                    {
+                        dragComponent.cardPlayer = player1;
+                    }
                 }
                 AudioSource audioSource = cardToHand.GetComponent<AudioSource>();
                 audioSource.Play();
@@ -69,6 +74,11 @@ public class GameManager : MonoBehaviour
                 if (displayCardS != null)
                 {
                     displayCardS.currentCard2 = deck[0];
+                    Drag dragComponent = cardToHand.GetComponent<Drag>();
+                    if (dragComponent != null)
+                    {
+                        dragComponent.cardPlayer = player2;
+                    }
                 }
                 AudioSource audioSource = cardToHand.GetComponent<AudioSource>();
                 audioSource.Play();
@@ -116,6 +126,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+
         player1.handZone = GameObject.Find("HandP1").GetComponent<ControlPanels>().cardInPanel;
         player1.meeleZone = GameObject.Find("MeleeP1").GetComponent<ControlPanels>().cardInPanel;
         player1.distanceZone = GameObject.Find("DistanceP1").GetComponent<ControlPanels>().cardInPanel;

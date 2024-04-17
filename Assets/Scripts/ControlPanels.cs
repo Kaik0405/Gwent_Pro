@@ -11,7 +11,7 @@ public class ControlPanels : MonoBehaviour
 
     public bool CanPlaceCard(Card.typefield panel, Card.typefaction faction) //Metodo que es llamado para verificar la posicion en el campo que ocupa la carta
     {
-        if ((faction == Card.typefaction.shadows))
+        if ((faction == Card.typefaction.shadows) && (GameManager.player1.turn))
         {
             switch (panel)
             {
@@ -68,7 +68,13 @@ public class ControlPanels : MonoBehaviour
                 case Card.typefield.fincrease:
                     if (((panelField.name == "IncreseM1") & (cardInPanel.Count < 1)) || ((panelField.name == "IncreseD1") & (cardInPanel.Count < 1)) || ((panelField.name == "IncreseS1") & (cardInPanel.Count < 1)) || (panelField.name == "HandP1"))
                     {
-                        cardInPanel.Add(panelField);
+                        return true;
+                    }
+                    else return false;
+                 
+                case Card.typefield.fclimate:
+                    if ((panelField.name == "ClimateZone") & (cardInPanel.Count < 3))
+                    {
                         return true;
                     }
                     else return false;
@@ -76,7 +82,7 @@ public class ControlPanels : MonoBehaviour
                 default: return false;
             }
         }
-        if (faction == Card.typefaction.heavenly)
+        if ((faction == Card.typefaction.heavenly) && (GameManager.player2.turn))
         {
             switch (panel)
             {
@@ -135,18 +141,19 @@ public class ControlPanels : MonoBehaviour
                         return true;
                     }
                     else return false;
+                case Card.typefield.fclimate:
+                    if ((panelField.name == "ClimateZone") && (cardInPanel.Count < 3))
+                    {
+                        return true ;
+                    }
+                    else return false;
 
                 default: return false;
             }
         }
         else
         {
-            if (((panelField.name == "ClimateZone") & (cardInPanel.Count < 3)) || (panelField.name == "HandP2"))
-            { 
-                return true;
-            }
-
-            else return false; 
+            return false; 
         }    
     } 
 

@@ -36,9 +36,10 @@ public class DisplayCard : MonoBehaviour
     public int numCardInDeck;
     public GameObject Hand;
 
+    public bool onField;
+
     void Start()
     {
-
         Drag dragComponent = this.GetComponent<Drag>();
         if (dragComponent != null && currentCard != null)
         {
@@ -118,11 +119,21 @@ public class DisplayCard : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager.player1.turn)
-        { cardBack = false; }
-        else { cardBack = true; }
+        Hand = GameObject.Find("HandP1");
+        if (onField)
+        {
+            cardBack = false;
+            staticCardBack = cardBack;
+        }
+        else 
+        {
+            if (GameManager.player1.turn)
+            { cardBack = false; }
 
-        staticCardBack = cardBack;
+            else { cardBack = true; }
+
+            staticCardBack = cardBack;
+        }
     }
 
 }

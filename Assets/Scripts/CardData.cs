@@ -34,9 +34,9 @@ public class CardData : MonoBehaviour
         deckShadows.Add(new Card(11, "Tusk", "descrip",0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)")));
         deckShadows.Add(new Card(11, "Tusk", "descrip",0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)")));
         //Cartas
-        deckShadows.Add(new Card(12, "Hell", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("InfiernoMelee(S)")));
-        deckShadows.Add(new Card(13, "Fog of de dark", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("NieblaDist(S)")));
-        deckShadows.Add(new Card(14, "Judgment Meteors", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("LluviaMetSiege(S)")));
+        deckShadows.Add(new Card(12, "Hell", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.shadows, Resources.Load<Sprite>("InfiernoMelee(S)")));
+        deckShadows.Add(new Card(13, "Fog of de dark", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.shadows, Resources.Load<Sprite>("NieblaDist(S)")));
+        deckShadows.Add(new Card(14, "Judgment Meteors", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.shadows, Resources.Load<Sprite>("LluviaMetSiege(S)")));
         deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
         deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
         deckShadows.Add(new Card(15, "The Power of Iron", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.shadows, Resources.Load<Sprite>("AumX3(S)")));
@@ -70,9 +70,9 @@ public class CardData : MonoBehaviour
         deckHeavenly.Add(new Card(11, "Eternae", "descrip", 0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2")));
         deckHeavenly.Add(new Card(11, "Eternae", "descrip", 0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2")));
         //Cartas
-        deckHeavenly.Add(new Card(12, "Hell", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("infiernoMelee(S)")));
-        deckHeavenly.Add(new Card(13, "Fog of de dark", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("NieblaDist(S)")));
-        deckHeavenly.Add(new Card(14, "Judgment Meteors", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.none, Resources.Load<Sprite>("LluviaMetSiege(S)")));
+        deckHeavenly.Add(new Card(12, "Hell", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.heavenly, Resources.Load<Sprite>("infiernoMelee(S)")));
+        deckHeavenly.Add(new Card(13, "Fog of de dark", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.heavenly, Resources.Load<Sprite>("NieblaDist(S)")));
+        deckHeavenly.Add(new Card(14, "Judgment Meteors", "descrip", Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.heavenly, Resources.Load<Sprite>("LluviaMetSiege(S)")));
         deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
         deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));
         deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", "descrip", Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3")));

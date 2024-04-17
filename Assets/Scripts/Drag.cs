@@ -9,20 +9,30 @@ public class Drag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
     public Card.typefield cardType;
     public Card.typefaction cardFact;
     public GameObject previusPanel;
+    public Player cardPlayer;
     public void OnBeginDrag(PointerEventData eventData)
     {
-        parentReturn = this.transform.parent;
-        previusPanel = parentReturn.gameObject;
-        this.transform.SetParent(this.transform.parent.parent);
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        if (cardPlayer.turn)
+        {
+            parentReturn = this.transform.parent;
+            previusPanel = parentReturn.gameObject;
+            this.transform.SetParent(this.transform.parent.parent);
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
     }
     public void OnDrag (PointerEventData eventData)
     {
-        transform.position = eventData.position;
+        if (cardPlayer.turn)
+        {
+            transform.position = eventData.position;
+        }
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.SetParent(parentReturn);
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        if (cardPlayer.turn)
+        {
+            this.transform.SetParent(parentReturn);
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
     }  
 }
