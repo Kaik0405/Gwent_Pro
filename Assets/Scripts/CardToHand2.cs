@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class CardToHand2 : MonoBehaviour
 {
@@ -14,5 +15,15 @@ public class CardToHand2 : MonoBehaviour
         HandCard2.transform.localScale = Vector3.one;   //Ajusta la escala x,y,z a 1 es decir que preserve su tamano original
         HandCard2.transform.position = new Vector3(transform.position.x, transform.position.y, -40);
         HandCard2.transform.eulerAngles = new Vector3(25, 0, 0);
+
+        ControlPanels controlPanels = Hand2.GetComponent<ControlPanels>();
+        if (controlPanels != null)
+        {
+            controlPanels.cardInPanel.Add(HandCard2);
+        }
+        else
+        {
+            Debug.LogError("El componente ControlPanels no está adjunto al GameObject Hand.");
+        }
     }
 }

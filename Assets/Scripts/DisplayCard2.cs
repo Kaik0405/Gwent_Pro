@@ -16,8 +16,8 @@ public class DisplayCard2 : MonoBehaviour
     public TMP_Text powerText2;
     public Image artImage2;
 
-    public bool cardBack;
-    public static bool staticCardBack;
+    public bool cardBack2;
+    public static bool staticCardBack2;
 
     public int numCardInDeck2;
     public GameObject Hand2;
@@ -69,26 +69,15 @@ public class DisplayCard2 : MonoBehaviour
                     break;
             }
         }
+ 
+    
     }
     void Update()
     {
-        Hand2 = GameObject.Find("HandP2");
+        if (GameManager.player2.turn)
+        { cardBack2 = false; }
+        else { cardBack2 = true; }
 
-        if (this.transform.parent == Hand2.transform.parent)
-        { cardBack = false; }
-
-        staticCardBack = cardBack;
-
-        //if (this.tag == "Clone")
-        //{
-        //    if (numCardInDeck2 > 0 && numCardInDeck2 <= playerDeck2.staticDeck2.Count)
-        //    {
-        //        currentCard2 = playerDeck2.staticDeck2[numCardInDeck2 - 1];
-        //        numCardInDeck2 -= 1;
-        //        playerDeck2.deckSize2 -= 1;
-        //        cardBack = false;
-        //        this.tag = "Untagged";
-        //    }
-        //}
+        staticCardBack2 = cardBack2;
     }
 }

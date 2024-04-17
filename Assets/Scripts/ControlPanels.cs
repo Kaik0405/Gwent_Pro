@@ -7,90 +7,152 @@ using UnityEngine;
 public class ControlPanels : MonoBehaviour
 {
     public GameObject panelField;
-    public bool CanPlaceCard(Card.typefield panel, Card.typefaction faction)
+    public List<GameObject> cardInPanel = new List<GameObject>();
+
+    public bool CanPlaceCard(Card.typefield panel, Card.typefaction faction) //Metodo que es llamado para verificar la posicion en el campo que ocupa la carta
     {
         if ((faction == Card.typefaction.shadows))
         {
             switch (panel)
             {
                 case Card.typefield.M:
-                    if (panelField.name == "MeleeP1") return true;
+                    if (((panelField.name == "MeleeP1") & (cardInPanel.Count < 5)) || (panelField.name == "HandP1"))
+                    {
+                        return true;
+                    }     
                     else return false;
 
+
                 case Card.typefield.D:
-                    if (panelField.name == "DistanceP1") return true;
+                    if (((panelField.name == "DistanceP1") & (cardInPanel.Count < 5)) || (panelField.name == "HandP1"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.S:
-                    if (panelField.name == "SiegeP1") return true;
+                    if (((panelField.name == "SiegeP1") & (cardInPanel.Count < 5)) || (panelField.name == "HandP1"))
+                    {
+                        return true;
+                    }
                     else return false;
                 
                 case Card.typefield.MD:
-                    if ((panelField.name == "MeleeP1") || (panelField.name == "DistanceP1")) return true;
+                    if (((panelField.name == "MeleeP1") & (cardInPanel.Count < 5)) || ((panelField.name == "DistanceP1") & (cardInPanel.Count < 5)) || (panelField.name == "HandP1"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.MS:
-                    if ((panelField.name == "MeleeP1") || (panelField.name == "SiegeP1")) return true;
+                    if (((panelField.name == "MeleeP1") & (cardInPanel.Count < 5)) || ((panelField.name == "SiegeP1") & (cardInPanel.Count < 5)) || (panelField.name == "HandP1"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.DS:
-                    if ((panelField.name == "DistanceP1") || (panelField.name == "SiegeP1")) return true;
+                    if (((panelField.name == "DistanceP1") & (cardInPanel.Count < 5)) || ((panelField.name == "SiegeP1") & (cardInPanel.Count < 5)) || (panelField.name == "HandP1"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.MDS:
-                    if ((panelField.name == "MeleeP1") || (panelField.name == "DistanceP1") || (panelField.name == "SiegeP1")) return true;
+                    if (((panelField.name == "MeleeP1") & (cardInPanel.Count < 5)) || ((panelField.name == "DistanceP1") & (cardInPanel.Count < 5)) || ((panelField.name == "SiegeP1") & (cardInPanel.Count < 5)) || (panelField.name == "HandP1"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.fincrease:
-                    if ((panelField.name == "IncreseM1") || (panelField.name == "IncreseD1") || (panelField.name == "IncreseS1")) return true;
+                    if (((panelField.name == "IncreseM1") & (cardInPanel.Count < 1)) || ((panelField.name == "IncreseD1") & (cardInPanel.Count < 1)) || ((panelField.name == "IncreseS1") & (cardInPanel.Count < 1)) || (panelField.name == "HandP1"))
+                    {
+                        cardInPanel.Add(panelField);
+                        return true;
+                    }
                     else return false;
 
                 default: return false;
             }
         }
-        if (faction == Card.typefaction.heavenly) 
+        if (faction == Card.typefaction.heavenly)
         {
             switch (panel)
             {
                 case Card.typefield.M:
-                    if (panelField.name == "MeleeP2") return true;
+                    if (((panelField.name == "MeleeP2") & (cardInPanel.Count < 5)) || (panelField.name == "HandP2"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.D:
-                    if (panelField.name == "DistanceP2") return true;
+                    if (((panelField.name == "DistanceP2") & (cardInPanel.Count < 5)) || (panelField.name == "HandP2"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.S:
-                    if (panelField.name == "SiegeP2") return true;
+                    if (((panelField.name == "SiegeP2") & (cardInPanel.Count < 5)) || (panelField.name == "HandP2"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.MD:
-                    if ((panelField.name == "MeleeP2") || (panelField.name == "DistanceP2")) return true;
+                    if (((panelField.name == "MeleeP2") & (cardInPanel.Count < 5)) || ((panelField.name == "DistanceP2") & (cardInPanel.Count < 5)) || (panelField.name == "HandP2"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.MS:
-                    if ((panelField.name == "MeleeP2") || (panelField.name == "SiegeP2")) return true;
+                    if (((panelField.name == "MeleeP2") & (cardInPanel.Count < 5)) || ((panelField.name == "SiegeP2") & (cardInPanel.Count < 5)) || (panelField.name == "HandP2"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.DS:
-                    if ((panelField.name == "DistanceP2") || (panelField.name == "SiegeP2")) return true;
+                    if (((panelField.name == "DistanceP2") & (cardInPanel.Count < 5)) || ((panelField.name == "SiegeP2") & (cardInPanel.Count < 5)) || (panelField.name == "HandP2"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.MDS:
-                    if ((panelField.name == "MeleeP2") || (panelField.name == "DistanceP2") || (panelField.name == "SiegeP2")) return true;
+                    if (((panelField.name == "MeleeP2")&(cardInPanel.Count<5)) || ((panelField.name == "DistanceP2") & (cardInPanel.Count < 5)) || ((panelField.name == "SiegeP2") & (cardInPanel.Count < 5)) || (panelField.name == "HandP2"))
+                    {
+                        return true;
+                    }
                     else return false;
 
                 case Card.typefield.fincrease:
-                    if ((panelField.name == "IncreseM2") || (panelField.name == "IncreseD2") || (panelField.name == "IncreseS2")) return true;
+                    if (((panelField.name == "IncreseM2") & (cardInPanel.Count < 1)) || ((panelField.name == "IncreseD2") & (cardInPanel.Count < 1)) || ((panelField.name == "IncreseS2") & (cardInPanel.Count < 1)) || (panelField.name == "HandP2"))
+                    {
+                        return true;
+                    }
                     else return false;
-                    
+
                 default: return false;
             }
         }
         else
         {
-            if ((panelField.name == "ClimateZone")) return true;
+            if (((panelField.name == "ClimateZone") & (cardInPanel.Count < 3)) || (panelField.name == "HandP2"))
+            { 
+                return true;
+            }
+
             else return false; 
         }    
+    } 
+
+    public void AddCardToPanelHand(GameObject card)
+    {
+        cardInPanel.Add(card);
     }
+
 }

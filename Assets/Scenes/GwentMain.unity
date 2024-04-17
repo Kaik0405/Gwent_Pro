@@ -757,7 +757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 157756398}
 --- !u!114 &157756395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,6 +832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 157756392}
+  cardInPanel: []
 --- !u!82 &157756399
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1057,7 +1057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 211004552}
 --- !u!114 &211004551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1097,6 +1096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 211004546}
+  cardInPanel: []
 --- !u!82 &211004553
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1627,7 +1627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 363966762}
 --- !u!114 &363966761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1667,6 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 363966756}
+  cardInPanel: []
 --- !u!82 &363966763
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1891,7 +1891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 516009305}
 --- !u!114 &516009302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1967,6 +1966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 516009299}
+  cardInPanel: []
 --- !u!82 &516009306
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2246,7 +2246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 554168965}
 --- !u!114 &554168964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2286,6 +2285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 554168959}
+  cardInPanel: []
 --- !u!82 &554168966
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2741,7 +2741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 748753994}
 --- !u!114 &748753993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2781,6 +2780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 748753988}
+  cardInPanel: []
 --- !u!82 &748753995
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2968,7 +2968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 889811179}
 --- !u!114 &889811178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3006,6 +3005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 889811173}
+  cardInPanel: []
 --- !u!82 &889811180
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3795,7 +3795,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1078206847}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1151912398}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: EndTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1078206847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3925,7 +3937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 1084063673}
 --- !u!114 &1084063672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3963,6 +3974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 1084063667}
+  cardInPanel: []
 --- !u!82 &1084063674
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4608,7 +4620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 1288456097}
 --- !u!114 &1288456097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4622,6 +4633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 1288456091}
+  cardInPanel: []
 --- !u!82 &1288456098
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4864,6 +4876,8 @@ GameObject:
   - component: {fileID: 1317070841}
   - component: {fileID: 1317070840}
   - component: {fileID: 1317070842}
+  - component: {fileID: 1317070843}
+  - component: {fileID: 1317070844}
   m_Layer: 5
   m_Name: HandP1
   m_TagString: Untagged
@@ -4952,6 +4966,32 @@ MonoBehaviour:
   m_Spacing: {x: 7, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1317070843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317070838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ce91d4888247e47a05e969cd4475dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelField: {fileID: 1317070838}
+  cardInPanel: []
+--- !u!114 &1317070844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317070838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1430972270
 GameObject:
   m_ObjectHideFlags: 0
@@ -5155,7 +5195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 1666928222}
 --- !u!114 &1666928221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5195,6 +5234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 1666928216}
+  cardInPanel: []
 --- !u!82 &1666928223
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5303,6 +5343,8 @@ GameObject:
   - component: {fileID: 1670883302}
   - component: {fileID: 1670883301}
   - component: {fileID: 1670883300}
+  - component: {fileID: 1670883303}
+  - component: {fileID: 1670883304}
   m_Layer: 5
   m_Name: HandP2
   m_TagString: Untagged
@@ -5391,6 +5433,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670883298}
   m_CullTransparentMesh: 1
+--- !u!114 &1670883303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670883298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ce91d4888247e47a05e969cd4475dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelField: {fileID: 1670883298}
+  cardInPanel: []
+--- !u!114 &1670883304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670883298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1682880379
 GameObject:
   m_ObjectHideFlags: 0
@@ -5668,7 +5736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 1822031075}
 --- !u!114 &1822031072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5744,6 +5811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 1822031069}
+  cardInPanel: []
 --- !u!82 &1822031076
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5931,7 +5999,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 1831544116}
 --- !u!114 &1831544115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5971,6 +6038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 1831544110}
+  cardInPanel: []
 --- !u!82 &1831544117
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6316,7 +6384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c4c6b8dc57d149ba2b0ca3a8f0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlPanels: {fileID: 2010678484}
 --- !u!114 &2010678483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6354,6 +6421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelField: {fileID: 2010678478}
+  cardInPanel: []
 --- !u!82 &2010678485
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class CountDeckCard2 : MonoBehaviour
 
     void Update()
     {
-        CardCount2 = GameManager.player2.deck.Count - 1;
+        //CardCount2 = GameManager.player2.deck.Count - 1;
         TextcantOfCardD2.text = CardCount2.ToString();
     }
 }

@@ -112,26 +112,17 @@ public class DisplayCard : MonoBehaviour
                     break;
             }
         }
+
+        
+         
     }
     void Update()
     {
-        Hand = GameObject.Find("HandP1");
-
-        if (this.transform.parent == Hand.transform.parent)
+        if (GameManager.player1.turn)
         { cardBack = false; }
+        else { cardBack = true; }
 
         staticCardBack = cardBack;
-
-        //if (this.tag == "Clone")
-        //{
-        //    if (numCardInDeck > 0 && numCardInDeck <= playerDeck1.staticDeck.Count)
-        //    {
-        //        currentCard = playerDeck1.staticDeck[numCardInDeck - 1];
-        //        numCardInDeck -= 1;
-        //        playerDeck1.deckSize -= 1;
-        //        cardBack = false;
-        //        this.tag = "Untagged";
-        //    }
-        //}
     }
+
 }

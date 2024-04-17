@@ -8,9 +8,11 @@ public class Drag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
     public Transform parentReturn = null;
     public Card.typefield cardType;
     public Card.typefaction cardFact;
+    public GameObject previusPanel;
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentReturn = this.transform.parent;
+        previusPanel = parentReturn.gameObject;
         this.transform.SetParent(this.transform.parent.parent);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }

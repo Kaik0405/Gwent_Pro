@@ -8,7 +8,7 @@ public class CardBack : MonoBehaviour
 
     void Update()
     {
-        if (DisplayCard.staticCardBack == true)
+        if (DisplayCard.staticCardBack)
         {
             cardBack.SetActive(true);
         }

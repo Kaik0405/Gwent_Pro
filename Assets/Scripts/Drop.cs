@@ -1,14 +1,13 @@
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.EventSystems;
-    using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Drop : MonoBehaviour,IDropHandler
+public class Drop : MonoBehaviour, IDropHandler
 {
-    public ControlPanels controlPanels;
     private AudioSource audioActivCard;
-
+    static public bool invoke = false;
 
     void Start()
     {
@@ -20,13 +19,22 @@ public class Drop : MonoBehaviour,IDropHandler
         Drag drg = eventData.pointerDrag.GetComponent<Drag>();
         if (drg != null)
         {
-            Debug.Log("Es Colocable: "+ controlPanels.CanPlaceCard(drg.cardType, drg.cardFact));
-            Debug.Log("Lugar en el campo: " + drg.cardType + "\nFaccion de la carta: " + drg.cardFact);
-            if (controlPanels.CanPlaceCard(drg.cardType,drg.cardFact))
+
+            ControlPanels controlPanels = GetComponent<ControlPanels>();
+            if (controlPanels != null && controlPanels.CanPlaceCard(drg.cardType, drg.cardFact))
             {
                 drg.parentReturn = this.transform;
 
-                if(audioActivCard != null)
+                controlPanels.AddCardToPanelHand(eventData.pointerDrag);
+                if (drg.previusPanel != null)
+                {
+                    ControlPanels previusPanelsControl = drg.previusPanel.GetComponent<ControlPanels>();
+                    if (previusPanelsControl != null)
+                    {
+                        previusPanelsControl.cardInPanel.Remove(eventData.pointerDrag);
+                    }
+                }
+                if (audioActivCard != null)
                 {
                     audioActivCard.Play();
                 }

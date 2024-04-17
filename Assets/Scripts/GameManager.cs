@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject HandP1;
     public GameObject HandP2;
-
-    static public Player player1 = new Player("Jugador1", true);
-    static public Player player2 = new Player("Jugador2", false);
+    int countRounds;
+    static public Player player1 = new Player("Jugador1", true); //
+    static public Player player2 = new Player("Jugador2", false); //
+    Player currentPlayer;
 
     void Start()
     {
+        countRounds = 1;
+
         FillDeck(CardData.deckShadows, player1);
         FillDeck(CardData.deckHeavenly, player2);
 
@@ -21,11 +25,9 @@ public class GameManager : MonoBehaviour
         SuffleDeck(player2.deck);
 
         StartCoroutine(DrawPhase(player1, player2));
+        currentPlayer = player1;
     }
-
-
-
-        
+    
     void FillDeck(List<Card> deck,Player player)
     {
         for (int i = 1; i < deck.Count; i++)
@@ -41,19 +43,20 @@ public class GameManager : MonoBehaviour
             deck[r] = temp;
         }
     }
-    void Draw(List<Card> deck,Player player)
+    void Draw(List<Card> deck, Player player)
     {
         if (deck.Count > 0)
         {
+
             if (player.nameP == "Jugador1")
             {
                 GameObject cardToHand = Instantiate(HandP1, transform.position, transform.rotation);
                 DisplayCard displayCardS = cardToHand.GetComponent<DisplayCard>();
+
                 if (displayCardS != null)
                 {
                     displayCardS.currentCard = deck[0];
                 }
-                player.handZone.Add(deck[0]);
                 AudioSource audioSource = cardToHand.GetComponent<AudioSource>();
                 audioSource.Play();
                 deck.RemoveAt(0);
@@ -62,21 +65,23 @@ public class GameManager : MonoBehaviour
             {
                 GameObject cardToHand = Instantiate(HandP2, transform.position, transform.rotation);
                 DisplayCard2 displayCardS = cardToHand.GetComponent<DisplayCard2>();
+
                 if (displayCardS != null)
                 {
                     displayCardS.currentCard2 = deck[0];
                 }
-                player.handZone.Add(deck[0]);
                 AudioSource audioSource = cardToHand.GetComponent<AudioSource>();
                 audioSource.Play();
                 deck.RemoveAt(0);
             }
+
         }
         else
         {
             Debug.Log("DeckClear");
         }
     }
+
     IEnumerator DrawPhase(Player player1,Player player2)
     {
         for (int i = 0; i <= 9; i++)
@@ -84,25 +89,44 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.12f);
             Draw(player1.deck,player1);
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         for(int i = 0; i <= 9; i++)
         {
             yield return new WaitForSeconds(0.12f);
             Draw(player2.deck, player2);
         }
+
     }
     public void SwitchPlayerTurn()
     {
-        if (player1.turn)
-        {
-            player1.turn = false;
-            player2.turn = true;
-        }
-        if (player2.turn)
-        {
-            player2.turn = false;
-            player1.turn = true;
-        }
+
+    }
+
+    public void EndTurn()
+    {
+        player1.SwitchTurn();
+        player2.SwitchTurn();
+    }
+
+    public void EndRound()
+    {
+       
+
+          
+    }
+    void Update()
+    {
+        player1.handZone = GameObject.Find("HandP1").GetComponent<ControlPanels>().cardInPanel;
+        player1.meeleZone = GameObject.Find("MeleeP1").GetComponent<ControlPanels>().cardInPanel;
+        player1.distanceZone = GameObject.Find("DistanceP1").GetComponent<ControlPanels>().cardInPanel;
+        player1.siegeZone = GameObject.Find("SiegeP1").GetComponent<ControlPanels>().cardInPanel;
+
+        player2.handZone = GameObject.Find("HandP2").GetComponent<ControlPanels>().cardInPanel;
+        player2.meeleZone = GameObject.Find("MeleeP2").GetComponent<ControlPanels>().cardInPanel;
+        player2.distanceZone = GameObject.Find("DistanceP2").GetComponent<ControlPanels>().cardInPanel;
+        player2.siegeZone = GameObject.Find("SiegeP2").GetComponent<ControlPanels>().cardInPanel;
+
+
     }
 }
 

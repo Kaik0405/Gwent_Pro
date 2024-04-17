@@ -106,6 +106,7 @@ MonoBehaviour:
   parentReturn: {fileID: 0}
   cardType: 0
   cardFact: 0
+  previusPanel: {fileID: 0}
 --- !u!114 &7531416107714376782
 MonoBehaviour:
   m_ObjectHideFlags: 0
