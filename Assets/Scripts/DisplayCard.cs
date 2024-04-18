@@ -124,6 +124,7 @@ public class DisplayCard : MonoBehaviour
         {
             cardBack = false;
             staticCardBack = cardBack;
+  
         }
         else 
         {

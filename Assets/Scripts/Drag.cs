@@ -12,7 +12,7 @@ public class Drag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
     public Player cardPlayer;
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (cardPlayer.turn)
+        if ((cardPlayer.turn))
         {
             parentReturn = this.transform.parent;
             previusPanel = parentReturn.gameObject;
@@ -22,14 +22,14 @@ public class Drag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
     }
     public void OnDrag (PointerEventData eventData)
     {
-        if (cardPlayer.turn)
+        if ((cardPlayer.turn) && (!Drop.invoke))
         {
             transform.position = eventData.position;
         }
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (cardPlayer.turn)
+        if ((cardPlayer.turn))
         {
             this.transform.SetParent(parentReturn);
             GetComponent<CanvasGroup>().blocksRaycasts = true;

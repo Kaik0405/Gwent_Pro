@@ -35,6 +35,7 @@ public class Drop : MonoBehaviour, IDropHandler
                 }
                 
                 controlPanels.AddCardToPanelHand(eventData.pointerDrag);
+                invoke = true;
                 if (drg.previusPanel != null)
                 {
                     ControlPanels previusPanelsControl = drg.previusPanel.GetComponent<ControlPanels>();
