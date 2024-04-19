@@ -17,8 +17,8 @@ public class DisplayCard2 : MonoBehaviour
     public TMP_Text powerText2;
     public Image artImage2;
 
-    public bool cardBack2;
-    public static bool staticCardBack2;
+    public bool cardBack2 = false;
+    public static bool staticCardBack2 = false;
 
     public int numCardInDeck2;
     public GameObject Hand2;
@@ -77,20 +77,22 @@ public class DisplayCard2 : MonoBehaviour
     }
     void Update()
     {
+        
 
         if (onField2)
         {
             cardBack2 = false;
             staticCardBack2 = cardBack2;
         }
+        
         else
         {
-            if (GameManager.player2.turn)
-            { cardBack2 = false; }
+                if (GameManager.player2.turn)
+                { cardBack2 = false; }
 
-            else { cardBack2 = true; }
+                else { cardBack2 = true; }
 
-            staticCardBack2 = cardBack2;
+                staticCardBack2 = cardBack2;
         }
     }
 }

@@ -119,22 +119,24 @@ public class DisplayCard : MonoBehaviour
     }
     void Update()
     {
-        Hand = GameObject.Find("HandP1");
+       
         if (onField)
         {
             cardBack = false;
             staticCardBack = cardBack;
-  
         }
-        else 
+        
+        else
         {
             if (GameManager.player1.turn)
             { cardBack = false; }
-
+           
             else { cardBack = true; }
-
+            
             staticCardBack = cardBack;
         }
+
+        
     }
 
 }

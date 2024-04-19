@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Animations;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -100,7 +101,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("DeckClear");
         }
     }
-
     IEnumerator DrawPhase(Player player1,Player player2)
     {
         for (int i = 0; i <= 9; i++)
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
     public void EndRound()
     {
 
-        if((countRounds <= 3)&&(!(player1.win||player2.win)))
+        if(!(player1.win||player2.win))
         {
             if (roundpass)
             {
@@ -150,8 +150,14 @@ public class GameManager : MonoBehaviour
                     currentPlayer = player1;
                     if (player1.roundWin == 2)
                     {
+                        player1.turn = false;
+                        player2.turn = false;
+                        Drop.invoke = true;
                         roundpass = false;
                         player1.win = true;
+                        Debug.Log("Jugador1 gana");
+                        bottonEndR.SetActive(false);
+                        GameObject.Find("RoundEnd").SetActive(false);
                     }
                     else
                     {
@@ -166,59 +172,72 @@ public class GameManager : MonoBehaviour
                 }
                 else if(player1.PowerFull() < player2.PowerFull())
                 {
+                
+                    Debug.Log("Player2 Win");
+                    player2.roundWin++;
+                    SendGraveyard();
+                    player2.turn = true;
+                    player1.turn = false;
+                    Drop.invoke = false;
+                    roundpass = true;
+                    currentPlayer = player2;
                     if (player2.roundWin == 2)
                     {
                         roundpass = false;
                         player2.win = true;
+                        player1.turn = false;
+                        player2.turn = false;
+                        Drop.invoke = true;
+                        Debug.Log("Jugador2 gana");
+                        bottonEndR.SetActive(false);
+                        GameObject.Find("RoundEnd").SetActive(false);
                     }
                     else
                     {
+                        countRounds++;
                         for (int i = 0; i < 2; i++)
                         {
-
-                            Debug.Log("Player2 Win");
-                            player2.roundWin++;
-                            SendGraveyard();
-                            player2.turn = true;
-                            player1.turn = false;
-                            Drop.invoke = false;
-                            roundpass = true;
-                            currentPlayer = player2;
-                            if (player1.roundWin == 2)
-                            {
-                                roundpass = false;
-                                player2.win = true;
-                            }
-                            else
-                            {
-                                countRounds++;
-                                Draw(player1.deck, player1);
-                                Draw(player2.deck, player2);
-                            }
+                            Draw(player1.deck, player1);
+                            Draw(player2.deck, player2);
                         }
                     }
+                        
                 }
+                
                 else
                 {
-                    if (currentPlayer == player1)
+                    player1.roundWin++;
+                    player2.roundWin++;
+                    if (player1.roundWin > player2.roundWin)
                     {
-                        Debug.Log("Empate1");
-                        player1.roundWin++;
-                        player2.roundWin++;
+                        Debug.Log("Empate1.0");
                         SendGraveyard();
-                        player1.turn = true;
-                        player2.turn = false;
                         Drop.invoke = false;
                         roundpass = true;
-                        currentPlayer = player1;
                         if (player1.roundWin == 2)
                         {
+
                             roundpass = false;
                             player1.win = true;
+                            player1.turn = false;
+                            player2.turn = false;
+                            Drop.invoke = true;
+                            Debug.Log("Jugador1 gana");
+                            bottonEndR.SetActive(false);
+                            GameObject.Find("RoundEnd").SetActive(false);
                         }
                         else
                         {
-
+                            if(currentPlayer == player1)
+                            {
+                                player1.turn = true;
+                                player2.turn = false;
+                            }
+                            else
+                            {
+                                player1.turn = false;
+                                player2.turn = true;
+                            }
                             countRounds++;
                             for (int i = 0; i < 2; i++)
                             {
@@ -229,25 +248,55 @@ public class GameManager : MonoBehaviour
 
                     }
 
-                    if (currentPlayer == player2)
+                    else if (player1.roundWin < player2.roundWin)
                     {
-                        Debug.Log("Empate2");
-                        player1.roundWin++;
-                        player2.roundWin++;
+                        Debug.Log("Empate2.0");
                         SendGraveyard();
-                        player2.turn = true;
-                        player1.turn = false;
                         Drop.invoke = false;
                         roundpass = true;
                         currentPlayer = player2;
                     
-                        if (player1.roundWin == 2)
+                        if (player2.roundWin == 2)
                         {
                             roundpass = false;
                             player2.win = true;
+                            player1.turn = false;
+                            player2.turn = false;
+                            Drop.invoke = true;
+                            Debug.Log("Jugador2 gana");
+                            bottonEndR.SetActive(false);
+                            GameObject.Find("RoundEnd").SetActive(false);
                         }
                         else
                         {
+                            if (currentPlayer == player1)
+                            {
+                                player1.turn = true;
+                                player2.turn = false;
+                            }
+                            else
+                            {
+                                player1.turn = false;
+                                player2.turn = true;
+                            }
+                            countRounds++;
+                            for (int i = 0; i < 2; i++)
+                            {
+                                Draw(player1.deck, player1);
+                                Draw(player2.deck, player2);
+                            }
+                        }                       
+                    }
+                    else
+                    {
+                        if(currentPlayer == player1)
+                        {
+                            Debug.Log("Empate1");
+                            SendGraveyard();
+                            Drop.invoke = false;
+                            roundpass = true;
+                            player1.turn = true;
+                            player2.turn = false;
                             countRounds++;
                             for (int i = 0; i < 2; i++)
                             {
@@ -255,9 +304,22 @@ public class GameManager : MonoBehaviour
                                 Draw(player2.deck, player2);
                             }
                         }
-
+                        else
+                        {
+                            Debug.Log("Empate2");
+                            SendGraveyard();
+                            Drop.invoke = false;
+                            roundpass = true;
+                            player2.turn = true;
+                            player1.turn = false;
+                            countRounds++;
+                            for (int i = 0; i < 2; i++)
+                            {
+                                Draw(player1.deck, player1);
+                                Draw(player2.deck, player2);
+                            }
+                        }
                     }
-                    
                 }
 
             }
@@ -266,13 +328,13 @@ public class GameManager : MonoBehaviour
         {
             if(player1.roundWin > player2.roundWin)
             {
-                Debug.Log("Jugador1 gana");
+                Debug.Log("Jugador1 gana8797879879");
                 bottonEndR.SetActive(false);
                 GameObject.Find("RoundEnd").SetActive(false);
             }
             else
             {
-                Debug.Log("Jugador2 gana");
+                Debug.Log("Jugador2 gana80980989809809");
                 bottonEndR.SetActive(false);
                 GameObject.Find("RoundEnd").SetActive(false);
             }
