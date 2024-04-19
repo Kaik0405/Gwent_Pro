@@ -126,19 +126,19 @@ public class GameManager : MonoBehaviour
 
     public void EndRound()
     {
-
-        if(!(player1.win||player2.win))
+        if(!(player1.win||player2.win))   //comprueba si uno de los jugadores gano
         {
-            if (roundpass)
+            if (roundpass)                //detecta si se toco una vez el boton EndRound
             {
                 EndTurn();
                 bottonEndR.SetActive(false);
                 roundpass = false;
             }
-            else
+            else                          //se entra en este bloque una vez ya se haya tocado una vez el boton EndRound
             {
+
                 bottonEndR.SetActive(true);
-                if (player1.PowerFull() > player2.PowerFull())
+                if (player1.PowerFull() > player2.PowerFull())  // comprueba cual de los dos jugadores tiene mayor poder de ataque (Jugador1 Gana la ronda)
                 {
                     Debug.Log("Player1 Win");
                     player1.roundWin++;
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
                     Drop.invoke = false;
                     roundpass = true;
                     currentPlayer = player1;
-                    if (player1.roundWin == 2)
+                    if (player1.roundWin == 2)  //verifica si el jugador1 ha ganado 2 rondas
                     {
                         player1.turn = false;
                         player2.turn = false;
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
                         bottonEndR.SetActive(false);
                         GameObject.Find("RoundEnd").SetActive(false);
                     }
-                    else
+                    else   // si no ha ganado dos rondas roba 2 cartas e incrementa en contador de rondas
                     {
                         countRounds++;
                         for (int i = 0; i < 2; i++)
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
                     }
 
                 }
-                else if(player1.PowerFull() < player2.PowerFull())
+                else if(player1.PowerFull() < player2.PowerFull()) //si la condicion anterior no se cumple entra primero en esta (Jugador2 Gana la ronda)
                 {
                 
                     Debug.Log("Player2 Win");
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
                     Drop.invoke = false;
                     roundpass = true;
                     currentPlayer = player2;
-                    if (player2.roundWin == 2)
+                    if (player2.roundWin == 2) //verifica si el jugador1 ha ganado 2 rondas
                     {
                         roundpass = false;
                         player2.win = true;
@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
                         bottonEndR.SetActive(false);
                         GameObject.Find("RoundEnd").SetActive(false);
                     }
-                    else
+                    else   // si no ha ganado dos rondas roba 2 cartas e incrementa en contador de rondas
                     {
                         countRounds++;
                         for (int i = 0; i < 2; i++)
@@ -204,11 +204,11 @@ public class GameManager : MonoBehaviour
                         
                 }
                 
-                else
+                else  // si llega a este punto es que ambos jugadores tienen el mismo poder de ataque
                 {
                     player1.roundWin++;
                     player2.roundWin++;
-                    if (player1.roundWin > player2.roundWin)
+                    if (player1.roundWin > player2.roundWin) // verifica quien tiene mas rondas ganada(player1 Gana)
                     {
                         Debug.Log("Empate1.0");
                         SendGraveyard();
@@ -248,7 +248,7 @@ public class GameManager : MonoBehaviour
 
                     }
 
-                    else if (player1.roundWin < player2.roundWin)
+                    else if (player1.roundWin < player2.roundWin) //si la condicion anterior no se cumple entra primero en esta (player2 gana)
                     {
                         Debug.Log("Empate2.0");
                         SendGraveyard();
@@ -289,35 +289,49 @@ public class GameManager : MonoBehaviour
                     }
                     else
                     {
-                        if(currentPlayer == player1)
+                        if (player1.roundWin < 2)
                         {
-                            Debug.Log("Empate1");
-                            SendGraveyard();
-                            Drop.invoke = false;
-                            roundpass = true;
-                            player1.turn = true;
-                            player2.turn = false;
-                            countRounds++;
-                            for (int i = 0; i < 2; i++)
+                            if (currentPlayer == player1)
                             {
-                                Draw(player1.deck, player1);
-                                Draw(player2.deck, player2);
+                                Debug.Log("Empate1");
+                                SendGraveyard();
+                                Drop.invoke = false;
+                                roundpass = true;
+                                player1.turn = true;
+                                player2.turn = false;
+                                countRounds++;
+                                for (int i = 0; i < 2; i++)
+                                {
+                                    Draw(player1.deck, player1);
+                                    Draw(player2.deck, player2);
+                                }
+                            }
+                            else
+                            {
+                                Debug.Log("Empate2");
+                                SendGraveyard();
+                                Drop.invoke = false;
+                                roundpass = true;
+                                player2.turn = true;
+                                player1.turn = false;
+                                countRounds++;
+                                for (int i = 0; i < 2; i++)
+                                {
+                                    Draw(player1.deck, player1);
+                                    Draw(player2.deck, player2);
+                                }
                             }
                         }
                         else
                         {
-                            Debug.Log("Empate2");
                             SendGraveyard();
-                            Drop.invoke = false;
-                            roundpass = true;
-                            player2.turn = true;
+                            roundpass = false;
                             player1.turn = false;
-                            countRounds++;
-                            for (int i = 0; i < 2; i++)
-                            {
-                                Draw(player1.deck, player1);
-                                Draw(player2.deck, player2);
-                            }
+                            player2.turn = false;
+                            Drop.invoke = true;
+                            Debug.Log("EMPATE");
+                            bottonEndR.SetActive(false);
+                            GameObject.Find("RoundEnd").SetActive(false);
                         }
                     }
                 }
@@ -334,7 +348,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Jugador2 gana80980989809809");
+                Debug.Log("Jugador2 gana");
                 bottonEndR.SetActive(false);
                 GameObject.Find("RoundEnd").SetActive(false);
             }
@@ -343,58 +357,36 @@ public class GameManager : MonoBehaviour
 
     public void SendGraveyard()
     {
-        // Copia de las listas para iterar
-        List<GameObject> meleeP1Cards = GameObject.Find("MeleeP1").GetComponent<ControlPanels>().cardInPanel.ToList();
-        List<GameObject> distanceP1Cards = GameObject.Find("DistanceP1").GetComponent<ControlPanels>().cardInPanel.ToList();
-        List<GameObject> siegeP1Cards = GameObject.Find("SiegeP1").GetComponent<ControlPanels>().cardInPanel.ToList();
+        string[] playerZones = { "MeleeP1", "DistanceP1", "SiegeP1", "IncreseM1", "IncreseD1", "IncreseS1", "MeleeP2", "DistanceP2", "SiegeP2", "IncreseM2", "IncreseD2", "IncreseS2" };
+        string[] graveyardNames = { "GraveyardP1", "GraveyardP2" };
+      
+        for (int i = 0; i < playerZones.Length; i++)
+        {
+            string zoneName = playerZones[i];
+            string graveyardName = graveyardNames[i % 2]; 
+    
+            List<GameObject> cards = GameObject.Find(zoneName).GetComponent<ControlPanels>().cardInPanel.ToList();
 
-        List<GameObject> meleeP2Cards = GameObject.Find("MeleeP2").GetComponent<ControlPanels>().cardInPanel.ToList();
-        List<GameObject> distanceP2Cards = GameObject.Find("DistanceP2").GetComponent<ControlPanels>().cardInPanel.ToList();
-        List<GameObject> siegeP2Cards = GameObject.Find("SiegeP2").GetComponent<ControlPanels>().cardInPanel.ToList();
+            foreach (GameObject card in cards)
+            {
+                Player player = i < 6 ? player1 : player2;
+                player.graveyard.Add(card);
 
-        // Mandar las cartas al cementerio del jugador 1
-        foreach (GameObject card in meleeP1Cards)
-        {
-            player1.graveyard.Add(card);
-            GameObject.Find("MeleeP1").GetComponent<ControlPanels>().cardInPanel.Remove(card);
-            card.transform.SetParent(GameObject.Find("GraveyardP1").transform);
-            card.SetActive(false);
-        }
-        foreach (GameObject card in distanceP1Cards)
-        {
-            player1.graveyard.Add(card);
-            GameObject.Find("DistanceP1").GetComponent<ControlPanels>().cardInPanel.Remove(card);
-            card.transform.SetParent(GameObject.Find("GraveyardP1").transform);
-            card.SetActive(false);
-        }
-        foreach (GameObject card in siegeP1Cards)
-        {
-            player1.graveyard.Add(card);
-            GameObject.Find("SiegeP1").GetComponent<ControlPanels>().cardInPanel.Remove(card);
-            card.transform.SetParent(GameObject.Find("GraveyardP1").transform);
-            card.SetActive(false);
+
+                GameObject.Find(zoneName).GetComponent<ControlPanels>().cardInPanel.Remove(card);
+                card.transform.SetParent(GameObject.Find(graveyardName).transform);
+                card.SetActive(false);
+            }
         }
 
-        // Mandar las cartas al Cementerio del jugador 2 
-        foreach (GameObject card in meleeP2Cards)
+        List<GameObject> climateCards = GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel.ToList();
+        foreach (GameObject card in climateCards)
         {
-            player2.graveyard.Add(card);
-            GameObject.Find("MeleeP2").GetComponent<ControlPanels>().cardInPanel.Remove(card);
-            card.transform.SetParent(GameObject.Find("GraveyardP2").transform);
-            card.SetActive(false);
-        }
-        foreach (GameObject card in distanceP2Cards)
-        {
-            player2.graveyard.Add(card);
-            GameObject.Find("DistanceP2").GetComponent<ControlPanels>().cardInPanel.Remove(card);
-            card.transform.SetParent(GameObject.Find("GraveyardP2").transform);
-            card.SetActive(false);
-        }
-        foreach (GameObject card in siegeP2Cards)
-        {
-            player2.graveyard.Add(card);
-            GameObject.Find("SiegeP2").GetComponent<ControlPanels>().cardInPanel.Remove(card);
-            card.transform.SetParent(GameObject.Find("GraveyardP2").transform);
+            Player player = card.GetComponent<DisplayCard>() != null ? player1 : player2;
+            player.graveyard.Add(card);
+
+            GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel.Remove(card);
+            card.transform.SetParent(GameObject.Find(player == player1 ? "GraveyardP1" : "GraveyardP2").transform);
             card.SetActive(false);
         }
     }
