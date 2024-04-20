@@ -132,6 +132,8 @@ MonoBehaviour:
   cardBack: 0
   numCardInDeck: 0
   Hand: {fileID: 0}
+  cardD: {fileID: 3759858682695972739}
+  onField: 0
 --- !u!114 &7627359750946051743
 MonoBehaviour:
   m_ObjectHideFlags: 0

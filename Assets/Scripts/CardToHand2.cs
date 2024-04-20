@@ -17,13 +17,12 @@ public class CardToHand2 : MonoBehaviour
         HandCard2.transform.eulerAngles = new Vector3(25, 0, 0);
 
         ControlPanels controlPanels = Hand2.GetComponent<ControlPanels>();
-        if (controlPanels != null)
-        {
-            controlPanels.cardInPanel.Add(HandCard2);
-        }
-        else
-        {
-            Debug.LogError("El componente ControlPanels no está adjunto al GameObject Hand.");
-        }
+
+        ControlPanelsAdd(HandCard2, controlPanels);
+
+    }
+    void ControlPanelsAdd(GameObject card,ControlPanels controlPanels)
+    {
+        if (controlPanels != null) { controlPanels.cardInPanel.Add(card); } 
     }
 }

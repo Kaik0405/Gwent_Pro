@@ -72,8 +72,8 @@ public class DisplayCard2 : MonoBehaviour
                     break;
             }
         }
- 
-    
+        onField2 = currentCard2.type == typecard.leader ? true : false;
+        
     }
     void Update()
     {

@@ -40,6 +40,7 @@ public class DisplayCard : MonoBehaviour
 
     void Start()
     {
+        
         Drag dragComponent = this.GetComponent<Drag>();
         if (dragComponent != null && currentCard != null)
         {
@@ -113,9 +114,8 @@ public class DisplayCard : MonoBehaviour
                     break;
             }
         }
+        onField = currentCard.type == typecard.leader ? true : false;
 
-        
-         
     }
     void Update()
     {
@@ -124,6 +124,7 @@ public class DisplayCard : MonoBehaviour
         {
             cardBack = false;
             staticCardBack = cardBack;
+
         }
         
         else

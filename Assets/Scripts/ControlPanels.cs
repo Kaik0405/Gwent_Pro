@@ -9,9 +9,9 @@ public class ControlPanels : MonoBehaviour
     public GameObject panelField;
     public List<GameObject> cardInPanel = new List<GameObject>();
 
-    public bool CanPlaceCard(Card.typefield panel, Card.typefaction faction) //Metodo que es llamado para verificar la posicion en el campo que ocupa la carta
+    public bool CanPlaceCard(Card.typefield panel, Card.typefaction faction, DisplayCard onField, DisplayCard2 onField2) //Metodo que es llamado para verificar la posicion en el campo que ocupa la carta
     {
-        if ((faction == Card.typefaction.shadows) && (GameManager.player1.turn) && !(Drop.invoke))
+        if ((faction == Card.typefaction.shadows) && (GameManager.player1.turn) && (!Drop.invoke) && (!onField.onField))
         {
             switch (panel)
             {
@@ -82,7 +82,7 @@ public class ControlPanels : MonoBehaviour
                 default: return false;
             }
         }
-        if ((faction == Card.typefaction.heavenly) && (GameManager.player2.turn) && !(Drop.invoke))
+        if ((faction == Card.typefaction.heavenly) && (GameManager.player2.turn) && (!Drop.invoke) && (!onField2.onField2))
         {
             switch (panel)
             {

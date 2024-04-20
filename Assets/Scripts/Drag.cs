@@ -22,9 +22,20 @@ public class Drag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
     }
     public void OnDrag (PointerEventData eventData)
     {
-        if ((cardPlayer.turn) && (!Drop.invoke))
+        if (eventData.pointerDrag.GetComponent<DisplayCard>() != null)
         {
-            transform.position = eventData.position;
+            if ((cardPlayer.turn) && (!Drop.invoke) &&(!eventData.pointerDrag.GetComponent<DisplayCard>().onField))
+            {
+                transform.position = eventData.position;
+            }
+        }
+
+        if (eventData.pointerDrag.GetComponent<DisplayCard2>() != null)
+        {
+            if ((cardPlayer.turn) && (!Drop.invoke) && (!eventData.pointerDrag.GetComponent<DisplayCard2>().onField2))
+            {
+                transform.position = eventData.position;
+            }
         }
     }
     public void OnEndDrag(PointerEventData eventData)

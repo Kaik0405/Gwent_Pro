@@ -12,7 +12,6 @@ public class Card : ScriptableObject
     public int ID;                            // Me gustaria declarle mi amor pero solo puedo declarar variables :(
     public new string name; 
     public string description;
-
     public int power;
 
     public Sprite spriteImage;
@@ -21,6 +20,8 @@ public class Card : ScriptableObject
     public typefield pos_field;               // estable si la carta se coloca en la zona de cuerpo a cuerpo, distancia, asedio, aumento, clima o lider
     public typefaction faction;               // establece si la carta es de la faccion de las sombras o de los celestiales
     public typeclimate type_climate;          //establece si la carta  clima 
+    
+
 
     public enum typecard { unit_silver, unit_gold, lure, leader, climate, increase, clear }
     public enum typefield { M, D, S, MD, MS, DS, MDS, fincrease, fclimate, fleader }
@@ -45,7 +46,7 @@ public class Card : ScriptableObject
     }
     public Card(int ID, string name, string description, typecard type, typefield pos_field, typefaction faction, Sprite SpriteImage) //constructor para cartas sin atk
     {
-        this.ID= ID;
+        this.ID = ID;
         this.name = name;
         this.description = description;
         this.type = type;

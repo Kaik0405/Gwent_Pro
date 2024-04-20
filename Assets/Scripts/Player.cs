@@ -67,4 +67,10 @@ public class Player
         return pointTotal;
     }
 
+    public void Destroy()
+    {
+
+    }
+
+
 }

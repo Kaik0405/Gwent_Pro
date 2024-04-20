@@ -359,12 +359,12 @@ public class GameManager : MonoBehaviour
     {
         string[] playerZones = { "MeleeP1", "DistanceP1", "SiegeP1", "IncreseM1", "IncreseD1", "IncreseS1", "MeleeP2", "DistanceP2", "SiegeP2", "IncreseM2", "IncreseD2", "IncreseS2" };
         string[] graveyardNames = { "GraveyardP1", "GraveyardP2" };
-      
+
         for (int i = 0; i < playerZones.Length; i++)
         {
             string zoneName = playerZones[i];
-            string graveyardName = graveyardNames[i % 2]; 
-    
+            string graveyardName = i < 6 ? graveyardNames[0] : graveyardNames[1];
+            
             List<GameObject> cards = GameObject.Find(zoneName).GetComponent<ControlPanels>().cardInPanel.ToList();
 
             foreach (GameObject card in cards)
