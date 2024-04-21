@@ -32,36 +32,34 @@ public class Player
     public int PowerFull()
     {
         pointTotal = 0;
-        if (handZone != null) {
-            if (handZone[0].GetComponent<DisplayCard>() != null)
+        if (nameP == "Jugador1")
+        {
+            foreach (GameObject card in siegeZone)
             {
-                foreach (GameObject card in siegeZone)
-                {
-                    pointTotal += card.GetComponent<DisplayCard>().currentCard.power;
-                }
-                foreach (GameObject card in meeleZone)
-                {
-                    pointTotal += card.GetComponent<DisplayCard>().currentCard.power;
-                }
-                foreach (GameObject card in distanceZone)
-                {
-                    pointTotal += card.GetComponent<DisplayCard>().currentCard.power;
-                }            
+                pointTotal += card.GetComponent<DisplayCard>().currentCard.power;
             }
-            else
+            foreach (GameObject card in meeleZone)
             {
-                foreach (GameObject card in siegeZone)
-                {
-                    pointTotal += card.GetComponent<DisplayCard2>().currentCard2.power;
-                }
-                foreach (GameObject card in meeleZone)
-                {
-                    pointTotal += card.GetComponent<DisplayCard2>().currentCard2.power;
-                }
-                foreach (GameObject card in distanceZone)
-                {
-                    pointTotal += card.GetComponent<DisplayCard2>().currentCard2.power;
-                }
+                pointTotal += card.GetComponent<DisplayCard>().currentCard.power;
+            }
+            foreach (GameObject card in distanceZone)
+            {
+                pointTotal += card.GetComponent<DisplayCard>().currentCard.power;
+            }            
+        }
+        else
+        {
+            foreach (GameObject card in siegeZone)
+            {
+                pointTotal += card.GetComponent<DisplayCard2>().currentCard2.power;
+            }
+            foreach (GameObject card in meeleZone)
+            {
+                pointTotal += card.GetComponent<DisplayCard2>().currentCard2.power;
+            }
+            foreach (GameObject card in distanceZone)
+            {
+                pointTotal += card.GetComponent<DisplayCard2>().currentCard2.power;
             }
         }
         return pointTotal;
