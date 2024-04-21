@@ -5,25 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class MenuContr : MonoBehaviour
 {
-    public void TraslateToScene()
+    public void ChangeSceneWithDelay(string sceneName, float delay)
     {
         AudioSource audioSource = GetComponent<AudioSource>();
-        if (audioSource != null) { audioSource.Play(); }
-        
-        StartCoroutine(Lapse());
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+        Invoke("TraslateToScene", delay);
+    }
+
+    public void TraslateToScene()
+    {
+
+        ChangeSceneWithDelay("TraslateToScene", 3);
+
         SceneManager.LoadSceneAsync("GwentMain"); //Cambio de escena para la escena pricipal
     }
     public void ExitGame()
     {
         AudioSource audioSource = GetComponent<AudioSource>();
         if (audioSource != null) { audioSource.Play(); }
-        
-        StartCoroutine(Lapse());
+
         Application.Quit();
     }
-    IEnumerator Lapse()
-    {
-        yield return new WaitForSeconds(5.0f);
 
-    }
 }

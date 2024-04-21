@@ -254,7 +254,6 @@ MonoBehaviour:
   cardBack2: 0
   numCardInDeck2: 0
   Hand2: {fileID: 0}
-  cardD2: {fileID: 6540713934067976945}
   onField2: 0
 --- !u!114 &-2359340500726395602
 MonoBehaviour:
@@ -270,6 +269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hand2: {fileID: 0}
   HandCard2: {fileID: 6540713934067976945}
+  LeaderZ2: {fileID: 0}
+  LeaderCard2: {fileID: 6540713934067976945}
 --- !u!114 &1920468653517170487
 MonoBehaviour:
   m_ObjectHideFlags: 0

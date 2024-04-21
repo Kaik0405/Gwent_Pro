@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
 {
     public GameObject HandP1;
     public GameObject HandP2;
+    public GameObject Leader1;
+    public GameObject Leader2;
+
     public GameObject bottonEndR;
 
     int countRounds;
@@ -30,6 +33,8 @@ public class GameManager : MonoBehaviour
         FillDeck(CardData.deckShadows, player1);
         FillDeck(CardData.deckHeavenly, player2);
 
+        InstantiateLeader(player1 , player2);
+
         SuffleDeck(player1.deck);
         SuffleDeck(player2.deck);
         
@@ -40,7 +45,7 @@ public class GameManager : MonoBehaviour
     
     void FillDeck(List<Card> deck,Player player)
     {
-        for (int i = 1; i < deck.Count; i++)
+        for (int i = 0; i < deck.Count; i++)
             player.deck.Add(deck[i]);
     }
     void SuffleDeck(List<Card> deck)
@@ -94,12 +99,24 @@ public class GameManager : MonoBehaviour
                 audioSource.Play();
                 deck.RemoveAt(0);
             }
-
         }
         else
         {
             Debug.Log("DeckClear");
         }
+    }
+    public void InstantiateLeader(Player player1,Player player2) 
+    {
+
+        GameObject leader1 = Instantiate(HandP1, transform.position, transform.rotation);
+        DisplayCard displayCardL = leader1.GetComponent<DisplayCard>();
+        displayCardL.currentCard = player1.deck[0];
+        player1.deck.RemoveAt(0);
+
+        GameObject leader2 = Instantiate(HandP2, transform.position, transform.rotation);
+        DisplayCard2 displaycardL2 = leader2.GetComponent<DisplayCard2>();
+        displaycardL2.currentCard2 = player2.deck[0];
+        player2.deck.RemoveAt(0);
     }
     IEnumerator DrawPhase(Player player1,Player player2)
     {

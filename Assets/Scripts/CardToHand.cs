@@ -7,18 +7,36 @@ public class CardToHand : MonoBehaviour
     public GameObject Hand;
     public GameObject HandCard;
 
+    public GameObject LeaderZ;
+    public GameObject LeaderCard;
+
     void Start()
     {
-        Hand = GameObject.Find("HandP1");              //busca el panel Hand1
-        HandCard.transform.SetParent(Hand.transform);  //Establece a Hand como el padre de HandCard
-        HandCard.transform.localScale = Vector3.one;   //Ajusta la escala x,y,z a 1 es decir que preserve su tamano original
-        HandCard.transform.position = new Vector3(transform.position.x, transform.position.y, -40);
-        HandCard.transform.eulerAngles = new Vector3(25, 0, 0);
+        if (HandCard.GetComponent<DisplayCard>().currentCard.type != Card.typecard.leader)
+        {
+            Hand = GameObject.Find("HandP1");
+            HandCard.transform.SetParent(Hand.transform);
+            HandCard.transform.localScale = Vector3.one;
+            HandCard.transform.position = new Vector3(transform.position.x, transform.position.y, -40);
+            HandCard.transform.eulerAngles = new Vector3(25, 0, 0);
 
-        ControlPanels controlPanels = Hand.GetComponent<ControlPanels>();
+            ControlPanels controlPanels = Hand.GetComponent<ControlPanels>();
+            ControlPanelsAdd(HandCard, controlPanels);
+        }
+        else
+        {
+            LeaderZ = GameObject.Find("LeaderZone1");
 
-        ControlPanelsAdd(HandCard, controlPanels);
+            LeaderCard.transform.SetParent(LeaderZ.transform);
+            LeaderCard.transform.localScale = Vector3.one;
+            LeaderCard.transform.position = new Vector3(transform.position.x, transform.position.y, -40);
+            LeaderCard.transform.eulerAngles = new Vector3(25,0, 0);
 
+            LeaderCard.GetComponent<Drag>().enabled = false;
+            LeaderCard.GetComponent<DisplayCard>().onField = true;
+            ControlPanels controlPanels = LeaderZ.GetComponent<ControlPanels>();
+            ControlPanelsAdd(LeaderCard, controlPanels);
+        }
     }
     void ControlPanelsAdd(GameObject card, ControlPanels controlPanels)
     {

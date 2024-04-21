@@ -73,18 +73,14 @@ public class DisplayCard2 : MonoBehaviour
             }
         }
         onField2 = currentCard2.type == typecard.leader ? true : false;
-        
     }
     void Update()
     {
-        
-
         if (onField2)
         {
             cardBack2 = false;
             staticCardBack2 = cardBack2;
-        }
-        
+        }   
         else
         {
                 if (GameManager.player2.turn)

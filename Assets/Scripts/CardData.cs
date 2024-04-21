@@ -45,8 +45,8 @@ public class CardData : MonoBehaviour
         deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Despeje(S)")));
         deckShadows.Add(new Card(16, "The Dawn After the Sunset", "descrip", Card.typecard.clear, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Despeje(S)")));
         //deck de Celestiales
-        //carta Despeje(S)
-        deckHeavenly.Add(new Card(00, "Aureliana", "descrip", 10, Card.typecard.unit_gold, Card.typefield.MS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lider")));
+        //carta Lider
+        deckHeavenly.Add(new Card(00, "Aureliana", "descrip", Card.typecard.leader, Card.typefield.fleader, Card.typefaction.heavenly, Resources.Load<Sprite>("Lider")));
         //Cartas de Unidad
         //Cartas Oro
         deckHeavenly.Add(new Card(01, "Raphaelius", "descrip", 10, Card.typecard.unit_gold, Card.typefield.MS, Card.typefaction.heavenly, Resources.Load<Sprite>("DS(P2)")));
