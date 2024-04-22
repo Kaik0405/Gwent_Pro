@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player 
+public class Player: MonoBehaviour 
 {
     public readonly string nameP;
     public bool turn = false;
@@ -64,10 +64,52 @@ public class Player
         }
         return pointTotal;
     }
-
-    public void Destroy()
+    public void Draw()
     {
+        if (deck.Count > 0)
+        {
 
+            if (nameP == "Jugador1")
+            {
+                GameObject cardToHand = Instantiate(GameManager.HandP1, GameManager.HandP1.transform.position, GameManager.HandP1.transform.rotation);
+                DisplayCard displayCardS = cardToHand.GetComponent<DisplayCard>();
+
+                if (displayCardS != null)
+                {
+                    displayCardS.currentCard = deck[0];
+                    Drag dragComponent = cardToHand.GetComponent<Drag>();
+                    if (dragComponent != null)
+                    {
+                        dragComponent.cardPlayer = GameManager.player1;
+                    }
+                }
+                AudioSource audioSource = cardToHand.GetComponent<AudioSource>();
+                audioSource.Play();
+                deck.RemoveAt(0);
+            }
+            if (nameP == "Jugador2")
+            {
+                GameObject cardToHand = Instantiate(GameManager.HandP2, GameManager.HandP2.transform.position, GameManager.HandP2.transform.rotation);
+                DisplayCard2 displayCardS = cardToHand.GetComponent<DisplayCard2>();
+
+                if (displayCardS != null)
+                {
+                    displayCardS.currentCard2 = deck[0];
+                    Drag dragComponent = cardToHand.GetComponent<Drag>();
+                    if (dragComponent != null)
+                    {
+                        dragComponent.cardPlayer = GameManager.player2;
+                    }
+                }
+                AudioSource audioSource = cardToHand.GetComponent<AudioSource>();
+                audioSource.Play();
+                deck.RemoveAt(0);
+            }
+        }
+        else
+        {
+            Debug.Log("DeckClear");
+        }
     }
 
 

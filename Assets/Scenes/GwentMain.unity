@@ -4949,10 +4949,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98f25842ef7dcd40a3932a1af816b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandP1: {fileID: 3759858682695972739, guid: fcdd21a6291db43468851f9b33603c39, type: 3}
-  HandP2: {fileID: 6540713934067976945, guid: 55efa123b16de6543867636ab358a765, type: 3}
-  Leader1: {fileID: 0}
-  Leader2: {fileID: 0}
+  HandP1NS: {fileID: 3759858682695972739, guid: fcdd21a6291db43468851f9b33603c39, type: 3}
+  HandP2NS: {fileID: 6540713934067976945, guid: 55efa123b16de6543867636ab358a765, type: 3}
+  Leader1: {fileID: 3759858682695972739, guid: fcdd21a6291db43468851f9b33603c39, type: 3}
+  Leader2: {fileID: 6540713934067976945, guid: 55efa123b16de6543867636ab358a765, type: 3}
   bottonEndR: {fileID: 1078206844}
 --- !u!4 &1151912399
 Transform:

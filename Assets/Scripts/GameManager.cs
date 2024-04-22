@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Animations;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject HandP1;
-    public GameObject HandP2;
+    public GameObject HandP1NS;
+    public GameObject HandP2NS;
+
+    static public GameObject HandP1;
+    static public GameObject HandP2;
+
     public GameObject Leader1;
     public GameObject Leader2;
 
@@ -27,6 +29,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        HandP1 = HandP1NS;
+        HandP2 = HandP2NS;
+
         countRounds = 1;
         roundpass = true;
 
@@ -38,7 +43,7 @@ public class GameManager : MonoBehaviour
         SuffleDeck(player1.deck);
         SuffleDeck(player2.deck);
         
-        StartCoroutine(DrawPhase(player1, player2));
+        StartCoroutine(DrawPhase());
         currentPlayer = player1;
 
     }
@@ -58,53 +63,7 @@ public class GameManager : MonoBehaviour
             deck[r] = temp;
         }
     }
-    void Draw(List<Card> deck, Player player)
-    {
-        if (deck.Count > 0)
-        {
-
-            if (player.nameP == "Jugador1")
-            {
-                GameObject cardToHand = Instantiate(HandP1, transform.position, transform.rotation);
-                DisplayCard displayCardS = cardToHand.GetComponent<DisplayCard>();
-
-                if (displayCardS != null)
-                {
-                    displayCardS.currentCard = deck[0];
-                    Drag dragComponent = cardToHand.GetComponent<Drag>();
-                    if (dragComponent != null)
-                    {
-                        dragComponent.cardPlayer = player1;
-                    }
-                }
-                AudioSource audioSource = cardToHand.GetComponent<AudioSource>();
-                audioSource.Play();
-                deck.RemoveAt(0);
-            }
-            if (player.nameP == "Jugador2")
-            {
-                GameObject cardToHand = Instantiate(HandP2, transform.position, transform.rotation);
-                DisplayCard2 displayCardS = cardToHand.GetComponent<DisplayCard2>();
-
-                if (displayCardS != null)
-                {
-                    displayCardS.currentCard2 = deck[0];
-                    Drag dragComponent = cardToHand.GetComponent<Drag>();
-                    if (dragComponent != null)
-                    {
-                        dragComponent.cardPlayer = player2;
-                    }
-                }
-                AudioSource audioSource = cardToHand.GetComponent<AudioSource>();
-                audioSource.Play();
-                deck.RemoveAt(0);
-            }
-        }
-        else
-        {
-            Debug.Log("DeckClear");
-        }
-    }
+    
     public void InstantiateLeader(Player player1,Player player2) 
     {
 
@@ -118,18 +77,18 @@ public class GameManager : MonoBehaviour
         displaycardL2.currentCard2 = player2.deck[0];
         player2.deck.RemoveAt(0);
     }
-    IEnumerator DrawPhase(Player player1,Player player2)
+    IEnumerator DrawPhase()
     {
         for (int i = 0; i <= 9; i++)
         {
             yield return new WaitForSeconds(0.12f);
-            Draw(player1.deck,player1);
+            player1.Draw();
         }
         yield return new WaitForSeconds(0.5f);
         for(int i = 0; i <= 9; i++)
         {
             yield return new WaitForSeconds(0.12f);
-            Draw(player2.deck, player2);
+            player2.Draw();
         }
 
     }
@@ -181,8 +140,8 @@ public class GameManager : MonoBehaviour
                         countRounds++;
                         for (int i = 0; i < 2; i++)
                         {
-                            Draw(player1.deck, player1);
-                            Draw(player2.deck, player2);
+                            player1.Draw();
+                            player2.Draw();
                         }
                     }
 
@@ -214,8 +173,8 @@ public class GameManager : MonoBehaviour
                         countRounds++;
                         for (int i = 0; i < 2; i++)
                         {
-                            Draw(player1.deck, player1);
-                            Draw(player2.deck, player2);
+                            player1.Draw();
+                            player2.Draw();
                         }
                     }
                         
@@ -258,8 +217,8 @@ public class GameManager : MonoBehaviour
                             countRounds++;
                             for (int i = 0; i < 2; i++)
                             {
-                                Draw(player1.deck, player1);
-                                Draw(player2.deck, player2);
+                                player1.Draw();
+                                player2.Draw();
                             }
                         }
 
@@ -299,8 +258,8 @@ public class GameManager : MonoBehaviour
                             countRounds++;
                             for (int i = 0; i < 2; i++)
                             {
-                                Draw(player1.deck, player1);
-                                Draw(player2.deck, player2);
+                                player1.Draw();
+                                player2.Draw();
                             }
                         }                       
                     }
@@ -319,8 +278,8 @@ public class GameManager : MonoBehaviour
                                 countRounds++;
                                 for (int i = 0; i < 2; i++)
                                 {
-                                    Draw(player1.deck, player1);
-                                    Draw(player2.deck, player2);
+                                    player1.Draw();
+                                    player2.Draw();
                                 }
                             }
                             else
@@ -334,8 +293,8 @@ public class GameManager : MonoBehaviour
                                 countRounds++;
                                 for (int i = 0; i < 2; i++)
                                 {
-                                    Draw(player1.deck, player1);
-                                    Draw(player2.deck, player2);
+                                    player1.Draw();
+                                    player2.Draw();
                                 }
                             }
                         }
