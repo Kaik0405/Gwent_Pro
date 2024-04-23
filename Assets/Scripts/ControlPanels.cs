@@ -9,7 +9,7 @@ public class ControlPanels : MonoBehaviour
     public GameObject panelField;
     public List<GameObject> cardInPanel = new List<GameObject>();
 
-    public bool CanPlaceCard(Card.typefield panel, Card.typefaction faction, DisplayCard onField, DisplayCard2 onField2) //Metodo que es llamado para verificar la posicion en el campo que ocupa la carta
+    public bool CanPlaceCard(Card.typefield panel, Card.typefaction faction, DisplayCard onField, DisplayCard2 onField2,GameObject cardDrg) //Metodo que es llamado para verificar la posicion en el campo que ocupa la carta
     {
         if ((faction == Card.typefaction.shadows) && (GameManager.player1.turn) && (!Drop.invoke) && (!onField.onField))
         {
@@ -73,7 +73,7 @@ public class ControlPanels : MonoBehaviour
                     else return false;
                  
                 case Card.typefield.fclimate:
-                    if ((panelField.name == "ClimateZone") & (cardInPanel.Count < 3))
+                    if ((panelField.name == "ClimateZone") & (cardInPanel.Count < 3) & (HasCardInPanel(cardDrg)))
                     {
                         return true;
                     }
@@ -142,7 +142,7 @@ public class ControlPanels : MonoBehaviour
                     }
                     else return false;
                 case Card.typefield.fclimate:
-                    if ((panelField.name == "ClimateZone") && (cardInPanel.Count < 3))
+                    if ((panelField.name == "ClimateZone") && (cardInPanel.Count < 3) && (HasCardInPanel(cardDrg)))
                     {
                         return true ;
                     }
@@ -162,4 +162,19 @@ public class ControlPanels : MonoBehaviour
         cardInPanel.Add(card);
     }
 
+    public bool HasCardInPanel(GameObject cardDrg)
+    {
+        foreach (GameObject card in cardInPanel)
+        {
+            if ((cardDrg.GetComponent<DisplayCard>() != null)&&(card.GetComponent<DisplayCard2>() != null))
+            {              
+                if (card.GetComponent<DisplayCard2>().currentCard2.name == cardDrg.GetComponent<DisplayCard>().currentCard.name) return false;
+            }
+            if ((cardDrg.GetComponent<DisplayCard2>() != null)&&(card.GetComponent<DisplayCard>() != null))
+            {
+                if (card.GetComponent<DisplayCard>().currentCard.name == cardDrg.GetComponent<DisplayCard2>().currentCard2.name) return false;
+            }
+        }
+        return true;
+    }
 }

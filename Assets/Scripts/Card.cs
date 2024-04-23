@@ -21,7 +21,8 @@ public class Card : ScriptableObject
     public typefaction faction;               // establece si la carta es de la faccion de las sombras o de los celestiales
     public typeclimate type_climate;          //establece si la carta  clima 
     
-
+    public delegate void EffectCall(params object[] param);
+    public EffectCall effect;
 
     public enum typecard { unit_silver, unit_gold, lure, leader, climate, increase, clear }
     public enum typefield { M, D, S, MD, MS, DS, MDS, fincrease, fclimate, fleader }
@@ -33,7 +34,7 @@ public class Card : ScriptableObject
 
     }
 
-    public Card(int ID ,string name, string description, int power, typecard type, typefield pos_field, typefaction faction, Sprite SpriteImage) //constructor para cartas monstruo
+    public Card(int ID ,string name, string description, int power, typecard type, typefield pos_field, typefaction faction, Sprite SpriteImage,EffectCall effect) //constructor para cartas monstruo
     {
         this.ID = ID;
         this.name = name;
@@ -43,8 +44,9 @@ public class Card : ScriptableObject
         this.pos_field = pos_field;
         this.faction = faction;
         spriteImage = SpriteImage;
+        this.effect = effect;
     }
-    public Card(int ID, string name, string description, typecard type, typefield pos_field, typefaction faction, Sprite SpriteImage) //constructor para cartas sin atk
+    public Card(int ID, string name, string description, typecard type, typefield pos_field, typefaction faction, Sprite SpriteImage,EffectCall effect) //constructor para cartas sin atk
     {
         this.ID = ID;
         this.name = name;
@@ -53,6 +55,7 @@ public class Card : ScriptableObject
         this.pos_field = pos_field;
         this.faction = faction;
         spriteImage = SpriteImage;
+        this.effect = effect;
     }
 }
 
