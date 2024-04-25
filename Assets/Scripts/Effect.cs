@@ -19,7 +19,7 @@ public static class Effect
     }
     public static void DrawCard(params object[] paramtry)          // roba una carta
     {
-        
+        if (paramtry[0] is Player player) player.Draw();
     }
     public static void Climate(params object[] paramtry)           // disminuye el poder de las cartas de unidad a 1 de la misma fila de ambos jugadores
     {
@@ -59,11 +59,20 @@ public static class Effect
     }
     public static void LeaderEffect1(params object[] paramtry)     // Robar una carta extra en cada ronda
     {
-        
+
+        if (paramtry[0] is Player player)
+        {
+            player.Draw();
+            Debug.Log("Efecto de lider de player1 Activado");
+        }
     }
     public static void LeaderEffect2(params object[] paramtry)     // Robar una carta extra al inicio   
     {
-
+        if (paramtry[0] is Player player)
+        {
+            player.Draw();
+            Debug.Log("Efecto de lider de player2 Activado");
+        }
     }
 
 
