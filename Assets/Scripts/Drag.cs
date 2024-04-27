@@ -29,7 +29,6 @@ public class Drag : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
                 transform.position = eventData.position;
             }
         }
-
         if (eventData.pointerDrag.GetComponent<DisplayCard2>() != null)
         {
             if ((cardPlayer.turn) && (!Drop.invoke) && (!eventData.pointerDrag.GetComponent<DisplayCard2>().onField2))

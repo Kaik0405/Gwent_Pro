@@ -49,8 +49,20 @@ public class Drop : MonoBehaviour, IDropHandler
                 {
                     audioActivCard.Play();
                 }
+                EffectActive(cardis, cardis2);
             }
         }
 
+    }
+    private void EffectActive(DisplayCard card1, DisplayCard2 card2)
+    {
+        if(card1 != null)
+        {
+            card1.currentCard.effect();
+        }
+        if(card2 != null)
+        {
+            card2.currentCard2.effect();
+        }
     }
 }

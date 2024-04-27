@@ -39,19 +39,16 @@ public class GameManager : MonoBehaviour
         FillDeck(CardData.deckHeavenly, player2);
 
         InstantiateLeader(player1 , player2);
-
-        SuffleDeck(player1.deck);
-        SuffleDeck(player2.deck);
        
         StartCoroutine(DrawPhase());
         currentPlayer = player1;
     }
-    private void FillDeck(List<Card> deck,Player player)
+    private void FillDeck(List<Card> deck,Player player) // Agrega las cartas de la base de datos al deck
     {
         for (int i = 0; i < deck.Count; i++)
             player.deck.Add(deck[i]);
-    }
-    private void SuffleDeck(List<Card> deck)
+    } 
+    private void SuffleDeck(List<Card> deck) // Desordena el deck
     {
         for (int i = 0; i < deck.Count; i++)
         {
@@ -60,23 +57,23 @@ public class GameManager : MonoBehaviour
             deck[i] = deck[r];
             deck[r] = temp;
         }
-    }
-    private void InstantiateLeader(Player player1,Player player2) 
+    } 
+    private void InstantiateLeader(Player player1,Player player2) //Instancia los lideres en el campo 
     {
-
         GameObject leader1 = Instantiate(HandP1, transform.position, transform.rotation);
         DisplayCard displayCardL = leader1.GetComponent<DisplayCard>();
         displayCardL.currentCard = player1.deck[0];
         player1.deck.RemoveAt(0);
+        SuffleDeck(player1.deck);
         
         GameObject leader2 = Instantiate(HandP2, transform.position, transform.rotation);
         DisplayCard2 displaycardL2 = leader2.GetComponent<DisplayCard2>();
         displaycardL2.currentCard2 = player2.deck[0];
         player2.deck.RemoveAt(0);
         SuffleDeck(player2.deck);
-        displaycardL2.currentCard2.effect(player2);
+        displayCardL.currentCard.effect(player1); //Activacion del efecto del lider del jugador 1
     }
-    IEnumerator DrawPhase()
+    IEnumerator DrawPhase() // Instancia las cartas en las manos de ambos jugadores
     {
         for (int i = 0; i <= 9; i++)
         {
@@ -89,23 +86,23 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.12f);
             player2.Draw();
         }
-    }
+    } 
  
-    public void EndTurn()
+    public void EndTurn() // Metodo para terminar el turno
     {
         player1.SwitchTurn();
         player2.SwitchTurn();
         Drop.invoke = false;
     }
 
-    public enum GameState
+    public enum GameState 
     {
         Player1Win,
         Player2Win,
         Draw
     }
 
-    public void EndRound()
+    public void EndRound() //  Metodo de control de Rondas
     {
         if (!GameOver())    // llama a ese metodo para determinar si el juego no ha terminado 
         {
@@ -127,31 +124,21 @@ public class GameManager : MonoBehaviour
             HandleGameOver();
         }
     }
-
     private bool GameOver() // Detecta si hay un ganador del juego
     {
         return player1.win || player2.win;
     }
-
     private void ToggleEndRoundButton(bool active)
     {
         bottonEndR.SetActive(active);
     }
-
     private GameState DetermineWinner() // metodo para determinar el jugador con la mayor fuerza de ataque en el campo
     {
-        if (player1.PowerFull() > player2.PowerFull())
-        {
-            return GameState.Player1Win;
-        }
-        else if (player1.PowerFull() < player2.PowerFull())
-        {
-            return GameState.Player2Win;
-        }
-        else
-        {
-            return GameState.Draw;
-        }
+        if (player1.PowerFull() > player2.PowerFull()) return GameState.Player1Win;
+        
+        else if (player1.PowerFull() < player2.PowerFull()) return GameState.Player2Win;
+        
+        else return GameState.Draw;
     }
     
     private void HandleRoundEnd(GameState winner) // Metodo para controlar lo que sucede en dependencia de que el jugador gane o exista empate  
@@ -193,7 +180,6 @@ public class GameManager : MonoBehaviour
         }
         else DrawCards(); 
     }
-
     private void HandleDraw(Player currentPlayer) // metodo para determinar que sucede en caso de empate
     {
         player1.roundWin++;
@@ -204,19 +190,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("Empate GAME");
             HandleGameOver();
         }
-
         else if (player1.roundWin == 2)
         {
             Debug.Log("Jugador1 Win Game");
             HandleGameOver();
         }
-
         else if (player2.roundWin == 2)
         {
             Debug.Log("Jugador2 Win Game");
             HandleGameOver();
         }
-
         else
         {
             if (currentPlayer == player1) HandlePlayerWin(player1, player2);
@@ -224,7 +207,6 @@ public class GameManager : MonoBehaviour
             else HandlePlayerWin(player2, player1);
         }
     }
-
     private void DrawCards()
     {
         countRounds++;
@@ -234,7 +216,6 @@ public class GameManager : MonoBehaviour
             player2.Draw();
         }
     }
-
     private void HandleGameOver() //Metodo de finalizacion del juego
     {
         player1.turn = false;
@@ -246,7 +227,6 @@ public class GameManager : MonoBehaviour
         SendGraveyard();
         Debug.Log("Game Over");
     }
-
     private void SendGraveyard()
     {
         string[] playerZones = { "MeleeP1", "DistanceP1", "SiegeP1", "IncreseM1", "IncreseD1", "IncreseS1", "MeleeP2", "DistanceP2", "SiegeP2", "IncreseM2", "IncreseD2", "IncreseS2" };
@@ -282,7 +262,6 @@ public class GameManager : MonoBehaviour
             card.SetActive(false);
         }
     }
-
     void Update()
     {
         player1.handZone = GameObject.Find("HandP1").GetComponent<ControlPanels>().cardInPanel;
