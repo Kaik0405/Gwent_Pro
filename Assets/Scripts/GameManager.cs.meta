@@ -3,7 +3,15 @@ guid: e98f25842ef7dcd40a3932a1af816b53
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - HandP1NS: {instanceID: 0}
+  - HandP2NS: {instanceID: 0}
+  - Leader1: {instanceID: 0}
+  - Leader2: {instanceID: 0}
+  - bottonEndR: {instanceID: 0}
+  - bottonP1Win: {instanceID: 0}
+  - bottonP2Win: {instanceID: 0}
+  - bottonTie: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

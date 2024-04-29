@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -18,6 +19,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject bottonEndR;
 
+    public GameObject bottonP1Win;
+    public GameObject bottonP2Win;
+    public GameObject bottonTie;
+
     int countRounds;
     bool roundpass;
 
@@ -29,6 +34,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+
         HandP1 = HandP1NS;
         HandP2 = HandP2NS;
 
@@ -115,13 +121,35 @@ public class GameManager : MonoBehaviour
             else            
             {
                 ToggleEndRoundButton(true); //activa el boton de cambio de turno 
-                GameState winner = DetermineWinner(); 
+                GameState winner = DetermineWinner();
+                StartCoroutine(Retard(winner)); 
                 HandleRoundEnd(winner);
             }
         }
         else
         {
             HandleGameOver();
+        }
+    }
+    IEnumerator Retard(GameState winner)
+    {
+        if(winner == GameState.Player1Win)
+        {
+            bottonP1Win.SetActive(true);
+            yield return new WaitForSeconds(2.0f);
+            bottonP1Win.SetActive(false);
+        }
+        else if(winner == GameState.Player2Win)
+        {
+            bottonP2Win.SetActive(true);
+            yield return new WaitForSeconds(2.0f);
+            bottonP2Win.SetActive(false);
+        }
+        else
+        {
+            bottonTie.SetActive(true);
+            yield return new WaitForSeconds(2.0f);
+            bottonTie.SetActive(false);
         }
     }
     private bool GameOver() // Detecta si hay un ganador del juego
@@ -227,7 +255,7 @@ public class GameManager : MonoBehaviour
         SendGraveyard();
         Debug.Log("Game Over");
     }
-    private void SendGraveyard()
+    private void SendGraveyard() //metodo que envia todas las cartas del campo para el cementerio al finalizar la ronda
     {
         string[] playerZones = { "MeleeP1", "DistanceP1", "SiegeP1", "IncreseM1", "IncreseD1", "IncreseS1", "MeleeP2", "DistanceP2", "SiegeP2", "IncreseM2", "IncreseD2", "IncreseS2" };
         string[] graveyardNames = { "GraveyardP1", "GraveyardP2" };
@@ -262,6 +290,7 @@ public class GameManager : MonoBehaviour
             card.SetActive(false);
         }
     }
+  
     void Update()
     {
         player1.handZone = GameObject.Find("HandP1").GetComponent<ControlPanels>().cardInPanel;

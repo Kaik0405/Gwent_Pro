@@ -211,21 +211,29 @@ public static class Effect
     }
     public static void ClearRowLess(params object[] paramtry)      // Limpia la fila con menos unidades
     {
-        string[] cardZonesP1 = { "MeleeP1", "DistanceP1", "SiegeP1" };
-        string[] cardZonesP2 = { "MeleeP2", "DistanceP2", "SiegeP2" };
-        int Max = 0;
-
-        if ((paramtry[0] is Player player1) && (paramtry[1] is Player player2))
+        if (paramtry[0] is GameObject card)
         {
-            for (int i = 0; i < 6; i++)
-            {
-                if (GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count > Max)
-                {
+            string[] cardZonesP1 = { "MeleeP1", "DistanceP1", "SiegeP1" };
+            string[] cardZonesP2 = { "MeleeP2", "DistanceP2", "SiegeP2" };
+            int MinP1 = int.MaxValue;
+            int MinP2 = int.MaxValue;
 
+            if ((paramtry[0] is Player player1) && (paramtry[1] is Player player2))
+            {
+                for (int i = 0; i < 3; i++)
+                    if (GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count < MinP1)
+                        MinP1 = GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count;
+
+                for (int i = 0; i < 3; i++)
+                    if (GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count < MinP2)
+                        MinP2 = GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count;
+
+                if ((MinP1 < MinP2) || (MinP1 > MinP2))
+                {
+                    int MinRow = MinP1 < MinP2 ? MinP1 : MinP2;
                 }
             }
         }
-
     }
     public static void DrawCard(params object[] paramtry) 
     {
