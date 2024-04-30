@@ -38,8 +38,7 @@ public class DisplayCard : MonoBehaviour
     public bool onField;
 
     void Start()
-    {
-        
+    {    
         Drag dragComponent = this.GetComponent<Drag>();
         if (dragComponent != null && currentCard != null)
         {
@@ -114,11 +113,9 @@ public class DisplayCard : MonoBehaviour
             }
         }
         onField = currentCard.type == typecard.leader ? true : false;
-
     }
     void Update()
     {
-       
         if (onField)
         {
             cardBack = false;
@@ -127,12 +124,16 @@ public class DisplayCard : MonoBehaviour
         else
         {
             if (GameManager.player1.turn)
-            { cardBack = false; }
-           
-            else { cardBack = true; }
-            
+            {
+                cardBack = false;
+                powerText.enabled = true;
+            }
+            else 
+            {
+                cardBack = true; 
+                powerText.enabled = false;
+            }      
             staticCardBack = cardBack;
         }
     }
-
 }

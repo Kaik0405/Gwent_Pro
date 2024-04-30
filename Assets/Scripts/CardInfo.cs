@@ -5,35 +5,57 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class CardInfo : MonoBehaviour
+public class CardInfo : MonoBehaviour , IPointerEnterHandler , IPointerExitHandler
 {
-    public GameObject cardObj;
-    public Sprite spriteCard;
-    public Image imageCard;
-
-    public TMP_Text nameT;
-    public TMP_Text descriptionT;
-    public TMP_Text typeT;
-    public TMP_Text fieldT;
-    public TMP_Text factionT;
-    public TMP_Text powerT;
-
-    void OnMouseOver()
+    GameObject cardInfo; 
+    public GameObject card;
+    
+    void Start()
     {
-        if (gameObject.CompareTag("CardToHand(Clone)"))
-            {
-            Debug.Log("CartaPasadaXencima");
-            cardObj = gameObject;
-            DisplayCard cardInfo = cardObj.GetComponent<DisplayCard>();
+        cardInfo = GameObject.Find("CardInfo");
+    }
 
-            if (cardInfo != null)
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        UpdateCardInfo();
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+       
+    }
+    public void UpdateCardInfo()
+    {
+        Image imageCard = cardInfo.GetComponent<Image>();
+        Sprite spriteCard = null;
+        
+        if (card.GetComponent<DisplayCard>() != null)
+        {
+            if (!card.GetComponent<DisplayCard>().cardBack)
             {
-                nameT.text = " " + cardInfo.powerText;
-                descriptionT.text = " " + cardInfo.descriptionText;
-                typeT.text = " " + cardInfo.typeText;
-                fieldT.text = " " + cardInfo.fieldText;
-                factionT.text = " " + cardInfo.factionText;
-                powerT.text = " " + cardInfo.realPowerText;
+                cardInfo.transform.Find("powerCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard>().currentCard.power.ToString();
+                cardInfo.transform.Find("nameCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard>().currentCard.name;
+                cardInfo.transform.Find("descriptionCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard>().currentCard.description;
+                cardInfo.transform.Find("typeCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard>().currentCard.type.ToString();
+                cardInfo.transform.Find("fieldCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard>().currentCard.pos_field.ToString();
+                cardInfo.transform.Find("factionCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard>().currentCard.faction.ToString();
+                
+                spriteCard = card.GetComponent<DisplayCard>().currentCard.spriteImage;
+                imageCard.sprite = spriteCard;
+            }
+        }
+        else if (card.GetComponent<DisplayCard2>() != null)
+        {
+            if (!card.GetComponent<DisplayCard2>().cardBack2)
+            {
+                cardInfo.transform.Find("powerCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard2>().currentCard2.power.ToString();
+                cardInfo.transform.Find("nameCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard2>().currentCard2.name;
+                cardInfo.transform.Find("descriptionCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard2>().currentCard2.description;
+                cardInfo.transform.Find("typeCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard2>().currentCard2.type.ToString();
+                cardInfo.transform.Find("fieldCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard2>().currentCard2.pos_field.ToString();
+                cardInfo.transform.Find("factionCard").GetComponent<TMP_Text>().text = card.GetComponent<DisplayCard2>().currentCard2.faction.ToString();
+                
+                spriteCard = card.GetComponent<DisplayCard2>().currentCard2.spriteImage;
+                imageCard.sprite = spriteCard;
             }
         }
     }
