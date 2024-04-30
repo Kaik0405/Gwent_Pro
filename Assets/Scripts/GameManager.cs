@@ -19,9 +19,19 @@ public class GameManager : MonoBehaviour
 
     public GameObject bottonEndR;
 
-    public GameObject bottonP1Win;
-    public GameObject bottonP2Win;
-    public GameObject bottonTie;
+    public GameObject PanelP1WinR;
+    public GameObject PanelP2WinR;
+    public GameObject PanelDrawR;
+
+    public GameObject PanelGameOver;
+    public GameObject PanelP1Win;
+    public GameObject PanelP2Win;
+    public GameObject PanelDrawGame;
+
+    public GameObject slot1W;
+    public GameObject slot2W;
+    public GameObject slot3W;
+    public GameObject slot4W;
 
     int countRounds;
     bool roundpass;
@@ -135,21 +145,21 @@ public class GameManager : MonoBehaviour
     {
         if(winner == GameState.Player1Win)
         {
-            bottonP1Win.SetActive(true);
+            PanelP1WinR.SetActive(true);
             yield return new WaitForSeconds(2.0f);
-            bottonP1Win.SetActive(false);
+            PanelP1WinR.SetActive(false);
         }
         else if(winner == GameState.Player2Win)
         {
-            bottonP2Win.SetActive(true);
+            PanelP2WinR.SetActive(true);
             yield return new WaitForSeconds(2.0f);
-            bottonP2Win.SetActive(false);
+            PanelP2WinR.SetActive(false);
         }
         else
         {
-            bottonTie.SetActive(true);
+            PanelDrawR.SetActive(true);
             yield return new WaitForSeconds(2.0f);
-            bottonTie.SetActive(false);
+            PanelDrawR.SetActive(false);
         }
     }
     private bool GameOver() // Detecta si hay un ganador del juego
@@ -175,18 +185,21 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Player1Win:
                 player1.roundWin++;
+                slot1W.SetActive(true);
                 Debug.Log("Jugador 1 WinRound");
                 HandlePlayerWin(player1, player2);
-
                 break;
             case GameState.Player2Win:
                 player2.roundWin++;
+                slot3W.SetActive(true);
                 Debug.Log("Jugador 2 WinRound");
                 HandlePlayerWin(player2,player1);
 
                 break;
             case GameState.Draw:
                 Debug.Log("Empate");
+                slot1W.SetActive(true);
+                slot3W.SetActive(true);
                 HandleDraw(currentPlayer);
                 break;
         }
@@ -217,15 +230,23 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Empate GAME");
             HandleGameOver();
+            slot2W.SetActive(true);
+            slot4W.SetActive(true);
         }
         else if (player1.roundWin == 2)
         {
             Debug.Log("Jugador1 Win Game");
+            player1.win = true;
+            slot2W.SetActive(true);
+            slot3W.SetActive(true);
             HandleGameOver();
         }
         else if (player2.roundWin == 2)
         {
             Debug.Log("Jugador2 Win Game");
+            player2.win = true;
+            slot4W.SetActive(true);
+            slot1W.SetActive(true);
             HandleGameOver();
         }
         else
@@ -254,6 +275,19 @@ public class GameManager : MonoBehaviour
         GameObject.Find("RoundEnd").SetActive(false);
         SendGraveyard();
         Debug.Log("Game Over");
+        PanelGameOver.SetActive(true);
+
+        if (player1.win)
+        {
+            PanelP1Win.SetActive(true);
+            slot2W.SetActive(true);
+        }
+        else if (player2.win)
+        {
+            PanelP2Win.SetActive(true);
+            slot4W.SetActive(true);
+        }
+        else PanelDrawGame.SetActive(true);
     }
     private void SendGraveyard() //metodo que envia todas las cartas del campo para el cementerio al finalizar la ronda
     {

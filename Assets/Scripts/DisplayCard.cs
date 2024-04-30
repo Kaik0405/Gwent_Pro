@@ -21,7 +21,6 @@ public class DisplayCard : MonoBehaviour
     public Sprite SpriteImage;
     public Image artImage;
 
-
     public TMP_Text powerText;
     public TMP_Text realPowerText;
     public TMP_Text nameText;
@@ -124,9 +123,7 @@ public class DisplayCard : MonoBehaviour
         {
             cardBack = false;
             staticCardBack = cardBack;
-
-        }
-        
+        }    
         else
         {
             if (GameManager.player1.turn)
@@ -136,8 +133,6 @@ public class DisplayCard : MonoBehaviour
             
             staticCardBack = cardBack;
         }
-
-        
     }
 
 }
