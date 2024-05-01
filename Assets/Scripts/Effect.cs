@@ -247,7 +247,7 @@ public static class Effect
     {
         Debug.Log("Effecto Activado");
     }
-    public static void MultiplicatePower(params object[] paramtry) // Multiplica n el ataque de la carta siendo n la cantidad de cartas iguales a ella en el campo
+    public static void MultiplicatePower(params object[] paramtry) // Multiplica por n el ataque de la carta siendo n la cantidad de cartas iguales a ella en el campo
     {
         Debug.Log("Effecto Activado");
     }

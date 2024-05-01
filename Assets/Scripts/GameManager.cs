@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     static public GameObject HandP1;
     static public GameObject HandP2;
 
+    public GameObject duelstart;
+
     public GameObject Leader1;
     public GameObject Leader2;
 
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        StartCoroutine(StartDuel());
 
         HandP1 = HandP1NS;
         HandP2 = HandP2NS;
@@ -58,6 +61,14 @@ public class GameManager : MonoBehaviour
        
         StartCoroutine(DrawPhase());
         currentPlayer = player1;
+    }
+    IEnumerator StartDuel()
+    {
+        yield return new WaitForSeconds(1.0f);
+        duelstart.SetActive(true);
+        duelstart.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(3.2f);
+        duelstart.SetActive(false);
     }
     private void FillDeck(List<Card> deck,Player player) // Agrega las cartas de la base de datos al deck
     {
