@@ -15,13 +15,10 @@ public static class Effect
         {
             for(int i = 0; i < 6; i++)
             {
-                Debug.Log("Incrementando1");
                 if (card == GameObject.Find(positions[i]))
                 {
-                    Debug.Log("Incrementando2");
                     foreach (GameObject item in GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel)
                     {
-                        Debug.Log("Incrementando3");
                         if ((item.GetComponent<DisplayCard>() != null) && ((item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)))
                             item.GetComponent<DisplayCard>().realPower += 5;
                         
@@ -41,11 +38,10 @@ public static class Effect
 
         if ((paramtry[0] is Player player) && (paramtry[1] is Player opponet))
         {
-            for(int i = 0;i < 3; i++)
+            int powerMax1 = 0;
+            int powerMax2 = 0;
+            for (int i = 0;i < 3; i++)
             {
-                int powerMax1=0;
-                int powerMax2=0;
-
                 foreach (GameObject item in GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel)
                 {
                     if(item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
@@ -62,35 +58,38 @@ public static class Effect
                             powerMax2 = item.GetComponent<DisplayCard2>().realPower2;
                     }
                 }
-                if(powerMax1 > powerMax2)
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                if (powerMax1 > powerMax2)
                 {
-                    for (int j = 0;j < GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count;j++)
+                    for (int j = 0; j < GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
                     {
                         GameObject item = GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel[j];
                         if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
                         {
-                            if(item.GetComponent<DisplayCard>().realPower == powerMax1)
+                            if (item.GetComponent<DisplayCard>().realPower == powerMax1)
                             {
-                                player.graveyard.Add(item);
+                                GameManager.player1.graveyard.Add(item);
                                 GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Remove(item);
                                 item.transform.SetParent(GameObject.Find("GraveyardP1").transform);
                                 item.SetActive(false);
-                                break;  
+                                break;
                             }
                         }
                     }
                 }
-                if(powerMax2 > powerMax1)
+                if (powerMax2 > powerMax1)
                 {
-                    for (int j = 0; j < GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count;j++)
+                    for (int j = 0; j < GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
                     {
                         GameObject item = GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel[j];
 
                         if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
                         {
-                            if(item.GetComponent<DisplayCard2>().realPower2 == powerMax2)
+                            if (item.GetComponent<DisplayCard2>().realPower2 == powerMax2)
                             {
-                                opponet.graveyard.Add(item);
+                                GameManager.player2.graveyard.Add(item);
                                 GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Remove(item);
                                 item.transform.SetParent(GameObject.Find("GraveyardP2").transform);
                                 item.SetActive(false);
@@ -99,20 +98,42 @@ public static class Effect
                         }
                     }
                 }
-                else
+                if (powerMax1 == powerMax2)
                 {
-                    for (int j = 0;j < GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count;j++)
+                    if (GameManager.player1.turn)
                     {
-                        GameObject item = GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel[j];
-                        if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                        for (int j = 0; j < GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
                         {
-                            if (item.GetComponent<DisplayCard2>().realPower2 == powerMax2)
+                            GameObject item = GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel[j];
+                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
                             {
-                                opponet.graveyard.Add(item);
-                                GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Remove(item);
-                                item.transform.SetParent(GameObject.Find("GraveyardP2").transform);
-                                item.SetActive(false);
-                                break;
+                                if (item.GetComponent<DisplayCard2>().realPower2 == powerMax2)
+                                {
+                                    GameManager.player2.graveyard.Add(item);
+                                    GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Remove(item);
+                                    item.transform.SetParent(GameObject.Find("GraveyardP2").transform);
+                                    item.SetActive(false);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (GameManager.player2.turn)
+                    {
+                        for (int j = 0; j < GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
+                        {
+                            GameObject item = GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel[j];
+                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                            {
+                                if (item.GetComponent<DisplayCard>().realPower == powerMax1)
+                                {
+                                    GameManager.player1.graveyard.Add(item);
+                                    GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Remove(item);
+                                    item.transform.SetParent(GameObject.Find("GraveyardP1").transform);
+                                    item.SetActive(false);
+                                    break;
+
+                                }
                             }
                         }
                     }
