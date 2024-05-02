@@ -8,11 +8,11 @@ public class Drop : MonoBehaviour, IDropHandler
 {
     private AudioSource audioActivCard;
     static public bool invoke = false;
+    private GameObject cardDrop;
     void Start()
     {
         audioActivCard = GetComponent<AudioSource>();
     }
-
     public void OnDrop(PointerEventData eventData)
     {
         Drag drg = eventData.pointerDrag.GetComponent<Drag>();
@@ -49,20 +49,45 @@ public class Drop : MonoBehaviour, IDropHandler
                 {
                     audioActivCard.Play();
                 }
-                EffectActive(cardis, cardis2);
+                EffectActive(cardis, cardis2,eventData.pointerDrag,controlPanels.gameObject);
             }
         }
-
     }
-    private void EffectActive(DisplayCard card1, DisplayCard2 card2)
+    private void EffectActive(DisplayCard card1, DisplayCard2 card2,GameObject eventData,GameObject panelObject)
     {
         if(card1 != null)
         {
-            card1.currentCard.effect();
+            if((card1.currentCard.ID == 12)||(card1.currentCard.ID == 13)||(card1.currentCard.ID == 14))
+                card1.currentCard.effect(eventData);
+
+            if (card1.currentCard.ID == 15)
+                card1.currentCard.effect(panelObject);   
+            
+            if((card1.currentCard.ID == 02)||(card1.currentCard.ID == 05))
+                card1.currentCard.effect(GameManager.player1);
+            
+            if(card1.currentCard.ID == 1)
+                card1.currentCard.effect(eventData,GameManager.player2);
+         
+            if(card1.currentCard.ID == 4)
+                card1.currentCard.effect(GameManager.player1, GameManager.player2);
         }
         if(card2 != null)
         {
-            card2.currentCard2.effect();
+            if ((card2.currentCard2.ID == 12) || (card2.currentCard2.ID == 13) || (card2.currentCard2.ID == 14) || (card2.currentCard2.ID == 15))
+                card2.currentCard2.effect(eventData);
+
+            if (card2.currentCard2.ID == 15)
+                card2.currentCard2.effect(panelObject);
+
+            if ((card2.currentCard2.ID == 02) || (card2.currentCard2.ID == 05))
+                card2.currentCard2.effect(GameManager.player2);
+
+            if (card2.currentCard2.ID == 1)
+                card2.currentCard2.effect(eventData, GameManager.player1);
+
+            if (card2.currentCard2.ID == 4)
+                card2.currentCard2.effect(GameManager.player2, GameManager.player1);
         }
     }
 }

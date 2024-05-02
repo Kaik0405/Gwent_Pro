@@ -16,18 +16,13 @@ public class DisplayCard : MonoBehaviour
     string fieldC;
     string factionC;
     string power;
-    string realPower;
+    public int realPower;
 
     public Sprite SpriteImage;
     public Image artImage;
 
     public TMP_Text powerText;
     public TMP_Text realPowerText;
-    public TMP_Text nameText;
-    public TMP_Text descriptionText;
-    public TMP_Text typeText;
-    public TMP_Text fieldText;
-    public TMP_Text factionText;
 
     public bool cardBack;
     public static bool staticCardBack;
@@ -47,43 +42,23 @@ public class DisplayCard : MonoBehaviour
         }
         if ((currentCard.type == typecard.unit_gold) || (currentCard.type == typecard.unit_silver) || (currentCard.type == typecard.lure))
         {
-            nameC = currentCard.name;
-            descriptionC = currentCard.description;
-            typeC = currentCard.type.ToString();
-            fieldC = currentCard.pos_field.ToString();
-            factionC = currentCard.faction.ToString();
             power = currentCard.power.ToString();
-            realPower = currentCard.power.ToString();
+            realPower = currentCard.power;
 
             powerText.text = " " + power;
-            realPowerText.text = " " + realPower;
-            nameText.text = " " + nameC;
-            descriptionText.text = " " + descriptionC;
-            typeText.text = " " + typeC;
-            fieldText.text = " " + fieldC;
-            factionText.text = " " + factionC;
+            realPowerText.text = " " + realPower; 
 
             SpriteImage = currentCard.spriteImage;
             artImage.sprite = SpriteImage;
         }
         else
         {
-            nameC = currentCard.name;
-            descriptionC = currentCard.description;
-            typeC = currentCard.type.ToString();
-            fieldC = currentCard.pos_field.ToString();
-            factionC = currentCard.faction.ToString();
             power = currentCard.power.ToString();
-            realPower = currentCard.power.ToString();
+            realPower = currentCard.power;
 
             powerText.text = " " + power;
             realPowerText.text = " " + realPower;
-            nameText.text = " " + nameC;
-            descriptionText.text = " " + descriptionC;
-            typeText.text = " " + typeC;
-            fieldText.text = " " + fieldC;
-            factionText.text = " " + factionC;
-
+            
             switch (currentCard.type)
             {
                 case typecard.leader:
@@ -116,6 +91,9 @@ public class DisplayCard : MonoBehaviour
     }
     void Update()
     {
+        if((currentCard.type == typecard.unit_silver) || (currentCard.type == typecard.lure))
+            powerText.text = " " + realPower; 
+        
         if (onField)
         {
             cardBack = false;

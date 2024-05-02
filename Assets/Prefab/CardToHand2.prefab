@@ -908,7 +908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf32a1aef1477844a7c5f1d3065706c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardInfo: {fileID: 0}
   card: {fileID: 6540713934067976945}
 --- !u!114 &-4637117426170372282
 MonoBehaviour:
@@ -940,15 +939,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard2: {fileID: 11400000, guid: c1e25b397688dc1418061810399a5b38, type: 2}
+  realPower2: 
   SpriteImage2: {fileID: 0}
   artImage2: {fileID: 990342531631833320}
   powerText2: {fileID: 7835307813572809799}
   realPowerText2: {fileID: 6113556650055434725}
-  nameText2: {fileID: 3660041713806217011}
-  descriptionText2: {fileID: 8064384406768875639}
-  typeText2: {fileID: 6034401285817826975}
-  fieldText2: {fileID: 5266770064696889048}
-  factionText2: {fileID: 2013852122539049134}
   cardBack2: 0
   numCardInDeck2: 0
   Hand2: {fileID: 0}
@@ -1026,7 +1021,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 747c2c8bd2c7da24e82327842d0a5054, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.302
   m_Pitch: 1
   Loop: 0
   Mute: 0

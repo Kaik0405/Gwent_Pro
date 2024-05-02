@@ -36,30 +36,30 @@ public class Player: MonoBehaviour
         {
             foreach (GameObject card in siegeZone)
             {
-                pointTotal += card.GetComponent<DisplayCard>().currentCard.power;
+                pointTotal += card.GetComponent<DisplayCard>().realPower;
             }
             foreach (GameObject card in meeleZone)
             {
-                pointTotal += card.GetComponent<DisplayCard>().currentCard.power;
+                pointTotal += card.GetComponent<DisplayCard>().realPower;
             }
             foreach (GameObject card in distanceZone)
             {
-                pointTotal += card.GetComponent<DisplayCard>().currentCard.power;
+                pointTotal += card.GetComponent<DisplayCard>().realPower;
             }            
         }
         else
         {
             foreach (GameObject card in siegeZone)
             {
-                pointTotal += card.GetComponent<DisplayCard2>().currentCard2.power;
+                pointTotal += card.GetComponent<DisplayCard2>().realPower2;
             }
             foreach (GameObject card in meeleZone)
             {
-                pointTotal += card.GetComponent<DisplayCard2>().currentCard2.power;
+                pointTotal += card.GetComponent<DisplayCard2>().realPower2;
             }
             foreach (GameObject card in distanceZone)
             {
-                pointTotal += card.GetComponent<DisplayCard2>().currentCard2.power;
+                pointTotal += card.GetComponent<DisplayCard2>().realPower2;
             }
         }
         return pointTotal;
