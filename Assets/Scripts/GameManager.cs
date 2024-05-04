@@ -5,6 +5,7 @@ using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
     int countRounds;
     bool roundpass;
 
+    public GameObject Botton;
+
     //Creacion de los jugadores
     static public Player player1 = new Player("Jugador1", true); 
     static public Player player2 = new Player("Jugador2", false); 
@@ -61,6 +64,20 @@ public class GameManager : MonoBehaviour
        
         StartCoroutine(DrawPhase());
         currentPlayer = player1;
+    }
+    public void ChangeSceneWithDelay(string sceneName, float delay)
+    {
+        if (Botton.GetComponent<AudioSource>() != null)
+        {
+            Botton.GetComponent<AudioSource>().Play();
+        }
+        Invoke("BackToMenu", delay);
+    }
+    public void BackToMenu()
+    {
+        ChangeSceneWithDelay("BackToMenu", 1.0f);
+        DontDestroyOnLoad(Botton);
+        SceneManager.LoadSceneAsync("MainMenu");
     }
     IEnumerator StartDuel()
     {
