@@ -245,31 +245,76 @@ public static class Effect
     }
     public static void ClearRowLess(params object[] paramtry)      // Limpia la fila con menos unidades
     {
-        if (paramtry[0] is GameObject card)
+        if ((paramtry[0] is Player player1) && (paramtry[1] is Player player2) && (paramtry[2] is GameObject card))
         {
+            Debug.Log("Efecto lLamado!!!!!!!!!!!");
+
             string[] cardZonesP1 = { "MeleeP1", "DistanceP1", "SiegeP1" };
             string[] cardZonesP2 = { "MeleeP2", "DistanceP2", "SiegeP2" };
+
             int MinP1 = int.MaxValue;
             int MinP2 = int.MaxValue;
+            
+            for (int i = 0; i < 3; i++)
+                if ((GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count < MinP1)&&(GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count > 1))
+                    MinP1 = GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count;
 
-            if ((paramtry[0] is Player player1) && (paramtry[1] is Player player2))
+            for (int i = 0; i < 3; i++)
+                if ((GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count < MinP2)&&(GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count > 1))
+                    MinP2 = GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count;
+
+            Debug.Log("menor cantidad de unidades Jugador1: " + MinP1);
+            Debug.Log("menor cantidad de unidades Jugador2: " + MinP2);
+
+            if (MinP1 < MinP2)
             {
+                Debug.Log("Jugador1 destroyyyyyyyy");
                 for (int i = 0; i < 3; i++)
-                    if (GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count < MinP1)
-                        MinP1 = GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count;
-
-                for (int i = 0; i < 3; i++)
-                    if (GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count < MinP2)
-                        MinP2 = GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count;
-
-                if ((MinP1 < MinP2) || (MinP1 > MinP2))
                 {
-                    int MinRow = MinP1 < MinP2 ? MinP1 : MinP2;
+                    if (GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count == MinP1)
+                    {
+                        for(int j = 0; j < GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
+                        {
+                            GameObject item = GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel[j];
+                            if(item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold) 
+                            {
+                                player1.graveyard.Add(item);
+                                item.transform.SetParent(GameObject.Find("GraveyardP1").transform);
+                                item.SetActive(false);
+                            }
+                        }
+                        break;
+                    }
                 }
+            }
+            else if(MinP2 < MinP1)
+            {
+                Debug.Log("Jugador2 destroyyyyyyyy");
+                for (int i = 0; i < 3; i++)
+                {
+                    if (GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count == MinP1)
+                    {
+                        for (int j = 0; j < GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
+                        {
+                            GameObject item = GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel[j];
+                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                            {
+                                player2.graveyard.Add(item);
+                                item.transform.SetParent(GameObject.Find("GraveyardP2").transform);
+                                item.SetActive(false);
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("Algo pasa");
             }
         }
     }
-    public static void DrawCard(params object[] paramtry) 
+    public static void DrawCard(params object[] paramtry)          // Robar una carta
     {
         if (paramtry[0] is Player player) player.Draw();
     }
@@ -287,7 +332,48 @@ public static class Effect
     }
     public static void Average(params object[] paramtry)           // Calcula el promedio de todas las cartas en el campo y luego iguala el poder de todas las cartas en el campo a ese promedio
     {
-        Debug.Log("Effecto Activado");
+        string[] zones = { "MeleeP1", "DistanceP1", "SiegeP1", "MeleeP2", "DistanceP2", "SiegeP2" };
+        int countCards = 0, atkTotal = 0, average;
+        
+
+        for(int i = 0; i < zones.Length; i++)
+            countCards += GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel.Count;
+        
+        for(int i = 0;i < 3; i++)
+        {
+            for(int j = 0;j < GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
+            {
+                GameObject item = GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel[j];
+                atkTotal += item.GetComponent<DisplayCard>().realPower;
+            }
+        }
+        for (int i = 3; i < 6; i++)
+        {
+            for (int j = 0; j < GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
+            {
+                GameObject item = GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel[j];
+                atkTotal += item.GetComponent<DisplayCard2>().realPower2;
+            }
+        }
+
+        average = atkTotal / countCards;
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
+            {
+                GameObject item = GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel[j];
+                item.GetComponent<DisplayCard>().realPower = average;
+            }
+        }
+        for (int i = 3; i < 6; i++)
+        {
+            for (int j = 0; j < GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
+            {
+                GameObject item = GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel[j];
+                item.GetComponent<DisplayCard2>().realPower2 = average;
+            }
+        }
     }          
     public static void IncreseRouw(params object[] paramtry)       // Aumenta en 2 los puntos de ataque de la fila con menos poder en el campo del jugador
     {

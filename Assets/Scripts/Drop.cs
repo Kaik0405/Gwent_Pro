@@ -6,9 +6,13 @@ using UnityEngine.UI;
 
 public class Drop : MonoBehaviour, IDropHandler
 {
-    private AudioSource audioActivCard;
-    static public bool invoke = false;
+    private AudioSource audioActivCard; //audio de invocacion o activacion de carta
+    public GameObject audioEffect;      //audio de activacion de efecto
+    
+    static public bool invoke = false;  //detector de invocacion
     private GameObject cardDrop;
+
+
     void Start()
     {
         audioActivCard = GetComponent<AudioSource>();
@@ -49,45 +53,65 @@ public class Drop : MonoBehaviour, IDropHandler
                 {
                     audioActivCard.Play();
                 }
-                EffectActive(cardis, cardis2,eventData.pointerDrag,controlPanels.gameObject);
+                StartCoroutine(Retard(cardis, cardis2, eventData.pointerDrag, controlPanels.gameObject));
+                
             }
         }
     }
     private void EffectActive(DisplayCard card1, DisplayCard2 card2,GameObject eventData,GameObject panelObject)
     {
-        if(card1 != null)
+        if (card1 != null)
         {
-            if((card1.currentCard.ID == 12)||(card1.currentCard.ID == 13)||(card1.currentCard.ID == 14))
-                card1.currentCard.effect(eventData);
+            if ((card1.currentCard.ID == 12) || (card1.currentCard.ID == 13) || (card1.currentCard.ID == 14))
+            { card1.currentCard.effect(eventData); audioEffect.GetComponent<AudioSource>().Play(); }
 
-            if (card1.currentCard.ID == 15)
-                card1.currentCard.effect(panelObject);   
-            
-            if((card1.currentCard.ID == 02)||(card1.currentCard.ID == 05))
-                card1.currentCard.effect(GameManager.player1);
-            
-            if(card1.currentCard.ID == 1)
-                card1.currentCard.effect(eventData,GameManager.player2);
-         
-            if(card1.currentCard.ID == 4)
-                card1.currentCard.effect(GameManager.player1, GameManager.player2);
+            else if (card1.currentCard.ID == 10)
+            { card1.currentCard.effect(); audioEffect.GetComponent<AudioSource>().Play(); }
+
+            else if (card1.currentCard.ID == 15)
+            { card1.currentCard.effect(panelObject); audioEffect.GetComponent<AudioSource>().Play(); }
+
+            else if ((card1.currentCard.ID == 2) || (card1.currentCard.ID == 5))
+            { card1.currentCard.effect(GameManager.player1); audioEffect.GetComponent<AudioSource>().Play(); }
+
+            else if (card1.currentCard.ID == 1)
+            { card1.currentCard.effect(eventData, GameManager.player2); audioEffect.GetComponent<AudioSource>().Play(); }
+
+            else if (card1.currentCard.ID == 4)
+            { card1.currentCard.effect(GameManager.player1, GameManager.player2); audioEffect.GetComponent<AudioSource>().Play(); }
+
+            else if (card1.currentCard.ID == 3)
+            { card1.currentCard.effect(GameManager.player1, GameManager.player2, eventData); audioEffect.GetComponent<AudioSource>().Play(); }
+
         }
-        if(card2 != null)
+        else if (card2 != null)
         {
             if ((card2.currentCard2.ID == 12) || (card2.currentCard2.ID == 13) || (card2.currentCard2.ID == 14) || (card2.currentCard2.ID == 15))
-                card2.currentCard2.effect(eventData);
+            { card2.currentCard2.effect(eventData); audioEffect.GetComponent<AudioSource>().Play(); }
 
-            if (card2.currentCard2.ID == 15)
-                card2.currentCard2.effect(panelObject);
+            else if (card2.currentCard2.ID == 10)
+            { card2.currentCard2.effect(); audioEffect.GetComponent<AudioSource>().Play(); }
 
-            if ((card2.currentCard2.ID == 02) || (card2.currentCard2.ID == 05))
-                card2.currentCard2.effect(GameManager.player2);
+            else if (card2.currentCard2.ID == 15)
+            { card2.currentCard2.effect(panelObject); audioEffect.GetComponent<AudioSource>().Play(); }
 
-            if (card2.currentCard2.ID == 1)
-                card2.currentCard2.effect(eventData, GameManager.player1);
+            else if ((card2.currentCard2.ID == 2) || (card2.currentCard2.ID == 5))
+            { card2.currentCard2.effect(GameManager.player2); audioEffect.GetComponent<AudioSource>().Play(); }
 
-            if (card2.currentCard2.ID == 4)
-                card2.currentCard2.effect(GameManager.player2, GameManager.player1);
+            else if (card2.currentCard2.ID == 1)
+            { card2.currentCard2.effect(eventData, GameManager.player1); audioEffect.GetComponent<AudioSource>().Play(); }
+
+            else if (card2.currentCard2.ID == 4)
+            { card2.currentCard2.effect(GameManager.player2, GameManager.player1); audioEffect.GetComponent<AudioSource>().Play(); }
+
+            else if (card2.currentCard2.ID == 3)
+            { card2.currentCard2.effect(GameManager.player2, GameManager.player1, eventData); audioEffect.GetComponent<AudioSource>().Play(); }
         }
+        
+    }
+    IEnumerator Retard(DisplayCard cardis,DisplayCard2 cardis2,GameObject eventData,GameObject controlPanels)
+    {
+        yield return new WaitForSeconds(1.5f);
+        EffectActive(cardis, cardis2, eventData, controlPanels);
     }
 }

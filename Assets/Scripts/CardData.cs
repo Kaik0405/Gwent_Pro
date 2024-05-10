@@ -10,9 +10,9 @@ public class CardData : MonoBehaviour
     string[] descriptions =
     {
         "Conocido desde las misma creacion del universo como el Monarca de las Sombras.\nEfecto: Al comenzar el duelo el jugador que posea esta carta roba una carta extra",
-        "Reencarnad0 desde la ultima guerra, conocido como el guerrero mas fuerte del ejercito de sombras.\nEfecto: Destruye la carta mas debil del campo del adversario",
+        "Reencarnado desde la ultima guerra, conocido como el guerrero mas fuerte del ejercito de sombras.\nEfecto: Destruye la carta mas debil del campo del adversario",
         "El caballero que mas lealtad le tiene al Monarca de las Sombras.\nEfecto: Cuando esta carta es invocada el jugador roba una carta",
-        "La sombra mas conocida del ejercito por su basra sabiduria.\nEfecto: Destruye todas las cartas de la fila mas debil del campo",
+        "La sombra mas conocida del ejercito por su basra sabiduria.\nEfecto: Destruye todas las cartas de la fila con menos unidades del campo",
         "Dragon de gran fortaleza cuyas llamaradas evapora los lagos mas profunos.\nEfecto: Destruye la carta mas fuerte sobre el campo",
         "El dragon mas sabio del ejercito de sombras del Monarca de las Sombras cuya edad se remonta a los inicios de la creacion.\nEfecto: Cuando esta carta es invocada el jugador roba una carta",
         "Conocida como la sobra de la ultima mirada la cual lleva a los mortales a la locura con su simple presencia.\nEfecto: Cuando esta carta es invocada en el campo, el jugador activa una carta clima de la mano",
@@ -31,7 +31,7 @@ public class CardData : MonoBehaviour
         "Una guerrera de luz dorada, conocida por su valentía y su baston brillante que ilumina a la oscuridad más profunda.\nEfecto: Al inicio de cada ronda el jugador roba una carta extra",
         "Un sabio arcangel con un conocimiento vasto del universo, capaz de predecir eventos futuros con una precisión asombrosa.\nEfecto: Destruye la carta mas debil del campo del adversario",
         "Un misterioso viajero que tiene la habilidad de manipular el tiempo, siempre aparece en el momento justo para cambiar el curso de los eventos.\nEfecto: Cuando esta carta es invocada el jugador roba una carta",
-        "Un poderoso mago que controla los elementos, su magia es tan fuerte que puede cambiar el clima con un simple gesto.\nEfecto: Destruye todas las cartas de la fila mas debil del campo",
+        "Un poderoso mago que controla los elementos, su magia es tan fuerte que puede cambiar el clima con un simple gesto.\nEfecto: Destruye todas las cartas de la fila con menos unidades del campo",
         "Un guerrero de luz, su ira es tan intensa como una supernova, y su espada de luz puede derretir cualquier armadura.\nEfecto: Destruye la carta mas fuerte sobre el campo",
         "Un ágil explorador con la habilidad de controlar el viento, puede volar a través del cielo con la velocidad de un huracán.\nEfecto: Cuando esta carta es invocada el jugador roba una carta",
         "Un ser celestial que brilla con una luz etérea, su presencia trae paz y armonía a todos los que lo rodean.\nEfeccto: Cuando esta carta es invocada en el campo, el jugador activa una carta clima de la mano",
