@@ -13,19 +13,17 @@ public static class Effect
 
         if (paramtry[0] is GameObject card)
         {
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
-                if (card == GameObject.Find(positions[i]))
+                if (GameObject.Find(positions[i]).GetComponent<ControlPanels>().cardInPanel.Contains(card))
                 {
                     foreach (GameObject item in GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel)
                     {
                         if ((item.GetComponent<DisplayCard>() != null) && ((item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)))
                             item.GetComponent<DisplayCard>().realPower += 5;
                         
-                        if ((item.GetComponent<DisplayCard2>() != null) && ((item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)))
-                        {
+                        else if ((item.GetComponent<DisplayCard2>() != null) && ((item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)))
                             item.GetComponent<DisplayCard2>().realPower2 += 5;
-                        }                  
                     }
                 }
             }
@@ -145,6 +143,7 @@ public static class Effect
     {
         if ((paramtry[0] is GameObject card) && (paramtry[1] is Player opponet))
         {
+            bool bin = false;
             int min = int.MaxValue;
             string[] cardZonesP1 = { "MeleeP1", "DistanceP1", "SiegeP1" };
             string[] cardZonesP2 = { "MeleeP2", "DistanceP2", "SiegeP2" };
@@ -170,8 +169,11 @@ public static class Effect
                             GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel.Remove(item);
                             item.transform.SetParent(GameObject.Find("GraveyardP2").transform);
                             item.SetActive(false);
+                            bin = true;
+                            break;
                         }
                     }
+                    if (bin) break;
                 }
             }
             if(card.GetComponent<DisplayCard2>() != null)
@@ -195,10 +197,14 @@ public static class Effect
                             GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel.Remove(item);
                             item.transform.SetParent(GameObject.Find("GraveyardP1").transform);
                             item.SetActive(false);
+                            bin = true;
+                            break;
                         }
                     }
+                    if (bin) break;
                 }
             }
+            
         }
     }
     public static void Climate(params object[] paramtry)           // disminuye el poder de las cartas de unidad a 1 de la misma fila de ambos jugadores
@@ -318,11 +324,11 @@ public static class Effect
     {
         if (paramtry[0] is Player player) player.Draw();
     }
-    public static void ActivateIncrese(params object[] paramtry)   // Activa una carta de Aumento
+    public static void ActivateIncrese(params object[] paramtry)   // Activa el efecto de una carta de aumento en la zona donde es jugada
     {
         Debug.Log("Effecto Activado");
     }
-    public static void ActivateClimate(params object[] paramtry)   // Activa un clima 
+    public static void ActivateClimate(params object[] paramtry)   // Activa el efecto de una carta clima en la zona donde es jugada 
     {
         Debug.Log("Effecto Activado");
     }
