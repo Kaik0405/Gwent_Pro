@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Drop : MonoBehaviour, IDropHandler
+public class Drop : MonoBehaviour, IDropHandler // Scrip de invocacion
 {
     private AudioSource audioActivCard; //audio de invocacion o activacion de carta
     public GameObject audioEffect;      //audio de activacion de efecto
@@ -33,7 +33,7 @@ public class Drop : MonoBehaviour, IDropHandler
         if (drg != null)
         {
             ControlPanels controlPanels = GetComponent<ControlPanels>();
-            if (controlPanels != null && controlPanels.CanPlaceCard(drg.cardType, drg.cardFact, cardis, cardis2, eventData.pointerDrag))
+            if (controlPanels != null && controlPanels.CanPlaceCard(drg.cardType, drg.cardFact, cardis, cardis2, eventData.pointerDrag)) //compruba si la carta es invocable
             {
                 drg.parentReturn = this.transform;
                 if (cardis != null)       //si la carta esta en el campo se desactiva el cardBack DC1
@@ -45,7 +45,7 @@ public class Drop : MonoBehaviour, IDropHandler
                     cardis2.onField2 = true;   
                 }
 
-                controlPanels.AddCardToPanelHand(eventData.pointerDrag);
+                controlPanels.AddCardToPanelHand(eventData.pointerDrag); // agrega la carta al panel donde fue invocada
                 invoke = true;
 
                 if (drg.previusPanel != null)
@@ -53,14 +53,14 @@ public class Drop : MonoBehaviour, IDropHandler
                     ControlPanels previusPanelsControl = drg.previusPanel.GetComponent<ControlPanels>();
                     if (previusPanelsControl != null)
                     {
-                        previusPanelsControl.cardInPanel.Remove(eventData.pointerDrag);
+                        previusPanelsControl.cardInPanel.Remove(eventData.pointerDrag); 
                     }
                 }
                 if (audioActivCard != null)
                 {
                     audioActivCard.Play();
                 }
-                AsignateImage(cardis,cardis2,CardP);
+                AsignateImage(cardis,cardis2,CardP); 
                 StartCoroutine(Retard(cardis, cardis2, eventData.pointerDrag, controlPanels.gameObject));
 
             }
@@ -70,7 +70,7 @@ public class Drop : MonoBehaviour, IDropHandler
     {
         if (card1 != null)
         {
-            if ((card1.currentCard.ID == 12) || (card1.currentCard.ID == 13) || (card1.currentCard.ID == 14))
+            if ((card1.currentCard.ID == 12) || (card1.currentCard.ID == 13) || (card1.currentCard.ID == 14) || (card1.currentCard.ID == 7) || (card1.currentCard.ID == 6)||(card1.currentCard.ID == 9))
             { card1.currentCard.effect(eventData); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
 
             else if (card1.currentCard.ID == 10)
@@ -94,14 +94,14 @@ public class Drop : MonoBehaviour, IDropHandler
         }
         else if (card2 != null)
         {
-            if ((card2.currentCard2.ID == 12) || (card2.currentCard2.ID == 13) || (card2.currentCard2.ID == 14) || (card2.currentCard2.ID == 15))
+            if ((card2.currentCard2.ID == 12) || (card2.currentCard2.ID == 13) || (card2.currentCard2.ID == 14) || (card2.currentCard2.ID == 7)||(card2.currentCard2.ID == 6) || (card2.currentCard2.ID == 9))
             { card2.currentCard2.effect(eventData); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
 
             else if (card2.currentCard2.ID == 10)
             { card2.currentCard2.effect(); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
 
             else if (card2.currentCard2.ID == 15)
-            { card2.currentCard2.effect(panelObject); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
+            { card2.currentCard2.effect(eventData); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
 
             else if ((card2.currentCard2.ID == 2) || (card2.currentCard2.ID == 5))
             { card2.currentCard2.effect(GameManager.player2); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
@@ -119,7 +119,7 @@ public class Drop : MonoBehaviour, IDropHandler
     }
     IEnumerator Retard(DisplayCard cardis, DisplayCard2 cardis2, GameObject eventData, GameObject controlPanels)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
         EffectActive(cardis, cardis2, eventData, controlPanels);
         yield return new WaitForSeconds(1.0f);
 

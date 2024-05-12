@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardData : MonoBehaviour
+public class CardData : MonoBehaviour // scrip de la base de datos de las cartas
 {
     public static List<Card> deckShadows = new List<Card>();
     public static List<Card> deckHeavenly = new List<Card>();
@@ -15,8 +15,8 @@ public class CardData : MonoBehaviour
         "La sombra mas conocida del ejercito por su basra sabiduria.\nEfecto: Destruye todas las cartas de la fila con menos unidades del campo",
         "Dragon de gran fortaleza cuyas llamaradas evapora los lagos mas profunos.\nEfecto: Destruye la carta mas fuerte sobre el campo",
         "El dragon mas sabio del ejercito de sombras del Monarca de las Sombras cuya edad se remonta a los inicios de la creacion.\nEfecto: Cuando esta carta es invocada el jugador roba una carta",
-        "Conocida como la sobra de la ultima mirada la cual lleva a los mortales a la locura con su simple presencia.\nEfecto: Cuando esta carta es invocada en el campo, el jugador activa una carta clima de la mano",
-        "La version mas joven de Bellion el cual era el primer integrante del ejercito del Monarca de las sombras.\nEfecto: Cuando esta carta es invocada en el campo, el jugador activa un carta de incremento de la mano",
+        "Conocida como la sobra de la ultima mirada la cual lleva a los mortales a la locura con su simple presencia.\nEfecto: Cuando esta carta es invocada en el campo, el jugador activa una carta clima de la mano de forma que afecte la zona de mas fuerza de ataque del adversario",
+        "La version mas joven de Bellion el cual era el primer integrante del ejercito del Monarca de las sombras.\nEfecto: Cuando esta carta es invocada en el campo, el jugador activa un carta de incremento de la mano en la zona donde es jugada",
         "El rey hormiga de una antigua mazmorra de rango S, cuyo hizo temblar a cientos de cazadore de rango S.\nEffecto: Aumenta en 2 los puntos de ataque de la fila con menos poder en el campo del jugador",
         "Antiguo cazador de Rango S que no pudo evadir la muerte tras enfrentarse al Monarca de las Sombras el cual fue convertido en sombra por admiracion del monarca.\nEfecto: Multiplica por n el ataque de la carta siendo n la cantidad de cartas iguales a ella en el campo",
         "Cazador de rango S con las habilidades curativas mas increibles de los mortales el cual fue reencarnado por el Monarca de las Sombras.\nEfecto: Calcula el promedio de todas las cartas en el campo y luego iguala el poder de todas las cartas en el campo a ese promedio",
@@ -34,8 +34,8 @@ public class CardData : MonoBehaviour
         "Un poderoso mago que controla los elementos, su magia es tan fuerte que puede cambiar el clima con un simple gesto.\nEfecto: Destruye todas las cartas de la fila con menos unidades del campo",
         "Un guerrero de luz, su ira es tan intensa como una supernova, y su espada de luz puede derretir cualquier armadura.\nEfecto: Destruye la carta mas fuerte sobre el campo",
         "Un ágil explorador con la habilidad de controlar el viento, puede volar a través del cielo con la velocidad de un huracán.\nEfecto: Cuando esta carta es invocada el jugador roba una carta",
-        "Un ser celestial que brilla con una luz etérea, su presencia trae paz y armonía a todos los que lo rodean.\nEfeccto: Cuando esta carta es invocada en el campo, el jugador activa una carta clima de la mano",
-        "Un arquero que nunca falla y que posee una bondad capaz de hacer perder los deseos de combatir al mas furioso de los guerreros\nEfecto: Cuando esta carta es invocada en el campo, el jugador activa un carta de incremento de la mano",
+        "Un ser celestial que brilla con una luz etérea, su presencia trae paz y armonía a todos los que lo rodean.\nEfeccto: Cuando esta carta es invocada en el campo, el jugador activa una carta clima de la mano de forma que afecte la zona de mas fuerza de ataque del adversario",
+        "Un arquero que nunca falla y que posee una bondad capaz de hacer perder los deseos de combatir al mas furioso de los guerreros\nEfecto: Cuando esta carta es invocada en el campo, el jugador activa un carta de incremento de la mano en la zona donde es jugada",
         "Un poderoso angel que posee un hacha capaz de cortar las dimansiones.\nEfecto: Aumenta en 2 los puntos de ataque de la fila con menos poder en el campo del jugador",
         "Un angel de la belleza y la gracia, su presencia puede cautivar a cualquiera que la mire.\nEfecto: Multiplica por n el ataque de la carta siendo n la cantidad de cartas iguales a ella en el campo",
         "Una princesa de la luz estelar, su brillo puede iluminar la noche más oscura.\nEfecto: Calcula el promedio de todas las cartas en el campo y luego iguala el poder de todas las cartas en el campo a ese promedio",
@@ -57,16 +57,16 @@ public class CardData : MonoBehaviour
         //Cartas Plata
         deckShadows.Add(new Card(06, "Kamish", descriptions[6],5, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D1(x2)"),Effect.ActivateClimate));
         deckShadows.Add(new Card(06, "Kamish", descriptions[6],5, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D1(x2)"),Effect.ActivateClimate));
-        deckShadows.Add(new Card(07, "Bellion Low", descriptions[7],7, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D2(x2)"),Effect.ActivateIncrese));
-        deckShadows.Add(new Card(07, "Bellion Low", descriptions[7],7, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D2(x2)"),Effect.ActivateIncrese));
+        deckShadows.Add(new Card(07, "Bellion Low", descriptions[7],4, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D2(x2)"),Effect.ActivateIncrese));
+        deckShadows.Add(new Card(07, "Bellion Low", descriptions[7],4, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.shadows, Resources.Load<Sprite>("D2(x2)"),Effect.ActivateIncrese));
         deckShadows.Add(new Card(08, "Beru", descriptions[8],8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M1(x3)"),Effect.IncreseRouw));
         deckShadows.Add(new Card(08, "Beru", descriptions[8],8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M1(x3)"),Effect.IncreseRouw));
         deckShadows.Add(new Card(09, "Greed", descriptions[9],3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M2(x2)"),Effect.MultiplicatePower));
         deckShadows.Add(new Card(09, "Greed", descriptions[9],3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M2(x2)"),Effect.MultiplicatePower));
         deckShadows.Add(new Card(09, "Greed", descriptions[9],3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.shadows, Resources.Load<Sprite>("M2(x2)"),Effect.MultiplicatePower));
-        deckShadows.Add(new Card(10, "Uleni", descriptions[10],4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)"),Effect.Average));
-        deckShadows.Add(new Card(10, "Uleni", descriptions[10],4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)"),Effect.Average));
-        deckShadows.Add(new Card(10, "Uleni", descriptions[10],4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)"),Effect.Average));
+        deckShadows.Add(new Card(10, "Uleni", descriptions[10],6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)"),Effect.Average));
+        deckShadows.Add(new Card(10, "Uleni", descriptions[10],6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)"),Effect.Average));
+        deckShadows.Add(new Card(10, "Uleni", descriptions[10],6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)"),Effect.Average));
         deckShadows.Add(new Card(11, "Tusk", descriptions[11],0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)"),Effect.LureEffect));
         deckShadows.Add(new Card(11, "Tusk", descriptions[11],0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)"),Effect.LureEffect));
         //Cartas
@@ -93,16 +93,16 @@ public class CardData : MonoBehaviour
         //Cartas Plata
         deckHeavenly.Add(new Card(06, "Aetherion", descriptions[23], 5, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist(x2)P2"),Effect.ActivateClimate));
         deckHeavenly.Add(new Card(06, "Aetherion", descriptions[23], 5, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist(x2)P2"),Effect.ActivateClimate));
-        deckHeavenly.Add(new Card(07, "Celestrox", descriptions[24], 7, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist2(x2)P2"),Effect.ActivateIncrese));
-        deckHeavenly.Add(new Card(07, "Celestrox", descriptions[24], 7, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist2(x2)P2"),Effect.ActivateIncrese));
+        deckHeavenly.Add(new Card(07, "Celestrox", descriptions[24], 4, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist2(x2)P2"),Effect.ActivateIncrese));
+        deckHeavenly.Add(new Card(07, "Celestrox", descriptions[24], 4, Card.typecard.unit_silver, Card.typefield.D, Card.typefaction.heavenly, Resources.Load<Sprite>("Dist2(x2)P2"),Effect.ActivateIncrese));
         deckHeavenly.Add(new Card(08, "Nebulon", descriptions[25], 8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee(x3)P2"),Effect.IncreseRouw));
         deckHeavenly.Add(new Card(08, "Nebulon", descriptions[25], 8, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee(x3)P2"),Effect.IncreseRouw));
         deckHeavenly.Add(new Card(09, "Divinara", descriptions[26], 3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee2(x2)P2"),Effect.MultiplicatePower));
         deckHeavenly.Add(new Card(09, "Divinara", descriptions[26], 3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee2(x2)P2"),Effect.MultiplicatePower));
         deckHeavenly.Add(new Card(09, "Divinara", descriptions[26], 3, Card.typecard.unit_silver, Card.typefield.M, Card.typefaction.heavenly, Resources.Load<Sprite>("Melee2(x2)P2"),Effect.MultiplicatePower));
-        deckHeavenly.Add(new Card(10, "Luminastra", descriptions[27], 4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2"),Effect.Average));
-        deckHeavenly.Add(new Card(10, "Luminastra", descriptions[27], 4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2"),Effect.Average));
-        deckHeavenly.Add(new Card(10, "Luminastra", descriptions[27], 4, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2"),Effect.Average));
+        deckHeavenly.Add(new Card(10, "Luminastra", descriptions[27], 6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2"),Effect.Average));
+        deckHeavenly.Add(new Card(10, "Luminastra", descriptions[27], 6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2"),Effect.Average));
+        deckHeavenly.Add(new Card(10, "Luminastra", descriptions[27], 6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2"),Effect.Average));
         deckHeavenly.Add(new Card(11, "Eternae", descriptions[28], 0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2"),Effect.LureEffect));
         deckHeavenly.Add(new Card(11, "Eternae", descriptions[28], 0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2"),Effect.LureEffect));
         //Cartas

@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class ControlPanels : MonoBehaviour
+public class ControlPanels : MonoBehaviour // scrip de control de invocacion en las zonas respectivas
 {
     public GameObject panelField;
     public List<GameObject> cardInPanel = new List<GameObject>();

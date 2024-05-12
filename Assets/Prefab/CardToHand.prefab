@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCard: {fileID: 11400000, guid: c1e25b397688dc1418061810399a5b38, type: 2}
-  realPower: 
+  realPower: 0
   SpriteImage: {fileID: 0}
   artImage: {fileID: 8281024543637139765}
   powerText: {fileID: 593421860654136068}
@@ -1058,8 +1058,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293525753
+  m_fontColor: {r: 0.97735846, g: 0, b: 0.9172499, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

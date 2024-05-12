@@ -87,7 +87,17 @@ public class DisplayCard2 : MonoBehaviour
     void Update()
     {
         if ((currentCard2.type == typecard.unit_silver) || (currentCard2.type == typecard.lure))
+        { 
             powerText2.text = " " + realPower2;
+            if (realPower2 > currentCard2.power)
+            {
+                powerText2.color = Color.green;
+            }
+            if (realPower2 < currentCard2.power)
+            {
+                powerText2.color = Color.red;
+            }
+        }
 
         if (onField2)
         {

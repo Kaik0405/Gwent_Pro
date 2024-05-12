@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         player2.deck.RemoveAt(0);
         SuffleDeck(player2.deck);
         displayCardL.currentCard.effect(player1); //Activacion del efecto del lider del jugador 1
+
     }
     IEnumerator DrawPhase() // Instancia las cartas en las manos de ambos jugadores
     {
@@ -169,7 +170,7 @@ public class GameManager : MonoBehaviour
             HandleGameOver();
         }
     }
-    IEnumerator Retard(GameState winner)
+    IEnumerator Retard(GameState winner) // con esta corutina salen los paneles de informacion al finalizar la ronda
     {
         if(winner == GameState.Player1Win)
         {
@@ -284,7 +285,7 @@ public class GameManager : MonoBehaviour
             else HandlePlayerWin(player2, player1);
         }
     }
-    private void DrawCards()
+    private void DrawCards() 
     {
         countRounds++;
         for (int i = 0; i < 2; i++)

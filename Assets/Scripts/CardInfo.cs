@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class CardInfo : MonoBehaviour , IPointerEnterHandler , IPointerExitHandler
+public class CardInfo : MonoBehaviour , IPointerEnterHandler , IPointerExitHandler // scrip para la actualizacion del panel de al lado para mostrar la carta en grande con info
 {
     GameObject cardInfo; 
     public GameObject card;

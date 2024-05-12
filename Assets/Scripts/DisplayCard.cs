@@ -91,14 +91,24 @@ public class DisplayCard : MonoBehaviour
     }
     void Update()
     {
-        if((currentCard.type == typecard.unit_silver) || (currentCard.type == typecard.lure))
-            powerText.text = " " + realPower; 
-        
+        if ((currentCard.type == typecard.unit_silver) || (currentCard.type == typecard.lure))
+        {
+            powerText.text = " " + realPower;
+            if(realPower > currentCard.power)
+            {
+                powerText.color = Color.green;
+            }
+            if (realPower < currentCard.power)
+            {
+                powerText.color = Color.red;
+            }
+        }
+
         if (onField)
         {
             cardBack = false;
             staticCardBack = cardBack;
-        }    
+        }
         else
         {
             if (GameManager.player1.turn)
@@ -106,11 +116,11 @@ public class DisplayCard : MonoBehaviour
                 cardBack = false;
                 powerText.enabled = true;
             }
-            else 
+            else
             {
-                cardBack = true; 
+                cardBack = true;
                 powerText.enabled = false;
-            }      
+            }
             staticCardBack = cardBack;
         }
     }
