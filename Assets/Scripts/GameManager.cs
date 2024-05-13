@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
 
@@ -35,6 +36,14 @@ public class GameManager : MonoBehaviour
     public GameObject slot2W;
     public GameObject slot3W;
     public GameObject slot4W;
+
+    public TMP_Text R1P1;
+    public TMP_Text R2P1;
+    public TMP_Text R3P1;
+    public TMP_Text R1P2;
+    public TMP_Text R2P2;
+    public TMP_Text R3P2;
+    int countR = 0;
 
     int countRounds;
     bool roundpass;
@@ -201,11 +210,66 @@ public class GameManager : MonoBehaviour
     }
     private GameState DetermineWinner() // metodo para determinar el jugador con la mayor fuerza de ataque en el campo
     {
-        if (player1.PowerFull() > player2.PowerFull()) return GameState.Player1Win;
-        
-        else if (player1.PowerFull() < player2.PowerFull()) return GameState.Player2Win;
-        
-        else return GameState.Draw;
+        if (player1.PowerFull() > player2.PowerFull())
+        {
+            switch (countR)
+            {
+                case 0:
+                    R1P1.text = player1.PowerFull().ToString();
+                    R1P2.text = player2.PowerFull().ToString();
+                    break;
+                case 1:
+                    R2P1.text = player1.PowerFull().ToString();
+                    R2P2.text = player2.PowerFull().ToString();
+                    break;
+                case 2:
+                    R3P1.text = player1.PowerFull().ToString();
+                    R3P2.text = player2.PowerFull().ToString();
+                    break;
+            }
+            countR++;
+            return GameState.Player1Win;
+        }
+        else if (player1.PowerFull() < player2.PowerFull())
+        {
+            switch (countR)
+            {
+                case 0:
+                    R1P1.text = player1.PowerFull().ToString();
+                    R1P2.text = player2.PowerFull().ToString();
+                    break;
+                case 1:
+                    R2P1.text = player1.PowerFull().ToString();
+                    R2P2.text = player2.PowerFull().ToString();
+                    break;
+                case 2:
+                    R3P1.text = player1.PowerFull().ToString();
+                    R3P2.text = player2.PowerFull().ToString();
+                    break;
+            }
+            countR++;
+            return GameState.Player2Win;
+        }
+        else
+        {
+            switch (countR)
+            {
+                case 0:
+                    R1P1.text = player1.PowerFull().ToString();
+                    R1P2.text = player2.PowerFull().ToString();
+                    break;
+                case 1:
+                    R2P1.text = player1.PowerFull().ToString();
+                    R2P2.text = player2.PowerFull().ToString();
+                    break;
+                case 2:
+                    R3P1.text = player1.PowerFull().ToString();
+                    R3P2.text = player2.PowerFull().ToString();
+                    break;
+            }
+            countR++;
+            return GameState.Draw;
+        }
     }
     
     private void HandleRoundEnd(GameState winner) // Metodo para controlar lo que sucede en dependencia de que el jugador gane o exista empate  

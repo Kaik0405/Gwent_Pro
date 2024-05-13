@@ -76,7 +76,7 @@ public class Drop : MonoBehaviour, IDropHandler // Scrip de invocacion
             else if (card1.currentCard.ID == 10)
             { card1.currentCard.effect(); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
 
-            else if (card1.currentCard.ID == 15)
+            else if ((card1.currentCard.ID == 15) || (card1.currentCard.ID == 8) || (card1.currentCard.ID == 16))
             { card1.currentCard.effect(eventData); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
 
             else if ((card1.currentCard.ID == 2) || (card1.currentCard.ID == 5))
@@ -90,7 +90,6 @@ public class Drop : MonoBehaviour, IDropHandler // Scrip de invocacion
 
             else if (card1.currentCard.ID == 3)
             { card1.currentCard.effect(GameManager.player1, GameManager.player2, eventData); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
-
         }
         else if (card2 != null)
         {
@@ -100,7 +99,7 @@ public class Drop : MonoBehaviour, IDropHandler // Scrip de invocacion
             else if (card2.currentCard2.ID == 10)
             { card2.currentCard2.effect(); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
 
-            else if (card2.currentCard2.ID == 15)
+            else if ((card2.currentCard2.ID == 15) || (card2.currentCard2.ID == 8) || (card2.currentCard2.ID == 16))
             { card2.currentCard2.effect(eventData); audioEffect.GetComponent<AudioSource>().Play(); cardEffectBig.SetActive(true); }
 
             else if ((card2.currentCard2.ID == 2) || (card2.currentCard2.ID == 5))

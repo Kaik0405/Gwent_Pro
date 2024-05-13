@@ -9,7 +9,6 @@ public class PowerInfo : MonoBehaviour // Scrip para mostrar en tiempo real el p
 {
     public TMP_Text powerP1;
     public TMP_Text powerP2;
-
     void Update()
     {
         if (powerP1 != null)

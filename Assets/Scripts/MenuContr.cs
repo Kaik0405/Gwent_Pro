@@ -14,7 +14,6 @@ public class MenuContr : MonoBehaviour
         }
         Invoke("TraslateToScene", delay);
     }
-
     public void TraslateToScene()
     {
 

@@ -22,7 +22,6 @@ public class ControlPanels : MonoBehaviour // scrip de control de invocacion en 
                     }     
                     else return false;
 
-
                 case Card.typefield.D:
                     if (((panelField.name == "DistanceP1") & (cardInPanel.Count < 5)) || (panelField.name == "HandP1"))
                     {

@@ -14,7 +14,6 @@ public class CardInfo : MonoBehaviour , IPointerEnterHandler , IPointerExitHandl
     {
         cardInfo = GameObject.Find("CardInfo");
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         UpdateCardInfo();

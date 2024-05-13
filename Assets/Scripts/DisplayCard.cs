@@ -94,14 +94,16 @@ public class DisplayCard : MonoBehaviour
         if ((currentCard.type == typecard.unit_silver) || (currentCard.type == typecard.lure))
         {
             powerText.text = " " + realPower;
+            Color orig = powerText.color;
+
             if(realPower > currentCard.power)
-            {
                 powerText.color = Color.green;
-            }
+
             if (realPower < currentCard.power)
-            {
                 powerText.color = Color.red;
-            }
+
+            else if (realPower == currentCard.power) 
+                powerText.color = orig;
         }
 
         if (onField)

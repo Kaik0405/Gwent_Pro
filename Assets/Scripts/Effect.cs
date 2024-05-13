@@ -2,10 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 
 public static class Effect
 {
+    public static void LeaderEffect1(params object[] paramtry)     // Robar una carta extra en cada ronda
+    {
+        if (paramtry[0] is Player player)
+        {
+            player.Draw();
+            Debug.Log("Efecto de lider de player1 Activado");
+        }
+    }
+    public static void LeaderEffect2(params object[] paramtry)     // Robar una carta extra al inicio   
+    {
+        if (paramtry[0] is Player player)
+        {
+            player.Draw();
+            Debug.Log("Efecto de lider de player2 Activado");
+        }
+    }
     public static void Increse(params object[] paramtry)           // Aumenta el poder de ataque de una fila en el campo del jugador por 5 pts
     {
         string[] positions = { "IncreseM1", "IncreseD1", "IncreseS1", "IncreseM2", "IncreseD2", "IncreseS2" };
@@ -393,8 +410,7 @@ public static class Effect
                     if (max < rowmForce)
                     { max = rowmForce; zoneMP = cardZonesP2[i]; rowmForce = 0; }
                 }
-                Debug.Log("Atake maximo del adversario " + max);
-                Debug.Log("Zona en la que esta " + zoneMP);
+ 
                 switch (zoneMP)
                 {
                     case "MeleeP2":
@@ -408,16 +424,15 @@ public static class Effect
                                 item.GetComponent<DisplayCard>().onField = true;
                             }
                         }
-                        for (int i = 0; i < 3; i++)
-                        {
-                            foreach (GameObject item in GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard>().realPower = 1;
+                    
+                        foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard>().realPower = 1;
 
-                            foreach (GameObject item in GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        }
+                        foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        
                         break;
 
                     case "DistanceP2":
@@ -431,16 +446,15 @@ public static class Effect
                                 item.GetComponent<DisplayCard>().onField = true;
                             }
                         }
-                        for (int i = 0; i < 3; i++)
-                        {
-                            foreach (GameObject item in GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard>().realPower = 1;
+                        
+                        foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard>().realPower = 1;
 
-                            foreach (GameObject item in GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        }
+                        foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        
                         break;
 
                     case "SiegeP2":
@@ -454,16 +468,15 @@ public static class Effect
                                 item.GetComponent<DisplayCard>().onField = true;
                             }
                         }
-                        for (int i = 0; i < 3; i++)
-                        {
-                            foreach (GameObject item in GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard>().realPower = 1;
+                       
+                        foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard>().realPower = 1;
 
-                            foreach (GameObject item in GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        }
+                        foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        
                         break;
 
                 }
@@ -483,7 +496,7 @@ public static class Effect
                 Debug.Log("Zona en la que esta " + zoneMP);
                 switch (zoneMP)
                 {
-                    case "MeleeP2":
+                    case "MeleeP1":
                         for (int i = 0; i < GameManager.player2.handZone.Count; i++)
                         {
                             GameObject item = GameManager.player2.handZone[i];
@@ -494,19 +507,18 @@ public static class Effect
                                 item.GetComponent<DisplayCard2>().onField2 = true;
                             }
                         }
-                        for (int i = 0; i < 3; i++)
-                        {
-                            foreach (GameObject item in GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard>().realPower = 1;
+                      
+                        foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard>().realPower = 1;
 
-                            foreach (GameObject item in GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        }
+                        foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard2>().realPower2 = 1;               
+                        
                         break;
 
-                    case "DistanceP2":
+                    case "DistanceP1":
                         for (int i = 0; i < GameManager.player2.handZone.Count; i++)
                         {
                             GameObject item = GameManager.player2.handZone[i];
@@ -517,19 +529,18 @@ public static class Effect
                                 item.GetComponent<DisplayCard2>().onField2 = true;
                             }
                         }
-                        for (int i = 0; i < 3; i++)
-                        {
-                            foreach (GameObject item in GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard>().realPower = 1;
+                           
+                        foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard>().realPower = 1;
 
-                            foreach (GameObject item in GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        }
+                        foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard2>().realPower2 = 1;
+
                         break;
 
-                    case "SiegeP2":
+                    case "SiegeP1":
                         for (int i = 0; i < GameManager.player2.handZone.Count; i++)
                         {
                             GameObject item = GameManager.player2.handZone[i];
@@ -537,19 +548,18 @@ public static class Effect
                             {
                                 item.transform.SetParent(GameObject.Find("ClimateZone").transform);
                                 GameObject.Find("ClimateZone").GetComponent<ControlPanels>().AddCardToPanelHand(item);
-                                item.GetComponent<DisplayCard>().onField = true;
+                                item.GetComponent<DisplayCard2>().onField2 = true;
                             }
                         }
-                        for (int i = 0; i < 3; i++)
-                        {
-                            foreach (GameObject item in GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard>().realPower = 1;
-
-                            foreach (GameObject item in GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel)
-                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        }
+                      
+                        foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard>().realPower = 1;
+                            
+                        foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
+                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        
                         break;
                 }
             }
@@ -665,30 +675,251 @@ public static class Effect
     }          
     public static void IncreseRouw(params object[] paramtry)       // Aumenta en 2 los puntos de ataque de la fila con menos poder en el campo del jugador
     {
-        Debug.Log("Effecto Activado");
+        if (paramtry[0] is GameObject card)
+        {
+            int powerfull = 0;
+            int min = 67092656;
+            string zoneIn = ""; 
+
+            string[] cardZonesP1 = { "MeleeP1", "DistanceP1", "SiegeP1" };
+            string[] cardZonesP2 = { "MeleeP2", "DistanceP2", "SiegeP2" };
+
+            if (card.GetComponent<DisplayCard>() != null)
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    foreach (GameObject item in GameObject.Find(cardZonesP1[i]).GetComponent<ControlPanels>().cardInPanel)
+                    {
+                        powerfull += item.GetComponent<DisplayCard>().realPower;
+                    }
+                    if(powerfull < min)
+                    { min = powerfull; zoneIn = cardZonesP1[i]; powerfull = 0;}
+                }
+                for(int i = 0; i < GameObject.Find(zoneIn).GetComponent<ControlPanels>().cardInPanel.Count; i++)
+                {
+                    GameObject item = GameObject.Find(zoneIn).GetComponent<ControlPanels>().cardInPanel[i];
+
+                    if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                        item.GetComponent<DisplayCard>().realPower += 2;
+                }
+                
+            }
+            else if(card.GetComponent<DisplayCard2>() != null)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    foreach (GameObject item in GameObject.Find(cardZonesP2[i]).GetComponent<ControlPanels>().cardInPanel)
+                    {
+                        powerfull += item.GetComponent<DisplayCard2>().realPower2;
+                    }
+                    if (powerfull < min)
+                    { min = powerfull; zoneIn = cardZonesP2[i]; powerfull = 0; }
+                }
+                for (int i = 0; i < GameObject.Find(zoneIn).GetComponent<ControlPanels>().cardInPanel.Count; i++)
+                {
+                    GameObject item = GameObject.Find(zoneIn).GetComponent<ControlPanels>().cardInPanel[i];
+
+                    if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                        item.GetComponent<DisplayCard2>().realPower2 += 2;
+                }
+            }
+        }
+    }
+    public static void Clearance(params object[] paramtry)         // Quita un clima 
+    {
+        if (paramtry[0] is GameObject card)
+        {
+            string climateName = "";
+            string[] cardsClimate = { "Hell", "Fog of de dark", "Judgment Meteors" };
+            string[] cardZonesP1 = { "MeleeP1", "DistanceP1", "SiegeP1" };
+            string[] cardZonesP2 = { "MeleeP2", "DistanceP2", "SiegeP2" };
+
+            if (card.GetComponent<DisplayCard>() != null)
+            {
+                if((GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel.Count > 0) && (GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0].GetComponent<DisplayCard>() != null))
+                {
+                    climateName = GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0].GetComponent<DisplayCard>().currentCard.name;
+                    GameObject climateCard = GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0];
+
+                    climateCard.transform.SetParent(GameObject.Find("GraveyardP1").transform);
+                    GameManager.player1.graveyard.Add(climateCard);
+                    climateCard.SetActive(false);
+
+                    switch (climateName)
+                    {
+                        case "Hell":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power;
+                            break;
+
+                        case "Fog of de dark":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power;
+                            break;
+
+                        case "Judgment Meteors":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power; ;
+                            break;
+                    }
+                }
+                else if ((GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel.Count > 0) && (GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0].GetComponent<DisplayCard2>() != null))
+                {
+                    climateName = GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0].GetComponent<DisplayCard2>().currentCard2.name;
+
+                    GameObject climateCard = GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0];
+
+                    climateCard.transform.SetParent(GameObject.Find("GraveyardP2").transform);
+                    GameManager.player2.graveyard.Add(climateCard);
+                    climateCard.SetActive(false);
+
+                    switch (climateName)
+                    {
+                        case "Hell":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power;
+                            break;
+
+                        case "Fog of de dark":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power;
+                            break;
+
+                        case "Judgment Meteors":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power; ;
+                            break;
+                    }
+                }
+                card.transform.SetParent(GameObject.Find("GraveyardP1").transform);
+                GameManager.player1.graveyard.Add(card);
+                card.SetActive(false);
+            }
+            else if (card.GetComponent<DisplayCard2>() != null)
+            {
+                if (GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0].GetComponent<DisplayCard>() != null)
+                {
+                    climateName = GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0].GetComponent<DisplayCard>().currentCard.name;
+                    GameObject climateCard = GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0];
+
+                    climateCard.transform.SetParent(GameObject.Find("GraveyardP1").transform);
+                    GameManager.player1.graveyard.Add(climateCard);
+                    climateCard.SetActive(false);
+
+                    switch (climateName)
+                    {
+                        case "Hell":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power;
+                            break;
+
+                        case "Fog of de dark":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power;
+                            break;
+
+                        case "Judgment Meteors":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power; ;
+                            break;
+                    }
+                }
+                else if (GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0].GetComponent<DisplayCard2>() != null)
+                {
+                    climateName = GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0].GetComponent<DisplayCard2>().currentCard2.name;
+
+                    GameObject climateCard = GameObject.Find("ClimateZone").GetComponent<ControlPanels>().cardInPanel[0];
+
+                    climateCard.transform.SetParent(GameObject.Find("GraveyardP2").transform);
+                    GameManager.player2.graveyard.Add(climateCard);
+                    climateCard.SetActive(false);
+
+                    switch (climateName)
+                    {
+                        case "Hell":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power;
+                            break;
+
+                        case "Fog of de dark":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power;
+                            break;
+
+                        case "Judgment Meteors":
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = item.GetComponent<DisplayCard>().currentCard.power;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = item.GetComponent<DisplayCard2>().currentCard2.power; ;
+                            break;
+                    }
+                }
+                card.transform.SetParent(GameObject.Find("GraveyardP2").transform);
+                GameManager.player2.graveyard.Add(card);
+                card.SetActive(false);
+            }
+        }
     }
     public static void LureEffect(params object[] paramtry)        // Cuando es colocada en el campo manda a la mano una carta   
     {
         Debug.Log("Effecto Activado");
-    }
-    public static void Clearance(params object[] paramtry)         // Quita un clima 
-    {
-        Debug.Log("Effecto Activado");
-    }
-    public static void LeaderEffect1(params object[] paramtry)     // Robar una carta extra en cada ronda
-    {
-        if (paramtry[0] is Player player)
-        {
-            player.Draw();
-            Debug.Log("Efecto de lider de player1 Activado");
-        }
-    }
-    public static void LeaderEffect2(params object[] paramtry)     // Robar una carta extra al inicio   
-    {
-        if (paramtry[0] is Player player)
-        {
-            player.Draw();
-            Debug.Log("Efecto de lider de player2 Activado");
-        }
     }
 }
