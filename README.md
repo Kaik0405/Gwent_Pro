@@ -354,3 +354,6 @@ public static void Increse(params object[] paramtry)           // Aumenta el pod
 ```
 ###Conclusiones
 El resultado final es algo que realmente nunca pense que tendria y en aquel entonces nunca pense que llegaria a tal punto, pero este proyecto no solo me enseño Unity, me enseño que con esfuerzo y dedicacion no existen limites. Y si llegaste a hasta aqui debo agradecer por haberte sumergido en esta locura a continuacion dejare el link para la descarga del rar del ejecutable del juego
+
+#####Link
+https://github.com/Kaik0405/Gwent_Pro/blob/master/Gwent-Pro/GwentPro%20Version%201.0.rar
