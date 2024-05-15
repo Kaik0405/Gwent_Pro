@@ -8,7 +8,8 @@ using static Card;
 
 public class DisplayCard2 : MonoBehaviour
 {
-    public Card currentCard2; // Referencia a la carta actual
+    // Este scrip es el espejo de DisplayCard
+    public Card currentCard2; 
 
     string power2;
     public int realPower2;

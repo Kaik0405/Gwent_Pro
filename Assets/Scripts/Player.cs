@@ -25,11 +25,11 @@ public class Player: MonoBehaviour
         this.nameP = nameP;
         this.turn = turn;
     }
-    public void SwitchTurn()
+    public void SwitchTurn() // Metodo para que el cambio de turno del jugador
     {
         turn = !turn;
     }
-    public int PowerFull()
+    public int PowerFull() // Metodo para calcular la fuerza de ataque total en el campo del jugador
     {
         pointTotal = 0;
         if (nameP == "Jugador1")
@@ -64,11 +64,10 @@ public class Player: MonoBehaviour
         }
         return pointTotal;
     }
-    public void Draw()
+    public void Draw()  // Metodo para instanciar las cartas en la mano del jugador
     {
         if (deck.Count > 0)
         {
-
             if (nameP == "Jugador1")
             {
                 GameObject cardToHand = Instantiate(GameManager.HandP1, GameManager.HandP1.transform.position, GameManager.HandP1.transform.rotation);
@@ -111,5 +110,4 @@ public class Player: MonoBehaviour
             Debug.Log("DeckClear");
         }
     }
-
 }

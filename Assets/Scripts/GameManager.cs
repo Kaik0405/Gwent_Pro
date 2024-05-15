@@ -78,8 +78,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DrawPhase());
         currentPlayer = player1;
     }
-  
-    public void BackToMenu()
+    public void BackToMenu() // Metodo para salir al menu desde el juego
     {
         player1.roundWin = 0;
         player2.roundWin = 0;
@@ -87,15 +86,15 @@ public class GameManager : MonoBehaviour
         Destroy(player1);
         Destroy(player2);
         SceneManager.LoadScene("MainMenu");
-    }
-    IEnumerator StartDuel()
+    } 
+    IEnumerator StartDuel() // Metodo de inicializacion de duelo
     {
         yield return new WaitForSeconds(1.0f);
         duelstart.SetActive(true);
         duelstart.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(3.2f);
         duelstart.SetActive(false);
-    }
+    } 
     public void FillDeck(List<Card> deck,Player player) // Agrega las cartas de la base de datos al deck
     {
         for (int i = 0; i < deck.Count; i++)
@@ -141,21 +140,12 @@ public class GameManager : MonoBehaviour
             player2.Draw();
         }
     } 
- 
     public void EndTurn() // Metodo para terminar el turno
     {
         player1.SwitchTurn();
         player2.SwitchTurn();
         Drop.invoke = false;
     }
-
-    public enum GameState 
-    {
-        Player1Win,
-        Player2Win,
-        Draw
-    }
-
     public void EndRound() //  Metodo de control de Rondas
     {
         if (!GameOver())    // llama a ese metodo para determinar si el juego no ha terminado 
@@ -178,6 +168,12 @@ public class GameManager : MonoBehaviour
         {
             HandleGameOver();
         }
+    }
+    public enum GameState // Este enum controla el estado del juego (si hay ganador o empate)
+    {
+        Player1Win,
+        Player2Win,
+        Draw
     }
     IEnumerator Retard(GameState winner) // con esta corutina salen los paneles de informacion al finalizar la ronda
     {
@@ -204,10 +200,10 @@ public class GameManager : MonoBehaviour
     {
         return player1.win || player2.win;
     }
-    private void ToggleEndRoundButton(bool active)
+    private void ToggleEndRoundButton(bool active) // Metodo que controla el botton para activar o desactivar el boton de terminar ronda
     {
         bottonEndR.SetActive(active);
-    }
+    } 
     private GameState DetermineWinner() // metodo para determinar el jugador con la mayor fuerza de ataque en el campo
     {
         if (player1.PowerFull() > player2.PowerFull())
@@ -271,7 +267,6 @@ public class GameManager : MonoBehaviour
             return GameState.Draw;
         }
     }
-    
     private void HandleRoundEnd(GameState winner) // Metodo para controlar lo que sucede en dependencia de que el jugador gane o exista empate  
     {
         switch (winner)
@@ -349,7 +344,7 @@ public class GameManager : MonoBehaviour
             else HandlePlayerWin(player2, player1);
         }
     }
-    private void DrawCards() 
+    private void DrawCards() //Metodo para robar dos cartas al finalizar una ronda
     {
         countRounds++;
         for (int i = 0; i < 2; i++)

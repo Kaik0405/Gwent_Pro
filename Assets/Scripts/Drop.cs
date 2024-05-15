@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class Drop : MonoBehaviour, IDropHandler // Scrip de invocacion
 {
+
     private AudioSource audioActivCard; //audio de invocacion o activacion de carta
     public GameObject audioEffect;      //audio de activacion de efecto
 
     static public bool invoke = false;  //detector de invocacion
     private GameObject cardDrop;
 
-    public GameObject cardEffectBig;
-    GameObject CardP;
-    Image imageCard ;
-    Sprite spriteCard;
+    public GameObject cardEffectBig;  // objeto al cual se le asigna la imagen de la carta al activarse su efecto
+    GameObject CardP;  // objecto que hace referencia a la carta arrastrada
+    Image imageCard ;  // imagen de la carta arrastrada
+    Sprite spriteCard; // strite de la carta arrastrada
 
     void Start()
     {
@@ -60,12 +61,14 @@ public class Drop : MonoBehaviour, IDropHandler // Scrip de invocacion
                 {
                     audioActivCard.Play();
                 }
+
                 AsignateImage(cardis,cardis2,CardP); 
                 StartCoroutine(Retard(cardis, cardis2, eventData.pointerDrag, controlPanels.gameObject));
 
             }
         }
     }
+
     private void EffectActive(DisplayCard card1, DisplayCard2 card2, GameObject eventData, GameObject panelObject)
     {
         if (card1 != null)
@@ -116,6 +119,7 @@ public class Drop : MonoBehaviour, IDropHandler // Scrip de invocacion
         }
 
     }
+
     IEnumerator Retard(DisplayCard cardis, DisplayCard2 cardis2, GameObject eventData, GameObject controlPanels)
     {
         yield return new WaitForSeconds(1.0f);
@@ -124,7 +128,6 @@ public class Drop : MonoBehaviour, IDropHandler // Scrip de invocacion
 
         cardEffectBig.SetActive(false);
     }
-    
     private void AsignateImage(DisplayCard cardis,DisplayCard2 cardis2,GameObject card)
     {
         if (card.GetComponent<DisplayCard>() != null)

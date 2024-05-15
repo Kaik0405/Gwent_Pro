@@ -9,9 +9,10 @@ public class ControlPanels : MonoBehaviour // scrip de control de invocacion en 
     public GameObject panelField;
     public List<GameObject> cardInPanel = new List<GameObject>();
 
-    public bool CanPlaceCard(Card.typefield panel, Card.typefaction faction, DisplayCard onField, DisplayCard2 onField2,GameObject cardDrg) //Metodo que es llamado para verificar la posicion en el campo que ocupa la carta
+    //Metodo que es llamado para verificar la posicion en el campo que ocupa la carta y si es colocable
+    public bool CanPlaceCard(Card.typefield panel, Card.typefaction faction, DisplayCard onField, DisplayCard2 onField2,GameObject cardDrg) 
     {
-        if ((faction == Card.typefaction.shadows) && (GameManager.player1.turn) && (!Drop.invoke) && (!onField.onField))
+        if ((faction == Card.typefaction.shadows) && (GameManager.player1.turn) && (!Drop.invoke) && (!onField.onField)) 
         {
             switch (panel)
             {
@@ -155,12 +156,10 @@ public class ControlPanels : MonoBehaviour // scrip de control de invocacion en 
             return false; 
         }    
     } 
-
-    public void AddCardToPanelHand(GameObject card)
+    public void AddCardToPanelHand(GameObject card) // metodo para agregar la carta a cardInPanel en caso de ser colocada
     {
         cardInPanel.Add(card);
     }
-
     public bool HasCardInPanel(GameObject cardDrg)
     {
         foreach (GameObject card in cardInPanel)
