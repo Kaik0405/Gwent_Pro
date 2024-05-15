@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         Drop.invoke = false;
         player1.turn = true; player1.graveyard.Clear(); player1.deck.Clear(); player1.win = false;
-        player2.turn = false; player2.graveyard.Clear(); player2.deck.Clear(); player2.win = false;
+        player2.turn = false; player2.graveyard.Clear(); player2.deck.Clear(); player2.win = false; 
 
         StartCoroutine(StartDuel());
 
@@ -421,8 +421,7 @@ public class GameManager : MonoBehaviour
             card.transform.SetParent(GameObject.Find(player == player1 ? "GraveyardP1" : "GraveyardP2").transform);
             card.SetActive(false);
         }
-    }
-  
+    }  
     void Update()
     {
         player1.handZone = GameObject.Find("HandP1").GetComponent<ControlPanels>().cardInPanel;

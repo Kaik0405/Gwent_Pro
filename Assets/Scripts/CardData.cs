@@ -45,6 +45,8 @@ public class CardData : MonoBehaviour // scrip de la base de datos de las cartas
     
     void Awake()
     {
+        deckHeavenly.Clear();
+        deckShadows.Clear();
         readyToDelete = true;
         //deck de Sombras
         //carta Lider
