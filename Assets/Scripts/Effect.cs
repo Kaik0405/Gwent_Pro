@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
 
 public static class Effect
@@ -399,6 +398,7 @@ public static class Effect
             string zoneMP="";
 
             int rowmForce = 0, max = 0;
+            bool activate = false ;
 
             if (card.GetComponent<DisplayCard>() != null)
             {
@@ -422,17 +422,19 @@ public static class Effect
                                 item.transform.SetParent(GameObject.Find("ClimateZone").transform);
                                 GameObject.Find("ClimateZone").GetComponent<ControlPanels>().AddCardToPanelHand(item);
                                 item.GetComponent<DisplayCard>().onField = true;
+                                activate = true;
                             }
                         }
-                    
-                        foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard>().realPower = 1;
+                        if (activate)
+                        {
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = 1;
 
-                        foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        }
                         break;
 
                     case "DistanceP2":
@@ -444,17 +446,19 @@ public static class Effect
                                 item.transform.SetParent(GameObject.Find("ClimateZone").transform);
                                 GameObject.Find("ClimateZone").GetComponent<ControlPanels>().AddCardToPanelHand(item);
                                 item.GetComponent<DisplayCard>().onField = true;
+                                activate = true;
                             }
                         }
-                        
-                        foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard>().realPower = 1;
+                        if (activate)
+                        {
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = 1;
 
-                        foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        }
                         break;
 
                     case "SiegeP2":
@@ -466,17 +470,19 @@ public static class Effect
                                 item.transform.SetParent(GameObject.Find("ClimateZone").transform);
                                 GameObject.Find("ClimateZone").GetComponent<ControlPanels>().AddCardToPanelHand(item);
                                 item.GetComponent<DisplayCard>().onField = true;
+                                activate = true;
                             }
                         }
-                       
-                        foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard>().realPower = 1;
+                        if (activate)
+                        {
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = 1;
 
-                        foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        }
                         break;
 
                 }
@@ -505,17 +511,19 @@ public static class Effect
                                 item.transform.SetParent(GameObject.Find("ClimateZone").transform);
                                 GameObject.Find("ClimateZone").GetComponent<ControlPanels>().AddCardToPanelHand(item);
                                 item.GetComponent<DisplayCard2>().onField2 = true;
+                                activate = true;
                             }
                         }
-                      
-                        foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard>().realPower = 1;
+                        if (activate)
+                        {
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = 1;
 
-                        foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard2>().realPower2 = 1;               
-                        
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[0]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        }
                         break;
 
                     case "DistanceP1":
@@ -527,17 +535,19 @@ public static class Effect
                                 item.transform.SetParent(GameObject.Find("ClimateZone").transform);
                                 GameObject.Find("ClimateZone").GetComponent<ControlPanels>().AddCardToPanelHand(item);
                                 item.GetComponent<DisplayCard2>().onField2 = true;
+                                activate = true;
                             }
                         }
-                           
-                        foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard>().realPower = 1;
+                        if (activate)
+                        {
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = 1;
 
-                        foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard2>().realPower2 = 1;
-
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[1]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        }
                         break;
 
                     case "SiegeP1":
@@ -549,17 +559,19 @@ public static class Effect
                                 item.transform.SetParent(GameObject.Find("ClimateZone").transform);
                                 GameObject.Find("ClimateZone").GetComponent<ControlPanels>().AddCardToPanelHand(item);
                                 item.GetComponent<DisplayCard2>().onField2 = true;
+                                activate = true;
                             }
                         }
-                      
-                        foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard>().realPower = 1;
-                            
-                        foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
-                            if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
-                                item.GetComponent<DisplayCard2>().realPower2 = 1;
-                        
+                        if (activate)
+                        {
+                            foreach (GameObject item in GameObject.Find(cardZonesP1[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard>().realPower = 1;
+
+                            foreach (GameObject item in GameObject.Find(cardZonesP2[2]).GetComponent<ControlPanels>().cardInPanel)
+                                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                                    item.GetComponent<DisplayCard2>().realPower2 = 1;
+                        }
                         break;
                 }
             }
@@ -661,7 +673,9 @@ public static class Effect
             for (int j = 0; j < GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
             {
                 GameObject item = GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel[j];
-                item.GetComponent<DisplayCard>().realPower = average;
+                
+                if(item.GetComponent<DisplayCard>().currentCard.type != Card.typecard.unit_gold)
+                    item.GetComponent<DisplayCard>().realPower = average;
             }
         }
         for (int i = 3; i < 6; i++)
@@ -669,7 +683,9 @@ public static class Effect
             for (int j = 0; j < GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel.Count; j++)
             {
                 GameObject item = GameObject.Find(zones[i]).GetComponent<ControlPanels>().cardInPanel[j];
-                item.GetComponent<DisplayCard2>().realPower2 = average;
+
+                if (item.GetComponent<DisplayCard2>().currentCard2.type != Card.typecard.unit_gold)
+                    item.GetComponent<DisplayCard2>().realPower2 = average;
             }
         }
     }          

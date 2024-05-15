@@ -58,6 +58,10 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        Drop.invoke = false;
+        player1.turn = true; player1.graveyard.Clear(); player1.deck.Clear(); player1.win = false;
+        player2.turn = false; player2.graveyard.Clear(); player2.deck.Clear(); player2.win = false;
+
         StartCoroutine(StartDuel());
 
         HandP1 = HandP1NS;
@@ -74,19 +78,15 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DrawPhase());
         currentPlayer = player1;
     }
-    public void ChangeSceneWithDelay(string sceneName, float delay)
-    {
-        if (Botton.GetComponent<AudioSource>() != null)
-        {
-            Botton.GetComponent<AudioSource>().Play();
-        }
-        Invoke("BackToMenu", delay);
-    }
+  
     public void BackToMenu()
     {
-        ChangeSceneWithDelay("BackToMenu", 1.0f);
-        DontDestroyOnLoad(Botton);
-        SceneManager.LoadSceneAsync("MainMenu");
+        player1.roundWin = 0;
+        player2.roundWin = 0;
+        CardData.readyToDelete = false;
+        Destroy(player1);
+        Destroy(player2);
+        SceneManager.LoadScene("MainMenu");
     }
     IEnumerator StartDuel()
     {
@@ -96,12 +96,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.2f);
         duelstart.SetActive(false);
     }
-    private void FillDeck(List<Card> deck,Player player) // Agrega las cartas de la base de datos al deck
+    public void FillDeck(List<Card> deck,Player player) // Agrega las cartas de la base de datos al deck
     {
         for (int i = 0; i < deck.Count; i++)
             player.deck.Add(deck[i]);
     } 
-    private void SuffleDeck(List<Card> deck) // Desordena el deck
+    public void SuffleDeck(List<Card> deck) // Desordena el deck
     {
         for (int i = 0; i < deck.Count; i++)
         {
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
             deck[r] = temp;
         }
     } 
-    private void InstantiateLeader(Player player1,Player player2) //Instancia los lideres en el campo 
+    public void InstantiateLeader(Player player1,Player player2) //Instancia los lideres en el campo 
     {
         GameObject leader1 = Instantiate(HandP1, transform.position, transform.rotation);
         DisplayCard displayCardL = leader1.GetComponent<DisplayCard>();
@@ -370,6 +370,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over");
         PanelGameOver.SetActive(true);
 
+        player1.roundWin = 0;
+        player2.roundWin = 0;
+        CardData.readyToDelete = false;
+        Destroy(player1);
+        Destroy(player2);
+
         if (player1.win)
         {
             PanelP1Win.SetActive(true);
@@ -398,7 +404,6 @@ public class GameManager : MonoBehaviour
             {
                 Player player = i < 6 ? player1 : player2;
                 player.graveyard.Add(card);
-
 
                 GameObject.Find(zoneName).GetComponent<ControlPanels>().cardInPanel.Remove(card);
                 card.transform.SetParent(GameObject.Find(graveyardName).transform);
@@ -429,5 +434,6 @@ public class GameManager : MonoBehaviour
         player2.meeleZone = GameObject.Find("MeleeP2").GetComponent<ControlPanels>().cardInPanel;
         player2.distanceZone = GameObject.Find("DistanceP2").GetComponent<ControlPanels>().cardInPanel;
         player2.siegeZone = GameObject.Find("SiegeP2").GetComponent<ControlPanels>().cardInPanel;
+
     }
 }

@@ -26,13 +26,10 @@ public class Card : ScriptableObject
     public enum typecard { unit_silver, unit_gold, lure, leader, climate, increase, clear }
     public enum typefield { M, D, S, MD, MS, DS, MDS, fincrease, fclimate, fleader }
     public enum typefaction { shadows, heavenly, none }
-
-
     public Card()
     {
 
     }
-
     public Card(int ID ,string name, string description, int power, typecard type, typefield pos_field, typefaction faction, Sprite SpriteImage,EffectCall effect) //constructor para cartas monstruo
     {
         this.ID = ID;

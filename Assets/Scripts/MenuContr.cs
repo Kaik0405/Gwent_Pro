@@ -21,6 +21,21 @@ public class MenuContr : MonoBehaviour
         DontDestroyOnLoad(music);
         SceneManager.LoadSceneAsync("GwentMain"); //Cambio de escena para la escena pricipal
     }
+    public void ChangeSceneWithDelayOptions(string sceneNam, float dela)
+    {
+        if (music.GetComponent<AudioSource>() != null)
+        {
+            music.GetComponent<AudioSource>().Play();
+        }
+        Invoke("TraslateToOptions", dela);
+    }
+    public void TraslateToOptions()
+    {
+        ChangeSceneWithDelayOptions("TraslateToOptions", 1.0f);
+        DontDestroyOnLoad(music);
+        SceneManager.LoadSceneAsync("Opcions");
+    }
+
     public void ExitGame()
     {
         AudioSource audioSource = GetComponent<AudioSource>();

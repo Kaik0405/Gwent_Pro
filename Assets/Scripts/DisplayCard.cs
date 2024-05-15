@@ -10,11 +10,6 @@ public class DisplayCard : MonoBehaviour
 {
     public Card currentCard; // Referencia a la carta actual
 
-    string nameC;
-    string descriptionC;
-    string typeC;
-    string fieldC;
-    string factionC;
     string power;
     public int realPower;
 
@@ -29,12 +24,13 @@ public class DisplayCard : MonoBehaviour
 
     public int numCardInDeck;
     public GameObject Hand;
-
+    Color orig;
     public bool onField;
 
     void Start()
     {    
         Drag dragComponent = this.GetComponent<Drag>();
+        orig = powerText.color;
         if (dragComponent != null && currentCard != null)
         {
             dragComponent.cardType = currentCard.pos_field;
@@ -94,7 +90,6 @@ public class DisplayCard : MonoBehaviour
         if ((currentCard.type == typecard.unit_silver) || (currentCard.type == typecard.lure))
         {
             powerText.text = " " + realPower;
-            Color orig = powerText.color;
 
             if(realPower > currentCard.power)
                 powerText.color = Color.green;

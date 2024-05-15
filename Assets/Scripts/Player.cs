@@ -19,7 +19,7 @@ public class Player: MonoBehaviour
     public List<GameObject> distanceZone = new List<GameObject>();
     public List<GameObject> siegeZone = new List<GameObject>();
     public List<GameObject> graveyard = new List<GameObject>();
-    
+ 
     public Player(string nameP,bool turn)
     {
         this.nameP = nameP;

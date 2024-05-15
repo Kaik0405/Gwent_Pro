@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CardData : MonoBehaviour // scrip de la base de datos de las cartas
 {
+    public static bool readyToDelete;
     public static List<Card> deckShadows = new List<Card>();
     public static List<Card> deckHeavenly = new List<Card>();
 
@@ -20,12 +21,12 @@ public class CardData : MonoBehaviour // scrip de la base de datos de las cartas
         "El rey hormiga de una antigua mazmorra de rango S, cuyo hizo temblar a cientos de cazadore de rango S.\nEffecto: Aumenta en 2 los puntos de ataque de la fila con menos poder en el campo del jugador",
         "Antiguo cazador de Rango S que no pudo evadir la muerte tras enfrentarse al Monarca de las Sombras el cual fue convertido en sombra por admiracion del monarca.\nEfecto: Multiplica por n el ataque de la carta siendo n la cantidad de cartas iguales a ella en el campo",
         "Cazador de rango S con las habilidades curativas mas increibles de los mortales el cual fue reencarnado por el Monarca de las Sombras.\nEfecto: Calcula el promedio de todas las cartas en el campo y luego iguala el poder de todas las cartas en el campo a ese promedio",
-        "Antiguo jefe de una mazmora de ogros cuyos hechizos eran muy venerados por los cazadores mas audaces.\nEfecto Señuelo: Cuando esta carta es invocada selecciona una carta en el campo del jugador y la manda para la mano",
+        "Antiguo jefe de una mazmora de ogros cuyos hechizos eran muy venerados por los cazadores mas audaces.",
         
         "Efecto de Carta Clima: Convierte el ataque de todas las cartas de unidad en la zona de ataque Cuerpo a Cuerpo en 1",
         "Efecto de Carta Clima: Convierte el ataque de todas las cartas de unidad en la zona de ataque a Distance en 1",
         "Efecto de Carta Clima: Convierte el ataque de todas las cartas de unidad en la zona de Asedio en 1",
-        "Efecto de Aumento: Incrementa el poder de ataque de las cartas de unidad en la fila donde es colocada",
+        "Efecto de Aumento: Incrementa el poder de ataque de las cartas de unidad en la fila donde es colocada en 5 puntos",
         "Efecto de Despeje: Elimina un clima en el campo",
 
         "Una guerrera de luz dorada, conocida por su valentía y su baston brillante que ilumina a la oscuridad más profunda.\nEfecto: Al inicio de cada ronda el jugador roba una carta extra",
@@ -39,11 +40,12 @@ public class CardData : MonoBehaviour // scrip de la base de datos de las cartas
         "Un poderoso angel que posee un hacha capaz de cortar las dimansiones.\nEfecto: Aumenta en 2 los puntos de ataque de la fila con menos poder en el campo del jugador",
         "Un angel de la belleza y la gracia, su presencia puede cautivar a cualquiera que la mire.\nEfecto: Multiplica por n el ataque de la carta siendo n la cantidad de cartas iguales a ella en el campo",
         "Una princesa de la luz estelar, su brillo puede iluminar la noche más oscura.\nEfecto: Calcula el promedio de todas las cartas en el campo y luego iguala el poder de todas las cartas en el campo a ese promedio",
-        "Un ser inmortal que ha existido desde el inicio del tiempo, su sabiduría es tan profunda como el océano\nEfecto Señuelo: Cuando esta carta es invocada selecciona una carta en el campo del jugador y la manda para la mano"
+        "Un ser inmortal que ha existido desde el inicio del tiempo, su sabiduría es tan profunda como el océano"
     };
     
     void Awake()
     {
+        readyToDelete = true;
         //deck de Sombras
         //carta Lider
         deckShadows.Add(new Card(00, "Sung Jing Woo", descriptions[0], Card.typecard.leader, Card.typefield.fleader, Card.typefaction.shadows, Resources.Load<Sprite>("Lidertype0"),Effect.LeaderEffect1));
@@ -67,8 +69,8 @@ public class CardData : MonoBehaviour // scrip de la base de datos de las cartas
         deckShadows.Add(new Card(10, "Uleni", descriptions[10],6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)"),Effect.Average));
         deckShadows.Add(new Card(10, "Uleni", descriptions[10],6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)"),Effect.Average));
         deckShadows.Add(new Card(10, "Uleni", descriptions[10],6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.shadows, Resources.Load<Sprite>("S1(x3)"),Effect.Average));
-        deckShadows.Add(new Card(11, "Tusk", descriptions[11],0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)"),Effect.LureEffect));
-        deckShadows.Add(new Card(11, "Tusk", descriptions[11],0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)"),Effect.LureEffect));
+        deckShadows.Add(new Card(11, "Tusk", descriptions[11],7, Card.typecard.unit_silver, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)"),Effect.LureEffect));
+        deckShadows.Add(new Card(11, "Tusk", descriptions[11],7, Card.typecard.unit_silver, Card.typefield.MDS, Card.typefaction.shadows, Resources.Load<Sprite>("Lure(x2)"),Effect.LureEffect));
         //Cartas
         deckShadows.Add(new Card(12, "Hell", descriptions[12], Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.shadows, Resources.Load<Sprite>("InfiernoMelee(S)"),Effect.Climate));
         deckShadows.Add(new Card(13, "Fog of de dark", descriptions[13], Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.shadows, Resources.Load<Sprite>("NieblaDist(S)"),Effect.Climate));
@@ -103,8 +105,8 @@ public class CardData : MonoBehaviour // scrip de la base de datos de las cartas
         deckHeavenly.Add(new Card(10, "Luminastra", descriptions[27], 6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2"),Effect.Average));
         deckHeavenly.Add(new Card(10, "Luminastra", descriptions[27], 6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2"),Effect.Average));
         deckHeavenly.Add(new Card(10, "Luminastra", descriptions[27], 6, Card.typecard.unit_silver, Card.typefield.S, Card.typefaction.heavenly, Resources.Load<Sprite>("Siege(x3)P2"),Effect.Average));
-        deckHeavenly.Add(new Card(11, "Eternae", descriptions[28], 0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2"),Effect.LureEffect));
-        deckHeavenly.Add(new Card(11, "Eternae", descriptions[28], 0, Card.typecard.lure, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2"),Effect.LureEffect));
+        deckHeavenly.Add(new Card(11, "Eternae", descriptions[28], 7, Card.typecard.unit_silver, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2"),Effect.LureEffect));
+        deckHeavenly.Add(new Card(11, "Eternae", descriptions[28], 7, Card.typecard.unit_silver, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Lure(x2)P2"),Effect.LureEffect));
         //Cartas
         deckHeavenly.Add(new Card(12, "Hell", descriptions[12], Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.heavenly, Resources.Load<Sprite>("infiernoMelee(S)"),Effect.Climate));
         deckHeavenly.Add(new Card(13, "Fog of de dark", descriptions[13], Card.typecard.climate, Card.typefield.fclimate, Card.typefaction.heavenly, Resources.Load<Sprite>("NieblaDist(S)"),Effect.Climate));
@@ -116,5 +118,14 @@ public class CardData : MonoBehaviour // scrip de la base de datos de las cartas
         deckHeavenly.Add(new Card(15, "Rise of the Golden Wings", descriptions[15], Card.typecard.increase, Card.typefield.fincrease, Card.typefaction.heavenly, Resources.Load<Sprite>("AUM(C)x3"),Effect.Increse));
         deckHeavenly.Add(new Card(16, "The Dawn After the Sunset", descriptions[16], Card.typecard.clear, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Despeje(S)"),Effect.Clearance));
         deckHeavenly.Add(new Card(16, "The Dawn After the Sunset", descriptions[16], Card.typecard.clear, Card.typefield.MDS, Card.typefaction.heavenly, Resources.Load<Sprite>("Despeje(S)"),Effect.Clearance));
+    }
+    void Update()
+    {
+        if (!readyToDelete)
+        {
+            deckHeavenly.Clear();
+            deckShadows.Clear();
+        }
+        
     }
 }

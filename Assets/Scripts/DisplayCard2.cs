@@ -24,12 +24,13 @@ public class DisplayCard2 : MonoBehaviour
 
     public int numCardInDeck2;
     public GameObject Hand2;
-
+    Color orig;
     public bool onField2;
 
     void Start()
     {
         Drag dragComponent = this.GetComponent<Drag>();
+        orig = powerText2.color;
         if (dragComponent != null && currentCard2 != null)
         {
             dragComponent.cardType = currentCard2.pos_field;
@@ -89,7 +90,6 @@ public class DisplayCard2 : MonoBehaviour
         if ((currentCard2.type == typecard.unit_silver) || (currentCard2.type == typecard.lure))
         { 
             powerText2.text = " " + realPower2;
-            Color orig = powerText2.color;
 
             if (realPower2 > currentCard2.power)
                 powerText2.color = Color.green;
