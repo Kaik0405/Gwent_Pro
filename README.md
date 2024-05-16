@@ -3,11 +3,11 @@
 
  El presente reposito es el primer proyecto de programación de la Facultad de Matemática y Computación de la Universidad de La Habana con el título mostrado anteriormente. Con este se pretende crear un juego de cartas en la plataforma de desarrollo de juegos Unity. Este juego de cartas tiene una temática relacionada directamente la popular serie Solo Leveling,  usa dinamicas de otros jugos de cartas como el Gwynt de el juego de The Witcher, además del popular juego de cartas de Yu-Gi-Oh  del cual se extrajeron ideas para el desarrollo de este proyecto.
 
-###El Juego
+### El Juego
 
 El Juego consiste en jugar una carta por turno con el objetivo de crear una fuerza de ataque decente en el campo. El jugador tiene el deber de usar sabiamente cada carta pues cada una tiene su efecto el cual lo puede beneficiar o perjudicar de una forma u otra. Para ganar el jugador debe ganar dos rondas, en caso de empate ambos jugadores se le marca la ronda como ganada.
 
-####Tipos de Cartas
+#### Tipos de Cartas
 
 - **Cartas de Lider :** Estas cartas son las insignias de las facciones.
 - **Cartas de Plata :**  Estas pueden ocupar tres lugares en el campo (Melee, Distancia, Asedio).
@@ -16,7 +16,7 @@ El Juego consiste en jugar una carta por turno con el objetivo de crear una fuer
 - **Cartas de Clima :** Penaliza reduciendo el poder de ataque una fila en especifico de ambos jugadores.
 - **Cartas de Despeje :** Destruye un clima sobre el campo. 
 
-###Desarollo
+### Desarollo
 En este apartado me gustaria compartir como se logro llegar a obtener este maravilloso resultado de poco más de un mes de esfuerzo y noches de desvelo por lo que a continuacion se motrarar algunos de los scrips que son pilares del funcionamiento de este proyecto.
 
 Lo más impresindible para este proyecto y la raíz del crecimiento de este proyecto es la clase Carta esta es la que contiene las caracteristicas fundamentales que debe tener cada objeto de tipo carta, esta clase se encuentra heredando como se muestra a continuacion de Scriptable Object que es una clase de unity que en pocas palabras hace mas dinamico el trabajo con valores a los cuales se les va a asignar a un objecto en escena.
@@ -352,8 +352,8 @@ public static void Increse(params object[] paramtry)           // Aumenta el pod
     }
 }
 ```
-###Conclusiones
+### Conclusiones
 El resultado final es algo que realmente nunca pense que tendria y en aquel entonces nunca pense que llegaria a tal punto, pero este proyecto no solo me enseño Unity, me enseño que con esfuerzo y dedicacion no existen limites. Y si llegaste a hasta aqui debo agradecer por haberte sumergido en esta locura a continuacion dejare el link para la descarga del rar del ejecutable del juego
 
-#####Link
+##### Link de Descarga
 https://github.com/Kaik0405/Gwent_Pro/blob/master/Gwent-Pro/GwentPro%20Version%201.0.rar
